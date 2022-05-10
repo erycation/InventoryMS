@@ -1,0 +1,81 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.main>h2{
+    text-align: center;
+    color: blue
+  }
+  
+
+  /* start responsive tables */
+  .table,
+      th,
+      td {
+          border: 1px solid #ddd;
+          padding: 10px 10px;
+      }
+
+      th {
+          background-color: #f1f1f1;
+      }
+
+      input {
+          margin: 0px;
+          padding: 4px 0px;
+          text-align: center;
+          border: 1px solid #ddd;
+          border-collapse: collapse;
+          border-color: #ddd;
+          outline: none;
+          width: 20%;
+      }
+
+      .table {
+          width: 100%;
+          border-collapse: collapse;
+          text-align: center;
+      }
+
+      @media(max-width: 500px) {
+          .table thead {
+              display: none !important;
+          }
+
+          .table tbody,
+          tr,
+          td {
+              display: block;
+              width: 100%;
+              float: right;
+          }
+
+          .table tr {
+              margin-bottom: 15px;
+          }
+
+          .table td {
+              text-align: right;
+              padding-left: 40%;
+          }
+
+          .table tr:nth-child(:first-child) {
+              text-align: center;
+          }
+
+          .table td::before {
+              content: attr(data-name);
+              position: absolute;
+              left: 0;
+              width: 50%;
+              text-align: left;
+              padding-left: 15px;
+              font-size: 0.9rem;
+              font-weight: 600;
+
+          }
+      }
+
+    /* end responsive tables */
