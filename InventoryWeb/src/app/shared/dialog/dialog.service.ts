@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-/*
-import { GamingKpisDefinitionComponent } from 'src/app/patron-detail/gaming-kpis/gaming-kpis-definition/gaming-kpis-definition.component';
-import { FreePlayOtpModalComponent } from 'src/app/patron-detail/offers/patron-free-play/free-play-otp-modal/free-play-otp-modal.component';
-import { VoucherOtpModalComponent } from 'src/app/patron-detail/offers/patron-voucher/voucher-otp-modal/voucher-otp-modal.component';
-import { ConfigurePriceModalComponent } from 'src/app/scratch-card/update-scratch-card/list-scratch-card-prizes/configure-price-modal/configure-price-modal.component';
-*/
 import { AlertErrorDialogComponent } from './alert-error-dialog/alert-error-dialog.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { SuccessDialogComponent } from './success-dialog/success-dialog.component';

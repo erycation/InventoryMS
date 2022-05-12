@@ -9,7 +9,7 @@ export interface AuthToken {
     message?: string | undefined;
     token?: string | undefined;
     roleDescription?: string | undefined;
-    branchId: string;
-    branchName?: string | undefined;
+    vendorId: string;
+    vendorName?: string | undefined;
 }
 

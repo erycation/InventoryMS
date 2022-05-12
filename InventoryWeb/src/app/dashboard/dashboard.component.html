@@ -1,0 +1,180 @@
+<div class="row subHeader" style="padding-left: 10px;">
+    <h2>DashBoard</h2>
+  </div>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-white order-card" style="color: black;">
+                <div class="card-block">
+                   <h2 class="m-b-20">Incoming Inventories</h2>
+                    <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>{{inventoriesAwaitingForAccepted}}</span></h2>
+                    <p class="m-b-0"><span class="f-right">
+                        <button type="button" class="btn btn-outline-success" >Accept Inventories</button>
+                    </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-wgite order-card" style="color: black;">
+                <div class="card-block">
+                   <h2 class="m-b-20">Outgoing Inventories</h2>
+                    <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span>{{inventoriesOutgoingNotAccepted}}</span></h2>
+                    <p class="m-b-0">
+                        
+                    <span class="f-right"><button type="button" class="btn btn-outline-primary" >View Status</button></span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-yellow order-card">
+                <div class="card-block">
+                  <h2 class="m-b-20">Customer</h2>
+                    <h2 class="text-right"><i class="fa fa-refresh f-left"></i><span>486</span></h2>
+                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-pink order-card">
+                <div class="card-block">
+                    <h2 class="m-b-20">Returns</h2>
+                    <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span>486</span></h2>
+                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <div class="row">
+        <div class="col-md-8 col-xl-9">
+            <div class="card bg-c-blue order-card">
+                <div class="card-block">
+                   <h2 class="m-b-20">Stock Taking</h2>
+                    <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>486</span></h2>
+                    <p class="m-b-0">Display Specials<span class="f-right">351</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-green order-card">
+                <div class="card-block">
+                   <h2 class="m-b-20">Special</h2>
+                    <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span>486</span></h2>
+                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!--<div class="row">
+    <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-blue order-card">
+            <div class="card-block">
+               <h2 class="m-b-20">Customer</h2>
+                <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>486</span></h2>
+                <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-green order-card">
+            <div class="card-block">
+               <h2 class="m-b-20">Stock Taking</h2>
+                <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span>486</span></h2>
+                <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-yellow order-card">
+            <div class="card-block">
+              <h2 class="m-b-20">Production</h2>
+                <h2 class="text-right"><i class="fa fa-refresh f-left"></i><span>486</span></h2>
+                <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-pink order-card">
+            <div class="card-block">
+                <h2 class="m-b-20">Intransit</h2>
+                <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span>486</span></h2>
+                <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-xl-3">
+      <div class="card bg-c-blue order-card">
+          <div class="card-block">
+             <h2 class="m-b-20">Customer</h2>
+              <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>486</span></h2>
+              <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+          </div>
+      </div>
+  </div>
+  
+  <div class="col-md-4 col-xl-3">
+      <div class="card bg-c-green order-card">
+          <div class="card-block">
+             <h2 class="m-b-20">Stock Taking</h2>
+              <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span>486</span></h2>
+              <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+          </div>
+      </div>
+  </div>
+  
+  <div class="col-md-4 col-xl-3">
+      <div class="card bg-c-yellow order-card">
+          <div class="card-block">
+            <h2 class="m-b-20">Production</h2>
+              <h2 class="text-right"><i class="fa fa-refresh f-left"></i><span>486</span></h2>
+              <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+          </div>
+      </div>
+  </div>
+  
+  <div class="col-md-4 col-xl-3">
+      <div class="card bg-c-pink order-card">
+          <div class="card-block">
+              <h2 class="m-b-20">Intransit</h2>
+              <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span>486</span></h2>
+              <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+          </div>
+      </div>
+  </div>
+</div>
+
+-->
+</div>
+
+
+
+
+
+         
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+

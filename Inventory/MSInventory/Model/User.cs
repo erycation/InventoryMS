@@ -14,6 +14,9 @@ namespace m2esolution.co.za.MSInventory.Model
         public User()
         {
             this.ExpectedInventories = new HashSet<ExpectedInventory>();
+            this.ProcessByUsers = new HashSet<InventoryTransaction>();
+            this.DeletedByUsers = new HashSet<InventoryTransaction>();
+
         }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -25,5 +28,9 @@ namespace m2esolution.co.za.MSInventory.Model
         [JsonIgnore]
         public virtual Vendor Vendor { get; set; }
         public virtual ICollection<ExpectedInventory> ExpectedInventories { get; set; }
+        [InverseProperty("ProcessByUser")]
+        public virtual ICollection<InventoryTransaction> ProcessByUsers { get; set; }
+        [InverseProperty("DeletedByUser")]
+        public virtual ICollection<InventoryTransaction> DeletedByUsers { get; set; }
     }
 }

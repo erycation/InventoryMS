@@ -9,6 +9,7 @@ using m2esolution.co.za.MSInventory.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace m2esolution.co.za.MSInventory.Service
 {
@@ -16,87 +17,112 @@ namespace m2esolution.co.za.MSInventory.Service
     {
 
         private readonly IExpectedInventoryRepository _expectedInventoryRepository;
+        private IInventoryTransactionService _inventoryTransactionService;
 
-        public ExpectedInventoryService(IExpectedInventoryRepository expectedInventoryRepository)
+        public ExpectedInventoryService(IExpectedInventoryRepository expectedInventoryRepository,
+                                        IInventoryTransactionService inventoryTransactionService)
         {
             _expectedInventoryRepository = expectedInventoryRepository;
+            _inventoryTransactionService = inventoryTransactionService;
         }
 
-        public Task<ExpectedInventoryDto> AddExpectedInventory(ExpectedInventoryDto expectedInventory)
+        public async Task<ExpectedInventoryDto> CreateAndAllocateExpectedInventory(ExpectedInventoryDto expectedInventoryDto)
         {
-            throw new NotImplementedException();
+
+            expectedInventoryDto.ReferenceNo = Guid.NewGuid().ToString();
+
+            var requestExpectedInventory = new ExpectedInventory
+            {
+                ReferenceNo = expectedInventoryDto.ReferenceNo,
+                Supervisor = expectedInventoryDto.Supervisor,
+                AdminId = expectedInventoryDto.AdminId,
+                VendorId = expectedInventoryDto.VendorId,
+                InventoryId = expectedInventoryDto.InventoryId,
+                Quantity = expectedInventoryDto.Quantity,
+                Counted = false,
+                CountedDate = null,
+                SendToVendor = false,
+                VarianceReason = "None",
+            };
+
+            var responseExpectedInventory = await _expectedInventoryRepository.AddAsync(requestExpectedInventory);
+            return responseExpectedInventory != null ? new ExpectedInventoryDto(responseExpectedInventory) : throw new AppException($"Failed To Allocate Inventory");
+
         }
 
-        public Task<ExpectedInventoryDto> GetExpectedInventoryById(Guid expectedInventoryId)
+        public async Task<ExpectedInventoryDto> GetExpectedInventoryById(Guid expectedInventoryId)
         {
-            throw new NotImplementedException();
+            var expectedInventory = await _expectedInventoryRepository.GetAll().FirstOrDefaultAsync(x => x.Id == expectedInventoryId);
+            return expectedInventory != null ? new ExpectedInventoryDto(expectedInventory) : throw new AppException($"Expected Inventory Not Found");
         }
 
-        public Task<List<ExpectedInventoryDto>> GetNotCountedExpectedInventoriesByAdminId(Guid adminId)
+        public async Task<List<ExpectedInventoryDto>> GetExpectedInventoriesAllocatedToAdmin(Guid adminId)
         {
-            throw new NotImplementedException();
+            var expectedInventoriesDto = new List<ExpectedInventoryDto>();
+            var expectedInventories = await _expectedInventoryRepository.GetAll().Where(x => x.AdminId == adminId && !x.SendToVendor).ToListAsync();// x => x.Id == expectedInventoryId);
+            foreach (var expectedInventory in expectedInventories)
+            {
+                expectedInventoriesDto.Add(new ExpectedInventoryDto(expectedInventory));
+            }
+            return expectedInventoriesDto;
         }
 
-        public Task<List<ExpectedInventoryDto>> GetNotExpectedInventoriesBySupervisor(string supervisorName)
+        public async Task<List<ExpectedInventoryDto>> GetCountedExpectedInventoryByVendor(Guid adminId, Guid vendorId)
         {
-            throw new NotImplementedException();
+            var expectedInventoriesDto = new List<ExpectedInventoryDto>();
+            var expectedInventories = await _expectedInventoryRepository.GetAll().Where(x => x.AdminId == adminId && !x.SendToVendor && x.VendorId == vendorId).ToListAsync();// x => x.Id == expectedInventoryId);
+            foreach (var expectedInventory in expectedInventories)
+            {
+                expectedInventoriesDto.Add(new ExpectedInventoryDto(expectedInventory));
+            }
+            return expectedInventoriesDto;
         }
 
-        public Task<ExpectedInventoryDto> UpdateExpectedInventory(VendorDto expectedInventory)
+        public async Task<List<ExpectedInventoryDto>> GetExpectedInventoriesAllocatedToAdminBySupervisor(string supervisorName)
         {
-            throw new NotImplementedException();
+            var expectedInventoriesDto = new List<ExpectedInventoryDto>();
+            var expectedInventories = await _expectedInventoryRepository.GetAll().Where(x => x.Supervisor == supervisorName && !x.SendToVendor).ToListAsync();// x => x.Id == expectedInventoryId);
+            foreach (var expectedInventory in expectedInventories)
+            {
+                expectedInventoriesDto.Add(new ExpectedInventoryDto(expectedInventory));
+            }
+            return expectedInventoriesDto;
         }
 
-        //public async Task<VendorDto> AddVendor(VendorDto vendorDto)
-        //{
+        public async Task<ExpectedInventoryDto> CountExpectedInventory(ExpectedInventoryDto expectedInventoryDto)
+        {
+            var expectedInventory = await _expectedInventoryRepository.GetAll().AsNoTracking().FirstOrDefaultAsync(x => x.Id == expectedInventoryDto.ExpectedInventoryId);
+            if (expectedInventory == null)
+                throw new AppException($"Expected Inventory Not Found");
 
-        //    var branchResults = await _vendorRepository.GetAll().AsNoTracking().FirstOrDefaultAsync(b => b.Name.Replace(" ", String.Empty) == vendorDto.VendorName.Replace(" ", String.Empty));
-        //    if (branchResults != null)
-        //        throw new AppException($"Vendor {vendorDto.VendorName} Already Exist");
+            expectedInventory.Count1 = expectedInventoryDto.Count1;
+            expectedInventory.VarianceReason = expectedInventoryDto.VarianceReason;
+            expectedInventory.Counted = true;
+            expectedInventory.CountedDate = DateTime.Now;
+            var responseExpectedInventory = await _expectedInventoryRepository.UpdateAsync(expectedInventory);
+            return responseExpectedInventory != null ? new ExpectedInventoryDto(responseExpectedInventory) : throw new AppException($"Failed To Count Expected Inventory");
+        }
+      
+        public async Task<ExpectedInventoryDto> SendExpectedInventoryToVendor(List<ExpectedInventoryDto> expectedInventoriesDto, Guid locationId)
+        {
+            var trackingNumber = $"AEON_{DateTime.Now:yyyyMMddHHmmss}_{Guid.NewGuid().ToString().Substring(1,5)}";
+            foreach (var expectedInventoryDto in expectedInventoriesDto)
+            {
+                var expectedInventory = await _expectedInventoryRepository.GetAll().FirstOrDefaultAsync(x => x.Id == expectedInventoryDto.ExpectedInventoryId);
+                if (expectedInventory == null)
+                    throw new AppException($"Expected Inventory Not Found");
+                expectedInventory.SendToVendor = true;
+                var responseExpectedInventory = await _expectedInventoryRepository.UpdateAsync(expectedInventory);
 
-        //    var requestBranch = new Vendor
-        //    {
-        //        Name = vendorDto.VendorName
-        //    };
+                if (responseExpectedInventory == null)
+                    throw new AppException($"Failed To Count Expected Inventory");
 
-        //    var responseBranch = await _vendorRepository.AddAsync(requestBranch);
-        //    return responseBranch != null ? new VendorDto(responseBranch) : throw new AppException($"Failed To Create Branch");
-        //}
+                await _inventoryTransactionService.DebitThroughExpectedInventoryTransaction(expectedInventoryDto, locationId, trackingNumber);
+                await _inventoryTransactionService.CreditFromExpectedInventoryTransaction(expectedInventoryDto, locationId, trackingNumber);
 
-        //public async Task<VendorDto> UpdateVendor(VendorDto vendorDto)
-        //{
-        //    var branchResults = await _vendorRepository.GetAll().AsNoTracking().FirstOrDefaultAsync(b => b.Name.Replace(" ", String.Empty) == vendorDto.VendorName.Replace(" ", String.Empty) && b.Id != vendorDto.VendorId);
-        //    if (branchResults != null)
-        //        throw new AppException($"Vendor {vendorDto.VendorName} Already Exist");
 
-        //    var branch = await _vendorRepository.GetAll().AsNoTracking().FirstOrDefaultAsync(b => b.Id == vendorDto.VendorId);
-        //    if (branch == null)
-        //        throw new AppException($"Vendor {vendorDto.VendorName} Not Exist");
-
-        //    var requestVendor = new Vendor
-        //    {
-        //        Id = vendorDto.VendorId,
-        //        Name = vendorDto.VendorName
-        //    };
-
-        //    var responseBranch = await _vendorRepository.UpdateAsync(requestVendor);
-        //    return responseBranch != null ? new VendorDto(responseBranch) : throw new AppException($"Failed To Update Vendor");
-        //}
-        //public async Task<VendorDto> GetVendorById(Guid vendorId)
-        //{
-        //    var vendor = await _vendorRepository.GetAll().FirstOrDefaultAsync(x => x.Id == vendorId);
-        //    return new VendorDto(vendor);
-        //}
-
-        //public async Task<List<VendorDto>> GetAllVendors()
-        //{
-        //    var vendorsDto = new List<VendorDto>();
-        //    var vendors = await _vendorRepository.GetAll().ToListAsync();
-        //    foreach (var vendor in vendors)
-        //    {
-        //        vendorsDto.Add(new VendorDto(vendor));
-        //    }
-        //    return vendorsDto;
-        //}
+            }
+            return new ExpectedInventoryDto();
+        }
     }
 }

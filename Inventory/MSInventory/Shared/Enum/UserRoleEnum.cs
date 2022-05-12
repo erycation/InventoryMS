@@ -7,6 +7,7 @@ namespace m2esolution.co.za.MSInventory.Shared.Enum
         Admin,
         Customer,
         Sales,
-        Supervisor
+        Supervisor,
+        Franchise
     }
 }

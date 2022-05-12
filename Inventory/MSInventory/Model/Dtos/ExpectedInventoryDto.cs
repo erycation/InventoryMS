@@ -18,12 +18,14 @@ namespace m2esolution.co.za.MSInventory.Model.Dtos
             VendorId = expectedInventory.VendorId;
             InventoryId = expectedInventory.InventoryId;
             Quantity = expectedInventory.Quantity;
+            Count1 = expectedInventory.Count1;
             Counted = expectedInventory.Counted;
             CountedDate = expectedInventory.CountedDate;
             SendToVendor = expectedInventory.SendToVendor;
-            VendorName = expectedInventory.Vendor.Name;
-            AdminName = expectedInventory.User.Firstname;
-            InventoryName = expectedInventory.Inventory.ProductName;
+            VarianceReason = expectedInventory.VarianceReason;
+            VendorName = expectedInventory?.Vendor?.Name;
+            AdminName = expectedInventory?.User?.Firstname;
+            InventoryName = expectedInventory?.Inventory?.ProductName;
         }
 
         public Guid ExpectedInventoryId { get; set; }
@@ -34,11 +36,27 @@ namespace m2esolution.co.za.MSInventory.Model.Dtos
         public Guid VendorId { get; set; }
         public Guid InventoryId { get; set; }
         public int Quantity { get; set; }
+        public int Count1 { get; set; }
         public bool Counted { get; set; }
-        public DateTime CountedDate { get; set; }
-        public bool SendToVendor { get; set; }
+        public DateTime? CountedDate { get; set; }
+        public bool SendToVendor { get; set; }        
+        public string VarianceReason { get; set; }
         public string VendorName { get; set; }
         public string AdminName { get; set; }
-        public string InventoryName { get; set; }
+        public string InventoryName { get; set; }        
+        public string CountedStatus
+        {
+            get
+            {
+                return Counted == true ? "Yes" : "No";
+            }
+        }
+        public string SendToVendorStatus
+        {
+            get
+            {
+                return SendToVendor == true ? "Yes" : "No";
+            }
+        }
     }
 }

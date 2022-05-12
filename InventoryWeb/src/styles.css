@@ -1,14 +1,35 @@
 @import "~@ng-select/ng-select/themes/default.theme.css";
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.main>h2{
+
+.overlay {
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: white;
     text-align: center;
-    color: blue
+    /* Black background with opacity */
+    background: rgba(0, 0, 0, 0.5) url('assets/images/spinner-loader.gif') no-repeat center;
+    z-index: 2000; /* Specify a stack order in case you're using a different order for other elements */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
+  .overlay > span {
+    margin-top: -50px;
+  }
+  
+  html, body {
+    margin: 0; 
+    height: 100%; 
+  }
+  body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; padding-top: 4rem;}
 
   /* start responsive tables */
   .table,
@@ -79,3 +100,79 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       }
 
     /* end responsive tables */
+
+
+
+
+    
+ .subHeader
+ {
+    background-color:#6b84ab;
+    text-align: center;
+    color: white;
+    padding-top: 4px;
+    margin: 2px;
+ }
+ .product-cart ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.product-cart li {
+  display: flex;
+  flex-flow: row;
+  padding: 1em;
+  border-bottom: 1px solid #CCC;
+  font-size: 14px;
+}
+
+.product-cart img {
+  height: 50px;
+  width: auto;
+  margin-right: 1em;
+}
+
+.product-list__item h4 {
+  font-size: 16px;
+}
+
+.product-list__image {
+  padding: 1em;
+  height: 250px;
+}
+
+.product-list__image img {
+  max-width: 100%;
+}
+
+.cart-count {
+  color: #FFF;
+  position: relative;
+}
+.cart-count em {
+  height: 24px;
+  background-color: red;
+  font-style: normal;
+  padding: 0;
+  border-radius: 50px;
+  position: absolute;
+  top: -5px;
+  right: -14px;
+  width: 24px;
+  text-align: center;
+  line-height: 24px;
+  color: #FFF;
+  font-weight: bold;
+}
+
+.cart-total {
+  padding: 1em;
+  margin: 0;
+  display: flex;
+  flex-flow: row;
+  align-items: normal;
+  justify-content: space-between;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

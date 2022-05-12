@@ -1,0 +1,70 @@
+<div class="row subHeader" style="padding-left: 10px;">
+    <h2>Count Inventories</h2>
+  </div>
+
+  <div class="container">
+
+    <div class="zeroPaddingMarginSetting">
+      <div class="card mb-4 shadow-sm pd-5">
+        <div class="row" style="margin: 1em 0">
+            <div class="col-sm-12" style="text-align:right;">
+              <nav class="nav" style="float: right;">                  
+                <button type="button" class="btn btn-primary" (click) = "sendInventoryToVendor()">Send To Vendor 
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {{countedItems}}
+                   </span>
+                </button>
+              </nav>
+            </div>
+          </div>
+        <div class="card-body">
+           
+          <div class="form-row">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Vendor</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>AllocatedTo</th>
+                    <th>AllocatedDate</th>
+                    <th>Counted</th>
+                    <th>Count</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  *ngFor="let expected of expectedInventoryDto">
+                    <td data-name="Vendor :">{{expected.vendorName}}</td>
+                    <td data-name="Name :">{{expected.inventoryName}}</td>
+                    <td data-name="Quantity :">{{expected.quantity}}</td>
+                    <td data-name="AllocatedTo :">{{expected.adminName}}</td>
+                    <td data-name="AllocatedDate :">{{expected.dateInserted | date: 'd MMM yyyy'}}</td>
+                    <td data-name="Counted :">
+                        <b
+                        [ngStyle]="{'color':expected?.countedStatus === 'Yes' ? 'green' : 'red' }">{{expected.countedStatus}}</b>
+                    </td>
+                    <!--<td data-name="CountedDate :">{{expected?.countedDate | date: 'd MMM yyyy'}}</td> --> 
+                    <td data-name="Count :">
+                        <button type="button" class="btn btn-outline-primary" *ngIf="!expected?.counted" (click)="startCountInventory(expected)">Start Count</button>
+                    </td>
+                  </tr>                        
+                </tbody>              
+              </table>
+    
+          </div>
+        </div>
+      </div>
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+

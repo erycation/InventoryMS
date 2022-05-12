@@ -16,5 +16,6 @@ namespace m2esolution.co.za.MSInventory.Service.Interface
         Task<UserDto> UpdateUser(UserDto userDto);
         Task<UserDto> GetUserById(Guid userId);
         Task<List<UserDto>> GetAllUsers();
+        Task<List<UserDto>> GetUsersByRole(string userRole);
     }
 }

@@ -8,10 +8,12 @@ namespace m2esolution.co.za.MSInventory.Service.Interface
 {
     public interface IExpectedInventoryService
     {
-        Task<ExpectedInventoryDto> AddExpectedInventory(ExpectedInventoryDto expectedInventory);
-        Task<ExpectedInventoryDto> UpdateExpectedInventory(VendorDto expectedInventory);
+        Task<ExpectedInventoryDto> CreateAndAllocateExpectedInventory(ExpectedInventoryDto expectedInventory);
+        Task<ExpectedInventoryDto> CountExpectedInventory(ExpectedInventoryDto expectedInventoryDto);
+        Task<ExpectedInventoryDto> SendExpectedInventoryToVendor(List<ExpectedInventoryDto> expectedInventoriesDto, Guid locationId);
         Task<ExpectedInventoryDto> GetExpectedInventoryById(Guid expectedInventoryId);
-        Task<List<ExpectedInventoryDto>> GetNotCountedExpectedInventoriesByAdminId(Guid adminId);
-        Task<List<ExpectedInventoryDto>> GetNotExpectedInventoriesBySupervisor(string supervisorName);
+        Task<List<ExpectedInventoryDto>> GetExpectedInventoriesAllocatedToAdmin(Guid adminId);
+        Task<List<ExpectedInventoryDto>> GetCountedExpectedInventoryByVendor(Guid adminId, Guid vendorId);
+        Task<List<ExpectedInventoryDto>> GetExpectedInventoriesAllocatedToAdminBySupervisor(string supervisorName);
     }
 }

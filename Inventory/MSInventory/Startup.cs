@@ -78,21 +78,31 @@ namespace MSInventory
             services.AddSingleton<IAuthManager>(new AuthManager(Configuration.GetSection("JWTSettings:SecretKey").Value));
 
             services.AddScoped<IAuthenticateService, AuthenticateService>();
+            
+            services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUsersService, UsersService>();
             services.AddScoped<IVendorRepository, VendorRepository>();
             services.AddScoped<IVendorService, VendorService>();
+            services.AddScoped<IExpectedInventoryRepository, ExpectedInventoryRepository>();
+            services.AddScoped<IExpectedInventoryService, ExpectedInventoryService>();
+            services.AddScoped<IInventoryRepository, InventoryRepository>();
+            services.AddScoped<IInventoryService, InventoryService>();
+            services.AddScoped<IInventoryTransactionRepository, InventoryTransactionRepository>();
+            services.AddScoped<IInventoryTransactionService, InventoryTransactionService>();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
+           // if (env.IsDevelopment())
+           // {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MSInventory v1"));
-            }
+           // }
             
             app.UseHttpsRedirection();
 

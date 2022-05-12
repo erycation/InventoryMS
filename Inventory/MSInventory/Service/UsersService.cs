@@ -9,6 +9,8 @@ using m2esolution.co.za.MSInventory.Model;
 using m2esolution.co.za.MSInventory.Model.Dtos;
 using m2esolution.co.za.MSInventory.Repository.Interface;
 using m2esolution.co.za.MSInventory.Service.Interface;
+using System.Linq;
+using m2esolution.co.za.MSInventory.Shared.Enum;
 
 namespace m2esolution.co.za.MSInventory.Service
 {
@@ -28,8 +30,8 @@ namespace m2esolution.co.za.MSInventory.Service
 
         public async Task<UserDto> AddUser(UserDto userDto)
         {
-
-            if (await GetUserByCredentials(userDto.Username) != null)
+            var userDetails = await _userRepository.GetAll().AsNoTracking().FirstOrDefaultAsync(x => x.Username == userDto.Username);
+            if (userDetails != null)
                 throw new AppException($"Username {userDto.Username} Already Exist.");
 
             var requestUser = new User
@@ -86,6 +88,17 @@ namespace m2esolution.co.za.MSInventory.Service
                 usersDto.Add(new UserDto(user));
             }
             return usersDto;
-        }        
+        }
+
+        public async Task<List<UserDto>> GetUsersByRole(string userRole)
+        {
+            var usersDto = new List<UserDto>();
+            var users = await _userRepository.GetAll().Where(u => u.RoleDescription == userRole).ToListAsync();
+            foreach (var user in users)
+            {
+                usersDto.Add(new UserDto(user));
+            }
+            return usersDto;
+        }
     }
 }

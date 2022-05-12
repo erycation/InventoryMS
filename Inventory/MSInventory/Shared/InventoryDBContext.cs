@@ -25,5 +25,8 @@ namespace m2esolution.co.za.MSInventory.Shared
         public virtual DbSet<VendorLocation> VendorLocations { get; set; }
         public virtual DbSet<Inventory> Inventories { get; set; }
         public virtual DbSet<InventoryPrice> InventoryPrices { get; set; }
+        public virtual DbSet<ExpectedInventory> ExpectedInventories { get; set; }
+        public virtual DbSet<InventoryTransaction> InventoryTransactions { get; set; }
+        
     }
 }
