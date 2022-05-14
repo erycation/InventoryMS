@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { CustomerOrderItemToBePlacedDto } from "src/app/model/Dtos/ms-inventory/customerOrderItemToBePlacedDto";
 import { InventoryTransactionDto } from "src/app/model/Dtos/ms-inventory/inventoryTransactionDto";
 import { BackendService } from "src/app/util/backend.service";
 
@@ -19,7 +20,13 @@ export class InventoryTransactionService {
         return await this.backend.get<InventoryTransactionDto[]>(`InventoryTransaction/Outgoing/NotAccepted/${vendorId}`);
     }
 
+    acceptTransactionInventoryInToVendor(inventoryTransactionDto : InventoryTransactionDto[], vendorId : string, userId : string) {
+        return this.backend.postWithResponse1<any>(`InventoryTransaction/Accept/Vendor/${vendorId}/${userId}`, inventoryTransactionDto);
+    }
 
+    checkOutCustomerToCreateOrder(customerOrderItemToBePlacedDto : CustomerOrderItemToBePlacedDto[]) {
+        return this.backend.postWithResponse1<any>(`InventoryTransaction/Customer/Order`, customerOrderItemToBePlacedDto);
+    }
     /*
 
     async getAllocatedExpectedInventoriesByAdmin(userId : string) {

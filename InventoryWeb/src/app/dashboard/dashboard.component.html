@@ -10,7 +10,7 @@
                    <h2 class="m-b-20">Incoming Inventories</h2>
                     <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>{{inventoriesAwaitingForAccepted}}</span></h2>
                     <p class="m-b-0"><span class="f-right">
-                        <button type="button" class="btn btn-outline-success" >Accept Inventories</button>
+                        <button type="button" class="btn btn-outline-success" (click)="acceptInventoryInVendor()">Accept Inventories</button>
                     </span>
                     </p>
                 </div>
@@ -50,7 +50,7 @@
         </div>
 	</div>
 
-    <div class="row">
+    <!--<div class="row">
         <div class="col-md-8 col-xl-9">
             <div class="card bg-c-blue order-card">
                 <div class="card-block">
@@ -70,7 +70,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
   <!--<div class="row">
     <div class="col-md-4 col-xl-3">

@@ -14,4 +14,14 @@ export class VendorService {
     async getAllVendors() {
         return await this.backend.get<VendorDto[]>(`Vendor/GetAll`);
     }
+
+    createVendor(vendorDto:VendorDto)
+    {
+        return this.backend.postWithResponse1<any>(`Vendor/Add`, vendorDto);
+    }
+
+    updateVendor(vendorDto:VendorDto)
+    {
+        return this.backend.postWithResponse1<any>(`Vendor/Update`, vendorDto);
+    }
 }

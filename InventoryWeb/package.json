@@ -23,6 +23,7 @@
     "@auth0/angular-jwt": "^5.0.2",
     "@ng-bootstrap/ng-bootstrap": "^12.1.1",
     "@ng-select/ng-select": "^8.1.1",
+    "@popperjs/core": "^2.11.5",
     "font-awesome": "^4.7.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

@@ -28,6 +28,21 @@ import { CreateInventoryComponent } from './supervisor/allocate/create-inventory
 import { StartCountInventoryComponent } from './admin/count-inventory/start-count-inventory/start-count-inventory.component';
 import { SalesVendorComponent } from './sales-vendor/sales-vendor.component';
 import { ReceiveStockComponent } from './sales-vendor/receive-stock/receive-stock.component';
+import { AcceptInventoryComponent } from './dashboard/accept-inventory/accept-inventory.component';
+import { StockTakingComponent } from './sales-vendor/stock-taking/stock-taking.component';
+import { MonitorStockTakingComponent } from './supervisor/monitor-stock-taking/monitor-stock-taking.component';
+import { ViewStockTakingComponent } from './supervisor/monitor-stock-taking/view-stock-taking/view-stock-taking.component';
+import { VendorListComponent } from './supervisor/vendor-list/vendor-list.component';
+import { AddVendorComponent } from './supervisor/vendor-list/add-vendor/add-vendor.component';
+import { ModifyVendorComponent } from './supervisor/vendor-list/modify-vendor/modify-vendor.component';
+import { UserListComponent } from './supervisor/user-list/user-list.component';
+import { AddUserComponent } from './supervisor/user-list/add-user/add-user.component';
+import { ModifyUserComponent } from './supervisor/user-list/modify-user/modify-user.component';
+import { CustomerListComponent } from './sales-vendor/customer-list/customer-list.component';
+import { AddCustomerComponent } from './sales-vendor/customer-list/add-customer/add-customer.component';
+import { ModifyCustomerComponent } from './sales-vendor/customer-list/modify-customer/modify-customer.component';
+import { CreateOrderComponent } from './sales-vendor/customer-list/create-order/create-order.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -50,13 +65,27 @@ import { ReceiveStockComponent } from './sales-vendor/receive-stock/receive-stoc
     StartCountInventoryComponent,
     SalesVendorComponent,
     ReceiveStockComponent,
+    AcceptInventoryComponent,
+    StockTakingComponent,
+    MonitorStockTakingComponent,
+    ViewStockTakingComponent,
+    VendorListComponent,
+    AddVendorComponent,
+    ModifyVendorComponent,
+    UserListComponent,
+    AddUserComponent,
+    ModifyUserComponent,
+    CustomerListComponent,
+    AddCustomerComponent,
+    ModifyCustomerComponent,
+    CreateOrderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
-    
+    NgbModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

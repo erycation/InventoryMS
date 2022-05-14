@@ -1,0 +1,49 @@
+<div class="row subHeader" style="padding-left: 10px;">
+    <h2>User Management</h2>
+  </div>
+
+  <div class="container">
+    <div class="zeroPaddingMarginSetting">
+      <div class="card mb-4 shadow-sm pd-5">
+        <div class="row" style="margin: 1em 0">
+            <div class="col-sm-12" style="text-align:right;">
+              <nav class="nav" style="float: right;">
+                <button type="button" class="btn btn-primary" (click)="addUser()">Add User</button>
+              </nav>
+            </div>
+          </div>
+        <div class="card-body">
+           
+          <div class="form-row">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>FirstName</th>
+                    <th>Surname</th>
+                    <th>Username</th>
+                    <th>Vendor</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Select</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  *ngFor="let user of usersDto">
+                    <td data-name="FirstName :">{{user.firstname}}</td>
+                    <td data-name="Surname :">{{user.surname}}</td>
+                    <td data-name="Username :">{{user.username}}</td>
+                    <td data-name="Vendor :">{{user.vendorName}}</td>
+                    <td data-name="Role :">{{user.roleDescription}}</td>
+                    <td data-name="Status :">{{user.userStatus}}</td>
+                    <td data-name="Select :">
+                        <button type="button" class="btn btn-outline-primary" (click)="modifyUser(user)" *ngIf="!supervisorRight(user.roleDescription)">
+                            Select
+                          </button>
+                    </td>   
+                  </tr>   
+                </tbody>              
+              </table>
+          </div>
+        </div>
+      </div>
+    

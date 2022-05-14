@@ -11,6 +11,7 @@ namespace m2esolution.co.za.MSInventory.Service.Interface
         Task<VendorDto> AddVendor(VendorDto vendorDto);
         Task<VendorDto> UpdateVendor(VendorDto vendorDto);
         Task<VendorDto> GetVendorById(Guid vendorId);
+        Task<VendorDto> GetVendorByName(string name);
         Task<List<VendorDto>> GetAllVendors();
     }
 }

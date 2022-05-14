@@ -63,6 +63,11 @@ namespace m2esolution.co.za.MSInventory.Service
             return new VendorDto(vendor);
         }
 
+        public async Task<VendorDto> GetVendorByName(string name)
+        {
+            var vendor = await _vendorRepository.GetAll().FirstOrDefaultAsync(x => x.Name == name);
+            return new VendorDto(vendor);
+        }
         public async Task<List<VendorDto>> GetAllVendors()
         {
             var vendorsDto = new List<VendorDto>();

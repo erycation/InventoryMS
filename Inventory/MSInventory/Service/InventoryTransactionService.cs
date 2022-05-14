@@ -18,118 +18,20 @@ namespace m2esolution.co.za.MSInventory.Service
     {
 
         private readonly IInventoryTransactionRepository _inventoryTransactionRepository;
+        private IOrderService _orderService;
+        private IOrderItemService _orderItemService;
+        private IVendorService _vendorService;
 
-        public InventoryTransactionService(IInventoryTransactionRepository inventoryTransactionRepository)
+        public InventoryTransactionService(IInventoryTransactionRepository inventoryTransactionRepository,
+                                            IOrderService orderService,
+                                            IOrderItemService orderItemService,
+                                            IVendorService vendorService)
         {
             _inventoryTransactionRepository = inventoryTransactionRepository;
+            _orderService = orderService;
+            _orderItemService = orderItemService;
+            _vendorService = vendorService;
         }
-
-        //    public async Task<InventoryTransactionDto> CreditVendorLocation(ExpectedInventoryDto expectedInventoryDto, Guid locationId, string reference)
-        //    {
-
-        //        var requestInventoryTransaction = new InventoryTransaction
-        //        {
-        //            expectedInventoryDto.VendorId;//destination
-        //        };
-
-        //        var requestExpectedInventory = new ExpectedInventory
-        //        {
-        //            ReferenceNo = expectedInventoryDto.ReferenceNo,
-        //            Supervisor = expectedInventoryDto.Supervisor,
-        //            AdminId = expectedInventoryDto.AdminId,
-        //            VendorId = expectedInventoryDto.VendorId,
-        //            InventoryId = expectedInventoryDto.InventoryId,
-        //            Quantity = expectedInventoryDto.Quantity,                
-        //            Counted = false,
-        //            CountedDate = null,
-        //            SendToVendor = false,
-        //            VarianceReason = "None",
-        //        };
-
-        //        var responseExpectedInventory = await _inventoryTransactionRepository.AddAsync(requestExpectedInventory);
-        //        return responseExpectedInventory != null ? new ExpectedInventoryDto(responseExpectedInventory) : throw new AppException($"Failed To Allocate Inventory");
-
-        //    }
-
-        //    public async Task<ExpectedInventoryDto> GetExpectedInventoryById(Guid expectedInventoryId)
-        //    {
-        //        var expectedInventory = await _expectedInventoryRepository.GetAll().FirstOrDefaultAsync(x => x.Id == expectedInventoryId);
-        //        return expectedInventory != null ? new ExpectedInventoryDto(expectedInventory) : throw new AppException($"Expected Inventory Not Found");
-        //    }
-
-        //    public async Task<List<ExpectedInventoryDto>> GetExpectedInventoriesAllocatedToAdmin(Guid adminId)
-        //    {
-        //        var expectedInventoriesDto = new List<ExpectedInventoryDto>();
-        //        var expectedInventories = await _expectedInventoryRepository.GetAll().Where(x => x.AdminId == adminId && !x.SendToVendor).ToListAsync();// x => x.Id == expectedInventoryId);
-        //        foreach (var expectedInventory in expectedInventories)
-        //        {
-        //            expectedInventoriesDto.Add(new ExpectedInventoryDto(expectedInventory));
-        //        }
-        //        return expectedInventoriesDto;
-        //    }
-
-        //    public async Task<List<ExpectedInventoryDto>> GetCountedExpectedInventoryByVendor(Guid adminId, Guid vendorId)
-        //    {
-        //        var expectedInventoriesDto = new List<ExpectedInventoryDto>();
-        //        var expectedInventories = await _expectedInventoryRepository.GetAll().Where(x => x.AdminId == adminId && !x.SendToVendor && x.VendorId == vendorId).ToListAsync();// x => x.Id == expectedInventoryId);
-        //        foreach (var expectedInventory in expectedInventories)
-        //        {
-        //            expectedInventoriesDto.Add(new ExpectedInventoryDto(expectedInventory));
-        //        }
-        //        return expectedInventoriesDto;
-        //    }
-
-        //    public async Task<List<ExpectedInventoryDto>> GetExpectedInventoriesAllocatedToAdminBySupervisor(string supervisorName)
-        //    {
-        //        var expectedInventoriesDto = new List<ExpectedInventoryDto>();
-        //        var expectedInventories = await _expectedInventoryRepository.GetAll().Where(x => x.Supervisor == supervisorName && !x.SendToVendor).ToListAsync();// x => x.Id == expectedInventoryId);
-        //        foreach (var expectedInventory in expectedInventories)
-        //        {
-        //            expectedInventoriesDto.Add(new ExpectedInventoryDto(expectedInventory));
-        //        }
-        //        return expectedInventoriesDto;
-        //    }
-
-        //    public async Task<ExpectedInventoryDto> CountExpectedInventory(ExpectedInventoryDto expectedInventoryDto)
-        //    {
-        //        var expectedInventory = await _expectedInventoryRepository.GetAll().AsNoTracking().FirstOrDefaultAsync(x => x.Id == expectedInventoryDto.ExpectedInventoryId);
-        //        if (expectedInventory == null)
-        //            throw new AppException($"Expected Inventory Not Found");
-
-        //        expectedInventory.Count1 = expectedInventoryDto.Count1;
-        //        expectedInventory.VarianceReason = expectedInventoryDto.VarianceReason;
-        //        expectedInventory.Counted = true;
-        //        expectedInventory.CountedDate = DateTime.Now;
-        //        var responseExpectedInventory = await _expectedInventoryRepository.UpdateAsync(expectedInventory);
-        //        return responseExpectedInventory != null ? new ExpectedInventoryDto(responseExpectedInventory) : throw new AppException($"Failed To Count Expected Inventory");
-        //    }
-
-
-
-
-        //    public async Task<ExpectedInventoryDto> SendExpectedInventoryToVendor(List<ExpectedInventoryDto> expectedInventoriesDto)
-        //    {
-        //        var successExpected = new ExpectedInventoryDto();
-        //        foreach (var expectedInventoryDto in expectedInventoriesDto)
-        //        {
-        //            var expectedInventory = await _expectedInventoryRepository.GetAll().AsNoTracking().FirstOrDefaultAsync(x => x.Id == expectedInventoryDto.ExpectedInventoryId);
-        //            if (expectedInventory == null)
-        //                throw new AppException($"Expected Inventory Not Found");
-        //            expectedInventory.SendToVendor = true;
-        //            var responseExpectedInventory = await _expectedInventoryRepository.UpdateAsync(expectedInventory);
-
-        //            if (responseExpectedInventory != null)
-        //            {
-        //                successExpected = new ExpectedInventoryDto(responseExpectedInventory);
-        //            }
-        //            else
-        //            {
-        //                throw new AppException($"Failed To Count Expected Inventory");
-        //            }
-        //        }
-        //        return successExpected;
-        //    }
-        //}
 
         public async Task<InventoryTransactionDto> CreditFromExpectedInventoryTransaction(ExpectedInventoryDto expectedInventoryDto, Guid locationVendorId, string trackingNumber)
         {
@@ -148,7 +50,8 @@ namespace m2esolution.co.za.MSInventory.Service
                 OrderItemId = null,
                 Deleted = false,
                 DeletedById = null,
-                TrackingNumber = trackingNumber
+                TrackingNumber = trackingNumber,
+                AcceptedByUserId = null
             };
 
             return await SaveInventoryTransaction(requestInventoryTransactionDto);
@@ -171,7 +74,8 @@ namespace m2esolution.co.za.MSInventory.Service
                 OrderItemId = null,
                 Deleted = false,
                 DeletedById = null,
-                TrackingNumber = trackingNumber
+                TrackingNumber = trackingNumber,
+                AcceptedByUserId = null
             };
 
             return await SaveInventoryTransaction(requestInventoryTransactionDto);
@@ -181,7 +85,9 @@ namespace m2esolution.co.za.MSInventory.Service
         {
             var inventoryTransactionsDto = new List<InventoryTransactionDto>();
             var inventoryTransactions = await _inventoryTransactionRepository.GetAll().Where(x => x.DestinationVendorId == vendorId && 
-                                                                                             !x.Accepted && x.EntryType.ToLower() == EntryTypeEnum.Credit.ToString().ToLower()
+                                                                                             !x.Accepted &&
+                                                                                              x.AcceptedByUserId == null && 
+                                                                                              x.EntryType.ToLower() == EntryTypeEnum.Credit.ToString().ToLower()
                                                                                              && x.VerifiedStatus.ToLower() == VerifiedStatusEnum.Verified.ToString().ToLower()).ToListAsync();
             foreach (var inventoryTransaction in inventoryTransactions)
             {
@@ -194,7 +100,7 @@ namespace m2esolution.co.za.MSInventory.Service
         {
             var inventoryTransactionsDto = new List<InventoryTransactionDto>();
             var inventoryTransactions = await _inventoryTransactionRepository.GetAll().Where(x => x.LocationVendorId == vendorId &&
-                                                                                             x.DestinationVendorId != vendorId &&
+                                                                                             x.DestinationVendorId != vendorId &&                                                                                            
                                                                                              !x.Accepted && x.EntryType.ToLower() == EntryTypeEnum.Credit.ToString().ToLower()
                                                                                              && x.VerifiedStatus.ToLower() == VerifiedStatusEnum.Verified.ToString().ToLower()).ToListAsync();
             foreach (var inventoryTransaction in inventoryTransactions)
@@ -204,6 +110,94 @@ namespace m2esolution.co.za.MSInventory.Service
             return inventoryTransactionsDto;
         }
 
+        public async Task<InventoryTransactionDto> AcceptAwaitingTransactionInToVendor(List<InventoryTransactionDto> inventoryTransactionDtos,Guid vendorId, Guid userId)
+        {
+
+            foreach (var inventoryTransactionDto in inventoryTransactionDtos)
+            {
+                var inventoryTransaction = await _inventoryTransactionRepository.GetAll().FirstOrDefaultAsync(x => x.Id == inventoryTransactionDto.InventoryTransactionId);
+                if (inventoryTransaction == null)
+                    throw new AppException($"Inventory Transaction Not Found");
+                inventoryTransaction.Accepted = true;
+                inventoryTransaction.AcceptedByUserId = userId;
+                var responseInventoryTransaction = await _inventoryTransactionRepository.UpdateAsync(inventoryTransaction);
+                if (responseInventoryTransaction == null)
+                    throw new AppException($"Failed To Accept Inventory");
+                var creditTransactionVendorArea = new InventoryTransactionDto(responseInventoryTransaction)
+                {
+                    LocationVendorId = vendorId,
+                    EntryType = EntryTypeEnum.Credit.ToString(),
+                    TrackingStatus = TrackingStatusEnum.Delivered.ToString()
+                };
+                var responseCreditVendorLocation = await SaveInventoryTransaction(creditTransactionVendorArea);
+                if (responseCreditVendorLocation == null)
+                    throw new AppException($"Failed To Confirm Inventory");
+
+            }
+
+            return new InventoryTransactionDto();
+        }
+
+        public async Task<string> CreateCustomerOrder(List<CustomerOrderItemToBePlacedDto> customerOrderItemToBePlacedDtos)
+        {
+
+            var vendorResponse = await _vendorService.GetVendorByName("Customer");
+            if (vendorResponse == null)
+                throw new AppException($"Customer Location Not Configured");
+
+            var trackingNumber = $"CUST{DateTime.Now:yyyyMMddHHmmss}_{Guid.NewGuid().ToString().Substring(1, 5)}";
+
+            var requestOrder = new OrderDto
+            {
+                OrderNumber = $"AEON_{DateTime.Now:yyyyMMddHHmmss}_{Guid.NewGuid().ToString().Substring(1, 5)}",
+                CustomerId = customerOrderItemToBePlacedDtos[0].CustomerId
+            };
+
+            var responseOrder = await _orderService.AddOrder(requestOrder);
+
+            foreach (var customerOrderItemToBePlacedDto in customerOrderItemToBePlacedDtos)
+            {
+                var requestOrderItem = new OrderItemDto
+                {
+                    OrderId = responseOrder.OrderId
+                };
+
+                var responseOrderItem = await _orderItemService.AddOrder(requestOrderItem);
+
+                var creditDebitVendor = new InventoryTransactionDto()
+                {
+                    EntryType = EntryTypeEnum.Debit.ToString(),
+                    TransactionType = TransactionTypeEnum.Inventory.ToString(),
+                    TrackingStatus = TrackingStatusEnum.Customer.ToString(),
+                    InventoryId = customerOrderItemToBePlacedDto.InventoryId,
+                    Quantity = customerOrderItemToBePlacedDto.Quantity * -1,
+                    Accepted = true,
+                    VerifiedStatus = VerifiedStatusEnum.Verified.ToString(),
+                    ProcessById = customerOrderItemToBePlacedDto.ProcessById,
+                    LocationVendorId = customerOrderItemToBePlacedDto.LocationVendorId,
+                    DestinationVendorId = vendorResponse.VendorId,
+                    OrderItemId = responseOrderItem.OrderItemId,
+                    Deleted = false,
+                    DeletedById = null,
+                    TrackingNumber = trackingNumber,
+                    AcceptedByUserId = customerOrderItemToBePlacedDto.ProcessById
+                };
+
+                var responseDebitVendorLocation = await SaveInventoryTransaction(creditDebitVendor);
+                if (responseDebitVendorLocation == null)
+                    throw new AppException($"Failed To Debit Vendor");
+
+                //Credit customer
+                responseDebitVendorLocation.EntryType = EntryTypeEnum.Credit.ToString();
+                responseDebitVendorLocation.Quantity = customerOrderItemToBePlacedDto.Quantity;
+                responseDebitVendorLocation.LocationVendorId = vendorResponse.VendorId;
+                var responseCustomerVendorLocation = await SaveInventoryTransaction(responseDebitVendorLocation);
+                if (responseDebitVendorLocation == null)
+                    throw new AppException($"Failed To Credit Customer");
+            }
+
+            return responseOrder.OrderNumber;
+        }
 
         #region PrivateMethods
         private async Task<InventoryTransactionDto> SaveInventoryTransaction(InventoryTransactionDto inventoryTransactionDto)
@@ -223,7 +217,8 @@ namespace m2esolution.co.za.MSInventory.Service
                 OrderItemId = inventoryTransactionDto.OrderItemId,
                 Deleted = inventoryTransactionDto.Deleted,
                 DeletedById = inventoryTransactionDto.DeletedById,
-                TrackingNumber = inventoryTransactionDto.TrackingNumber
+                TrackingNumber = inventoryTransactionDto.TrackingNumber,
+                AcceptedByUserId = inventoryTransactionDto.AcceptedByUserId
             };
 
             var responseInventoryTransaction = await _inventoryTransactionRepository.AddAsync(requestInventoryTransaction);

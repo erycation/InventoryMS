@@ -19,6 +19,7 @@ namespace m2esolution.co.za.MSInventory.Model.Dtos
             InventoryId = inventoryTransaction.InventoryId;
             Quantity = inventoryTransaction.Quantity;
             Accepted = inventoryTransaction.Accepted;
+            AcceptedByUserId = inventoryTransaction.AcceptedByUserId;
             VerifiedStatus = inventoryTransaction.VerifiedStatus;
             ProcessById = inventoryTransaction.ProcessById;
             LocationVendorId = inventoryTransaction.LocationVendorId;
@@ -43,6 +44,7 @@ namespace m2esolution.co.za.MSInventory.Model.Dtos
         public Guid InventoryId { get; set; }
         public int Quantity { get; set; }
         public bool Accepted { get; set; }
+        public Guid? AcceptedByUserId { get; set; }
         public string VerifiedStatus { get; set; }
         public Guid ProcessById { get; set; }
         public Guid LocationVendorId { get; set; }

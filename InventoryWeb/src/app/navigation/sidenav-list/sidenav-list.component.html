@@ -9,10 +9,22 @@
         <mat-icon style=" margin-right: -100px">unfold_more</mat-icon>
     </mat-list-item>
     <mat-menu #supervisorMenu="matMenu" xPosition="after" >
+      <button mat-menu-item (click)="goToPage('vendor-list')">
+        <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>        
+        Vendor
+      </button>
+      <button mat-menu-item (click)="goToPage('user-list')">
+        <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>        
+        User Management
+      </button>
        <button mat-menu-item (click)="goToPage('allocate')">
         <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>        
         Allocate Inventory
       </button>
+      <button mat-menu-item (click)="goToPage('monitor-stock-taking')">
+        <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>        
+        Monitor Stock Taking
+      </button>     
     </mat-menu>
 
     <mat-list-item [matMenuTriggerFor]="adminMenu" *ngIf="adminRight()">
@@ -26,6 +38,23 @@
         Count Inventory
       </button>
     </mat-menu>
+
+    <mat-list-item [matMenuTriggerFor]="salesMenu" *ngIf="salesRight()">
+        <mat-icon style="margin-right: 16px">person</mat-icon>
+        <a matline>Sales</a> 
+        <mat-icon style=" margin-right: -100px">unfold_more</mat-icon>
+    </mat-list-item>
+    <mat-menu #salesMenu="matMenu" xPosition="after" >
+      <button mat-menu-item (click)="goToPage('customer-list')">
+        <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>        
+        Customer Management
+      </button>
+       <button mat-menu-item (click)="goToPage('stock-taking')">
+        <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>        
+        Stock Taking
+      </button>
+    </mat-menu>
+
 
 
     

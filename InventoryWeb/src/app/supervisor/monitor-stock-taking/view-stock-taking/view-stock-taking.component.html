@@ -1,0 +1,48 @@
+
+  <div class="custom-dialog">
+    <button mat-raised-button [mat-dialog-close]="true" style="float: right;">Close</button>
+    <h2 mat-dialog-title>View Report</h2>
+    <mat-dialog-content>
+      <mat-divider></mat-divider>  
+      <div class="card mb-4 shadow-sm pd-5" style="color: black;">
+        <div class="card-body">           
+          <div class="form-row">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Inventory</th>
+                    <th>Opening</th>
+                    <th>Inv-In(WH)</th>
+                    <th>Inv-Out(Customer)</th>
+                    <th>Closing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  *ngFor="let stockCount of stockCountSheetReportDto">
+                    <td data-name="Vendor :">{{stockCount.invName}}</td>
+                    <td data-name="Opening :">{{stockCount.openingBalance}}</td>
+                    <td data-name="Inv-In(WH) :">{{stockCount.inventoryIn}}</td>
+                    <td data-name="Inv-Out(Customer) :">{{stockCount.inventoryOut}}</td>
+                    <td data-name="Closing :">{{stockCount.closingQuantity}}</td>
+                  </tr>                        
+                </tbody>              
+              </table>    
+          </div>
+        </div>
+      </div>
+      </mat-dialog-content>
+      </div>
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+

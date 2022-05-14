@@ -1,0 +1,85 @@
+<div class="custom-dialog">
+    <button mat-raised-button [mat-dialog-close]="true" style="float: right;">Close</button>
+    <h2 mat-dialog-title>User Management - Modify User</h2>
+    <mat-dialog-content>
+      <mat-divider></mat-divider>
+  
+      <div class="card mb-4 shadow-sm pd-5" style="color: black;">
+        <div class="card-body">
+
+            <div class="form-row">
+               
+                <div class="form-group col-md-6">      
+                    <label for="exampleFormControlTextarea1">FirstName</label>
+                    <input type="text" class="form-control text-left" id="inputEmail4" placeholder="FirstName" 
+                        [(ngModel)]="userDto.firstname">     
+              </div>
+                <div class="form-group col-md-6">      
+                    <label for="exampleFormControlTextarea1">Surname</label>
+                    <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Surname" 
+                    [(ngModel)]="userDto.surname"> 
+              </div>
+              </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Username</label>
+            <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Username" readonly
+            [(ngModel)]="userDto.username">
+          </div>
+
+          <div class="form-row">               
+            <div class="form-group col-md-6">      
+                <label for="exampleFormControlTextarea1">Vendor</label>
+                <select [(ngModel)]="userDto.vendorId" class="form-control text-left"
+                placeholder="Select Vendor">
+                <option *ngFor="let item of vendorsDto" [value]="item.vendorId">
+                {{item.vendorName}}
+                </option>
+            </select>
+                
+          </div>
+            <div class="form-group col-md-6">      
+                <label for="exampleFormControlTextarea1">Role</label>
+                <select [(ngModel)]="userDto.roleDescription" class="form-control text-left"
+                    placeholder="Select Role">
+                    <option *ngFor="let item of rolesDto" [value]="item.roleName">
+                    {{item.roleName}}
+                    </option>
+                </select>               
+          </div>
+          </div>
+
+
+
+
+          <!--<div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="inputEmail4">Quantity</label>
+              <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Quantity" (keypress)="numberOnly($event)"
+                [(ngModel)]="expectedInventoryDto.quantity" readonly>
+            </div>
+            
+            <div class="form-group col-md-2">      
+                <label for="inputEmail4">Count 1</label>
+              <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Count 1" (keypress)="numberOnly($event)"
+              [(ngModel)]="expectedInventoryDto.count1"  (keyup)="calculateVariance()" >      
+            </div>
+            <div class="form-group col-md-3">      
+              <label for="inputEmail4">Variance</label>
+            <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Variance"  [(ngModel)]="variance"
+            >      
+          </div>
+            <div class="form-group col-md-4">      
+              <label for="inputEmail4">Variance Reason</label>
+            <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Variance Reason"
+            [(ngModel)]="expectedInventoryDto.varianceReason">      
+          </div>
+          </div>-->
+         
+          <button type="button" class="btn btn-outline-success" style="float: right;" (click)="saveUser()">
+            Save
+          </button>
+        </div>
+      </div>
+    </mat-dialog-content>
+  </div>

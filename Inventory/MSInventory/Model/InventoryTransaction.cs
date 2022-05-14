@@ -17,11 +17,14 @@ namespace m2esolution.co.za.MSInventory.Model
         public bool Accepted { get; set; }
         public string VerifiedStatus { get; set; }
         [ForeignKey("ProcessByUser")]
-        public Guid ProcessById { get; set; }    
+        public Guid ProcessById { get; set; }
+        [ForeignKey("AcceptedByUser")]
+        public Guid? AcceptedByUserId { get; set; }
         [ForeignKey("LocationVendor")]
         public Guid LocationVendorId { get; set; }
         [ForeignKey("DestinationVendor")]
         public Guid DestinationVendorId { get; set; }
+        [ForeignKey("OrderItem")]
         public Guid? OrderItemId { get; set; }
         public bool Deleted { get; set; }
         [ForeignKey("DeletedByUser")]
@@ -30,6 +33,8 @@ namespace m2esolution.co.za.MSInventory.Model
         [JsonIgnore]
         public virtual User ProcessByUser { get; set; }
         [JsonIgnore]
+        public virtual User AcceptedByUser { get; set; }
+        [JsonIgnore]
         public virtual User DeletedByUser { get; set; }
         [JsonIgnore]
         public virtual Inventory Inventory { get; set; }
@@ -37,6 +42,8 @@ namespace m2esolution.co.za.MSInventory.Model
         public virtual Vendor LocationVendor { get; set; }
         [JsonIgnore]
         public virtual Vendor DestinationVendor { get; set; }
+        [JsonIgnore]
+        public virtual OrderItem OrderItem { get; set; }
 
     }
 }

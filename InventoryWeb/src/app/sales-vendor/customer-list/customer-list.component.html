@@ -1,0 +1,62 @@
+<div class="row subHeader" style="padding-left: 10px;">
+    <h2>Customer Management</h2>
+  </div>
+
+  <div class="container">
+    <div class="zeroPaddingMarginSetting">
+      <div class="card mb-4 shadow-sm pd-5">
+        <div class="row" style="margin: 1em 0">
+            <div class="col-sm-12" style="text-align:right;">
+              <nav class="nav" style="float: right;">
+                <button type="button" class="btn btn-primary" (click)="addCustomer()">New Customer</button>
+              </nav>
+            </div>
+          </div>
+        <div class="card-body">
+
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                  <label for="exampleFormControlTextarea1">Customer Name</label>
+                  <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Search By Customer Name" 
+                    [(ngModel)]="customerName">
+                </div>
+      
+                <div class="form-group col-md-3">
+                  <br />
+                  <button type="button" class="btn btn-outline-primary" (click)="searchCustomers()">Start Search....
+                
+                  </button>
+                </div>
+                <div class="form-group col-md-3"></div>
+              </div>
+           
+          <div class="form-row">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>CustCode</th>
+                    <th>FullNames</th>
+                    <th>CellNo</th>
+                    <th>Email Address</th>
+                    <th>Order</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  *ngFor="let customer of customersDto">
+                    <td data-name="CustCode :">{{customer.code}}</td>
+                    <td data-name="FullNames :">{{customer.fullnames}}</td>
+                    <td data-name="CellNo :">{{customer.cellphoneNo}}</td>
+                    <td data-name="Email Address :">{{customer.emailAddress}}</td>
+                    <td data-name="Order :">
+                        <button type="button" class="btn btn-outline-primary" (click)="goToCreateOrderPage(customer)">
+                            Order
+                        </button>
+                    </td>
+                  </tr>  
+                </tbody>              
+              </table>
+          </div>
+        </div>
+    
+      </div>
+    

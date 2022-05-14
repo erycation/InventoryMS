@@ -1,0 +1,57 @@
+<div class="row subHeader" style="padding-left: 10px;">
+    <h2>Inventory Report - Stock Taking</h2>
+  </div>
+
+  <div class="container">
+
+    <div class="zeroPaddingMarginSetting">
+      <div class="card mb-4 shadow-sm pd-5">   
+          
+        <div class="card-body">           
+          <div class="form-row">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Inventory</th>
+                    <th>Opening</th>
+                    <th>Inv-In(WH)</th>
+                    <th>Inv-Out(Customer)</th>
+                    <th>Closing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  *ngFor="let stockCount of stockCountSheetReportDto">
+                    <td data-name="Vendor :">{{stockCount.invName}}</td>
+                    <td data-name="Opening :">{{stockCount.openingBalance}}</td>
+                    <td data-name="Inv-In(WH) :">{{stockCount.inventoryIn}}</td>
+                    <td data-name="Inv-Out(Customer) :">{{stockCount.inventoryOut}}</td>
+                    <td data-name="Closing :">{{stockCount.closingQuantity}}</td>
+                    
+                    <!--<td data-name="CountedDate :">{{expected?.countedDate | date: 'd MMM yyyy'}}</td> --> 
+                    <!--<td data-name="Count :">
+                        <button type="button" class="btn btn-outline-primary" *ngIf="!expected?.counted" (click)="startCountInventory(expected)">Start Count</button>
+                    </td>-->
+                  </tr>                        
+                </tbody>              
+              </table>
+    
+          </div>
+          <button type="button" class="btn btn-outline-success" style="float: right;" (click)="confirmAndPrint()">
+            Confirm & Print
+          </button>
+        </div>
+      </div>
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+

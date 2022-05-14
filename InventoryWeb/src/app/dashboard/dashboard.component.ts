@@ -6,6 +6,7 @@ import { InventoryTransactionService } from '../service/ms-inventory/inventory-t
 import { DialogService } from '../shared/dialog/dialog.service';
 import { ModalResetParams } from '../shared/modal-reset-params';
 import { SharedFunction } from '../shared/shared-function';
+import { AcceptInventoryComponent } from './accept-inventory/accept-inventory.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -34,12 +35,22 @@ export class DashboardComponent extends ModalResetParams implements OnInit {
 
   async loadInventoriesToAccepted() {
     this.inventoriesTransactionDto = await this.inventoryTransactionService.getInventoriesAwaitingToAcceptByVendor(this.user.vendorId);
-    this.inventoriesAwaitingForAccepted = SharedFunction.checkUndefinedObjectValue(this.inventoriesTransactionDto) ? this.inventoriesTransactionDto.length : 0;
+    //this.inventoriesAwaitingForAccepted = SharedFunction.checkUndefinedObjectValue(this.inventoriesTransactionDto) ? this.inventoriesTransactionDto.length : 0;
+    this.inventoriesAwaitingForAccepted = 0;
+    this.inventoriesTransactionDto.forEach(element => {
+      this.inventoriesAwaitingForAccepted += Number(element.quantity);     
+    })
   }
 
   async loadOutgoingInventoriesNoTAccepted() {
     this.outgoingInventoriesTransactionDto = await this.inventoryTransactionService.getOutgoingInventoriesNotAcceptByVendor(this.user.vendorId);
     this.inventoriesOutgoingNotAccepted = SharedFunction.checkUndefinedObjectValue(this.outgoingInventoriesTransactionDto) ? this.outgoingInventoriesTransactionDto.length : 0;
+  }
+
+  async acceptInventoryInVendor()
+  {
+    await this.dialogService.openReturnModalService(AcceptInventoryComponent, `Accept Inventory`, this.inventoriesTransactionDto, () => { });
+    await this.loadInventoriesToAccepted();
   }
 }
 

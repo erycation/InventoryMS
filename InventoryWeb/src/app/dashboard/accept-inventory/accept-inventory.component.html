@@ -1,0 +1,38 @@
+<div class="custom-dialog">
+    <button mat-raised-button [mat-dialog-close]="true" style="float: right;">Close</button>
+    <h2 mat-dialog-title>Accept Inventory</h2>
+    <mat-dialog-content>
+      <mat-divider></mat-divider>
+  
+      <div class="card mb-4 shadow-sm pd-5" style="color: black;">
+        <div class="card-body">
+         
+            <div class="form-row">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Quantity</th>
+                      <th>Select</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let inventory of inventoryTransactionDto">
+                      <td data-name="Name :">{{inventory.inventoryName}}</td>
+                      <td data-name="Quantity :">{{inventory.quantity}}</td>
+                      <td data-name="Select :">
+                        <mat-checkbox (change)="selectToAcceptInventoryTransaction(inventory)">
+                        </mat-checkbox>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+         
+          <button type="button" class="btn btn-outline-success" style="float: right;" (click)="acceptInventoyryInVendor()">
+            Accept
+          </button>
+        </div>
+      </div>
+    </mat-dialog-content>
+  </div>

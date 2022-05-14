@@ -1,0 +1,58 @@
+<div class="row subHeader" style="padding-left: 10px;">
+    <h2>Vendor Management</h2>
+  </div>
+
+  <div class="container">
+    <div class="zeroPaddingMarginSetting">
+      <div class="card mb-4 shadow-sm pd-5">
+        <div class="row" style="margin: 1em 0">
+            <div class="col-sm-12" style="text-align:right;">
+              <nav class="nav" style="float: right;">
+                <button type="button" class="btn btn-primary" (click)="addVendor()">Add Vendor</button>
+              </nav>
+            </div>
+          </div>
+        <div class="card-body">
+           
+          <div class="form-row">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Vendor</th>
+                    <th>Action</th>
+                    <th>Opening Inventory</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  *ngFor="let vendor of vendorsDto">
+                    <td data-name="Vendor :">{{vendor.vendorName}}</td>
+                    <td data-name="Select :">
+                        <button type="button" class="btn btn-outline-primary" (click)="modifyVendor(vendor)">
+                            Select
+                          </button>
+                    </td>
+                    <td data-name="Opening Inventory :">
+                      <button type="button" class="btn btn-outline-success" (click)="modifyVendor(vendor)">
+                          Select
+                        </button>
+                  </td>
+                  </tr>                        
+                </tbody>              
+              </table>
+          </div>
+        </div>
+      </div>
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+

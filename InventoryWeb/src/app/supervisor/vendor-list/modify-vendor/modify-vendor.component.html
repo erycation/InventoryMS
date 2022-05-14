@@ -1,0 +1,22 @@
+<div class="custom-dialog">
+    <button mat-raised-button [mat-dialog-close]="true" style="float: right;">Close</button>
+    <h2 mat-dialog-title>Modify Vendor</h2>
+    <mat-dialog-content>
+      <mat-divider></mat-divider>
+  
+      <div class="card mb-4 shadow-sm pd-5" style="color: black;">
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="inputEmail4">Vendor Name</label>
+              <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Vendor Name" 
+                [(ngModel)]="vendorDto.vendorName">
+            </div>            
+          </div>         
+          <button type="button" class="btn btn-outline-success" style="float: right;" (click)="updateVendor()">
+            Save
+          </button>
+        </div>
+      </div>
+    </mat-dialog-content>
+  </div>
