@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminProductionComponent } from './admin-production/admin-production.component';
 import { CountInventoryComponent } from './admin/count-inventory/count-inventory.component';
 import { SendToVendorComponent } from './admin/count-inventory/send-to-vendor/send-to-vendor.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'send-inventory-vendor', component: SendToVendorComponent, canActivate: [AuthGuard] },
   { path: 'stock-taking', component: StockTakingComponent, canActivate: [AuthGuard] },
   { path: 'monitor-stock-taking', component: MonitorStockTakingComponent, canActivate: [AuthGuard] },
+  { path: 'admin-production', component: AdminProductionComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent }
 ];
 

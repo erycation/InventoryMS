@@ -33,6 +33,99 @@ namespace m2esolution.co.za.MSInventory.Service
             _vendorService = vendorService;
         }
 
+        public async Task<InventoryTransactionDto> CaptureTransactionToCreditProduction(InventoryTransactionDto inventoryTransactionDto)
+        {
+            var trackingNumber = $"PROD{DateTime.Now:yyyyMMddHHmmss}_{Guid.NewGuid().ToString().Substring(1, 5)}";
+
+            var requestInventoryTransactionDto = new InventoryTransactionDto
+            {
+                EntryType = EntryTypeEnum.Credit.ToString(),
+                TransactionType = TransactionTypeEnum.Inventory.ToString(),
+                TrackingStatus = TrackingStatusEnum.Production.ToString(),
+                InventoryId = inventoryTransactionDto.InventoryId,
+                Quantity = inventoryTransactionDto.Quantity,
+                Accepted = false,
+                VerifiedStatus = VerifiedStatusEnum.Unverified.ToString(),
+                ProcessById = inventoryTransactionDto.ProcessById,
+                LocationVendorId = inventoryTransactionDto.LocationVendorId,
+                DestinationVendorId = inventoryTransactionDto.LocationVendorId,
+                OrderItemId = null,
+                Deleted = false,
+                DeletedById = null,
+                TrackingNumber = trackingNumber,
+                AcceptedByUserId = null
+            };
+
+            return await SaveInventoryTransaction(requestInventoryTransactionDto);
+        }
+
+        public async Task<List<InventoryTransactionDto>> GetInventoryTransactionCapturedInProduction(Guid vendorId)
+        {
+            var inventoryTransactionsDto = new List<InventoryTransactionDto>();
+            var inventoryTransactions = await _inventoryTransactionRepository.GetAll().Where(x => x.LocationVendorId == vendorId &&
+                                                                                             x.DestinationVendorId == vendorId &&
+                                                                                              x.TrackingStatus.ToLower() == TrackingStatusEnum.Production.ToString().ToLower() &&
+                                                                                             !x.Accepted && 
+                                                                                             x.EntryType.ToLower() == EntryTypeEnum.Credit.ToString().ToLower()
+                                                                                             && x.VerifiedStatus.ToLower() == VerifiedStatusEnum.Unverified.ToString().ToLower()).ToListAsync();
+            foreach (var inventoryTransaction in inventoryTransactions)
+            {
+                inventoryTransactionsDto.Add(new InventoryTransactionDto(inventoryTransaction));
+            }
+            return inventoryTransactionsDto;
+        }
+
+        public async Task<InventoryTransactionDto> VerifyTransactionSendToProduction(List<InventoryTransactionDto> inventoryTransactionDtos)
+        {
+            VendorDto vendorResponse = await _vendorService.GetVendorByName("Warehouse");
+            if (vendorResponse == null)
+                throw new AppException($"Customer Location Not Configured");
+
+            foreach (var inventoryTransactionDto in inventoryTransactionDtos)
+            {
+                var inventoryTransaction = await _inventoryTransactionRepository.GetAll().FirstOrDefaultAsync(x => x.Id == inventoryTransactionDto.InventoryTransactionId);
+                if (inventoryTransaction == null)
+                    throw new AppException($"Inventory Transaction Not Found");
+                inventoryTransaction.Accepted = true;
+                inventoryTransaction.AcceptedByUserId = inventoryTransactionDto.ProcessById;
+                var responseInventoryTransaction = await _inventoryTransactionRepository.UpdateAsync(inventoryTransaction);
+                if (responseInventoryTransaction == null)
+                    throw new AppException($"Failed To Accept Inventory");
+                var creditTransactionProduction = new InventoryTransactionDto(responseInventoryTransaction)
+                {
+                    LocationVendorId = responseInventoryTransaction.LocationVendorId,
+                    EntryType = EntryTypeEnum.Credit.ToString(),
+                    TrackingStatus = TrackingStatusEnum.Production.ToString(),
+                    DestinationVendorId = responseInventoryTransaction.LocationVendorId,
+                    VerifiedStatus = VerifiedStatusEnum.Verified.ToString()
+
+                };
+                var responseCreditProductionLocation = await SaveInventoryTransaction(creditTransactionProduction);
+                if (responseCreditProductionLocation == null)
+                    throw new AppException($"Failed To Credit Production");
+
+                responseCreditProductionLocation.Quantity *= -1;
+                responseCreditProductionLocation.EntryType = EntryTypeEnum.Debit.ToString();
+
+                var responseDebitproductionLocation = await SaveInventoryTransaction(responseCreditProductionLocation);
+                if (responseCreditProductionLocation == null)
+                    throw new AppException($"Failed To Debit Production");
+
+                responseDebitproductionLocation.Quantity = creditTransactionProduction.Quantity;
+                responseDebitproductionLocation.EntryType = EntryTypeEnum.Credit.ToString();
+                responseDebitproductionLocation.DestinationVendorId = vendorResponse.VendorId;
+                responseDebitproductionLocation.Accepted = false;
+                responseDebitproductionLocation.AcceptedByUserId = null;
+                responseDebitproductionLocation.TrackingStatus = TrackingStatusEnum.Intransit.ToString();
+
+              var responseCreditWarehouseLocation = await SaveInventoryTransaction(responseDebitproductionLocation);
+                if (responseCreditProductionLocation == null)
+                    throw new AppException($"Failed To Credit Warehouse");
+            }
+
+            return new InventoryTransactionDto();
+        }
+
         public async Task<InventoryTransactionDto> CreditFromExpectedInventoryTransaction(ExpectedInventoryDto expectedInventoryDto, Guid locationVendorId, string trackingNumber)
         {
             var requestInventoryTransactionDto = new InventoryTransactionDto
@@ -123,6 +216,18 @@ namespace m2esolution.co.za.MSInventory.Service
                 var responseInventoryTransaction = await _inventoryTransactionRepository.UpdateAsync(inventoryTransaction);
                 if (responseInventoryTransaction == null)
                     throw new AppException($"Failed To Accept Inventory");
+
+                //
+                var debitAcceptedLocationTransactionVendorArea = new InventoryTransactionDto(responseInventoryTransaction)
+                {
+                    EntryType = EntryTypeEnum.Debit.ToString(),
+                    Quantity = inventoryTransactionDto.Quantity * -1
+                };
+                var responseDebitVendorLocation = await SaveInventoryTransaction(debitAcceptedLocationTransactionVendorArea);
+                if (responseDebitVendorLocation == null)
+                    throw new AppException($"Failed To Confirm Inventory");
+
+                //
                 var creditTransactionVendorArea = new InventoryTransactionDto(responseInventoryTransaction)
                 {
                     LocationVendorId = vendorId,

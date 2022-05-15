@@ -12,8 +12,20 @@ export class InventoryTransactionService {
 
     }
 
-    async getInventoriesAwaitingToAcceptByVendor(vendorId : string) {
+    captureTransactionInventoryInToProduction(inventoryTransactionDto : InventoryTransactionDto) {
+        return this.backend.postWithResponse1<any>(`InventoryTransaction/Production/Capture`, inventoryTransactionDto);
+    }
+
+     async getInventoriesAwaitingToAcceptByVendor(vendorId : string) {
         return await this.backend.get<InventoryTransactionDto[]>(`InventoryTransaction/Awaiting/Accepted/${vendorId}`);
+    }
+
+    async getUnverifiedInventoriesToAcceptByProduction(vendorId : string) {
+        return await this.backend.get<InventoryTransactionDto[]>(`InventoryTransaction/Unverified/Production/${vendorId}`);
+    }
+
+    verifyInventorySendToProduction(inventoriesTransactionDto : InventoryTransactionDto[]) {
+        return this.backend.postWithResponse1<any>(`InventoryTransaction/Send/Production`, inventoriesTransactionDto);
     }
 
     async getOutgoingInventoriesNotAcceptByVendor(vendorId : string) {

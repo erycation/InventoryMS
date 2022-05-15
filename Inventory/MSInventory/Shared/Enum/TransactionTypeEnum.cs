@@ -10,7 +10,7 @@ namespace m2esolution.co.za.MSInventory.Shared.Enum
         Order, //customer
         Deposit, //fix issue re look later
         Withdrawal, //fix issue. re look later
-
+        RapsInventory,//to be develepod
 
         BankDeposit,
         BankWithdrawal,

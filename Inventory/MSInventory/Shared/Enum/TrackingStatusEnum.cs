@@ -7,6 +7,7 @@ namespace m2esolution.co.za.MSInventory.Shared.Enum
         PreTransit,
         Intransit,
         Delivered,
-        Customer
+        Customer,
+        Production
     }
 }

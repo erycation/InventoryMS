@@ -1,0 +1,45 @@
+<div class="row subHeader" style="padding-left: 10px;">
+    <h2>Send Inventories To Warehouse</h2>
+  </div>
+
+  <div class="container">
+
+    <div class="zeroPaddingMarginSetting">
+      <div class="card mb-4 shadow-sm pd-5">
+        <div class="row" style="margin: 1em 0">
+            <div class="col-sm-12" style="text-align:right;">
+              <nav class="nav" style="float: right;">
+                <button type="button" class="btn btn-primary" (click)="captureInventory()">Capture Inventory</button>
+              </nav>
+            </div>
+          </div>
+        <div class="card-body">
+           
+          <div class="form-row">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>CaptureDate</th>
+                    <th>Select</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  *ngFor="let inventory of inventoryTransactionDto">
+                    <td data-name="Name :">{{inventory.inventoryName}}</td>
+                    <td data-name="Quantity :">{{inventory.quantity}}</td>
+                    <td data-name="CaptureDate :">{{inventory.dateInserted | date: 'd MMM yyyy'}}</td>
+                    <td data-name="Select :">
+                      <mat-checkbox (change)="addInventoryTransactionToSend(inventory)">
+                      </mat-checkbox>
+                    </td>                   
+                  </tr>                        
+                </tbody>           
+              </table>
+          </div>
+          <button type="button" class="btn btn-outline-success" style="float: right;" (click)="sendInventoryToWareHouse()">
+            Send To WareHouse
+          </button>
+        </div>
+      </div>

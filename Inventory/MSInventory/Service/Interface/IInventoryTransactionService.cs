@@ -9,6 +9,9 @@ namespace m2esolution.co.za.MSInventory.Service.Interface
     public interface IInventoryTransactionService
     {
 
+        Task<InventoryTransactionDto> CaptureTransactionToCreditProduction(InventoryTransactionDto inventoryTransactionDto);
+        Task<List<InventoryTransactionDto>> GetInventoryTransactionCapturedInProduction(Guid vendorId);
+        Task<InventoryTransactionDto> VerifyTransactionSendToProduction(List<InventoryTransactionDto> inventoryTransactionDtos);
         Task<InventoryTransactionDto> CreditFromExpectedInventoryTransaction(ExpectedInventoryDto expectedInventoryDto, Guid locationVendorId, string trackingNumber);
         Task<InventoryTransactionDto> DebitThroughExpectedInventoryTransaction(ExpectedInventoryDto expectedInventoryDto, Guid locationVendorId, string trackingNumber);
         Task<List<InventoryTransactionDto>> GetInventoryTransactionAwaitingToAcceptByVendor(Guid vendorId);

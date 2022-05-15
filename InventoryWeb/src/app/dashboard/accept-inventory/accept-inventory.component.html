@@ -11,6 +11,8 @@
                 <table class="table">
                   <thead>
                     <tr>
+                      <th>From</th>
+                      <th>ProcessedBy</th>
                       <th>Name</th>
                       <th>Quantity</th>
                       <th>Select</th>
@@ -18,6 +20,8 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let inventory of inventoryTransactionDto">
+                      <td data-name="From :">{{inventory.locationVendorName}}</td>
+                      <td data-name="ProcessedBy :">{{inventory.userPerocessed}}</td>
                       <td data-name="Name :">{{inventory.inventoryName}}</td>
                       <td data-name="Quantity :">{{inventory.quantity}}</td>
                       <td data-name="Select :">

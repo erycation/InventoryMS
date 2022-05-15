@@ -34,6 +34,11 @@ export class SidenavListComponent implements OnInit {
     return this.user?.roleDescription != null ? this.user?.roleDescription?.toLocaleLowerCase() == 'admin' : true? false : false;
   }
 
+  adminProductionRights()
+  {
+    return this.user?.roleDescription != null ? this.user?.roleDescription?.toLocaleLowerCase() == 'adminproduction' : true? false : false;
+  }
+
   salesRight()
   {
     return this.user?.roleDescription != null ? this.user?.roleDescription?.toLocaleLowerCase() == 'sales' : true? false : false;

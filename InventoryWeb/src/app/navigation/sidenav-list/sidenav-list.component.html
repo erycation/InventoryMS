@@ -29,7 +29,7 @@
 
     <mat-list-item [matMenuTriggerFor]="adminMenu" *ngIf="adminRight()">
         <mat-icon style="margin-right: 16px">person</mat-icon>
-        <a matline>Admin</a> 
+        <a matline>Admin WareHouse</a> 
         <mat-icon style=" margin-right: -100px">unfold_more</mat-icon>
     </mat-list-item>
     <mat-menu #adminMenu="matMenu" xPosition="after" >
@@ -38,6 +38,18 @@
         Count Inventory
       </button>
     </mat-menu>
+
+    <mat-list-item [matMenuTriggerFor]="adminProductionMenu" *ngIf="adminProductionRights()">
+      <mat-icon style="margin-right: 16px">person</mat-icon>
+      <a matline>Production</a> 
+      <mat-icon style=" margin-right: -100px">unfold_more</mat-icon>
+  </mat-list-item>
+  <mat-menu #adminProductionMenu="matMenu" xPosition="after" >
+     <button mat-menu-item (click)="goToPage('admin-production')">
+      <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>        
+      Send To WareHouse
+    </button>
+  </mat-menu>
 
     <mat-list-item [matMenuTriggerFor]="salesMenu" *ngIf="salesRight()">
         <mat-icon style="margin-right: 16px">person</mat-icon>

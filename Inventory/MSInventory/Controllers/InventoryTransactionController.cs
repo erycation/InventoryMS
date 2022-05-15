@@ -19,6 +19,26 @@ namespace m2esolution.co.za.MSInventory.Controllers
             _inventoryTransactionService = inventoryTransactionService;
         }
 
+        [HttpPost("Production/Capture")]
+        public async Task<IActionResult> CaptureTransactionToCreditProduction([FromBody] InventoryTransactionDto inventoryTransactionDto)
+        {
+            var response = await _inventoryTransactionService.CaptureTransactionToCreditProduction(inventoryTransactionDto);
+            return Ok(new { message = $"Inventory Is Successfully Captured.", data = response });
+        }
+
+        [HttpGet("Unverified/Production/{vendorId}")]
+        public async Task<List<InventoryTransactionDto>> GetInventoryTransactionCapturedInProduction(Guid vendorId)
+        {
+            return await _inventoryTransactionService.GetInventoryTransactionCapturedInProduction(vendorId);
+        }
+
+        [HttpPost("Send/Production")]
+        public async Task<IActionResult> VerifyTransactionSendToProduction([FromBody] List<InventoryTransactionDto> inventoryTransactionDtos)
+        {
+            var response = await _inventoryTransactionService.VerifyTransactionSendToProduction(inventoryTransactionDtos);
+            return Ok(new { message = $"Inventory Send To Warehouse.", data = response });
+        }
+
         [HttpGet("Awaiting/Accepted/{vendorId}")]
         public async Task<List<InventoryTransactionDto>> GetInventoryTransactionAwaitingToAcceptByVendor(Guid vendorId)
         {

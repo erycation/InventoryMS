@@ -43,6 +43,8 @@ import { AddCustomerComponent } from './sales-vendor/customer-list/add-customer/
 import { ModifyCustomerComponent } from './sales-vendor/customer-list/modify-customer/modify-customer.component';
 import { CreateOrderComponent } from './sales-vendor/customer-list/create-order/create-order.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdminProductionComponent } from './admin-production/admin-production.component';
+import { CaptureInventoryProductionComponent } from './admin-production/capture-inventory-production/capture-inventory-production.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +81,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AddCustomerComponent,
     ModifyCustomerComponent,
     CreateOrderComponent,
+    AdminProductionComponent,
+    CaptureInventoryProductionComponent,
   ],
   imports: [
     BrowserModule,
