@@ -1,0 +1,15 @@
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{user.vendorName}} - Customer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button type="button" expand="block" (click)="createNewCustomer()">Create New Customer</ion-button>
+
+  <ion-searchbar mode="ios" style="padding: 16px 0px;"></ion-searchbar>
+   
+</ion-content>

@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "POSMobile",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

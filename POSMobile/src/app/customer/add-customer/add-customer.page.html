@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/customer"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create New Customer</ion-title>
+  </ion-toolbar>
+ </ion-header>
+ 
+ <ion-content>
+   
+
+
+    <div class="input-group">
+      <ion-item>
+        <ion-input type="text" placeholder="Firstname"  [(ngModel)]="customerDto.firstName"></ion-input>
+      </ion-item>   
+      <ion-item>
+        <ion-input type="text" placeholder="Surname"  [(ngModel)]="customerDto.surname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Cellphone Number"  [(ngModel)]="customerDto.cellphoneNo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Emil Address"  [(ngModel)]="customerDto.emailAddress"></ion-input>
+      </ion-item>
+    </div>
+ 
+    <ion-button type="submit" expand="block" (click) = "createNewCustomer()">Save</ion-button>
+    
+
+
+ </ion-content>
+
+
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-title>add-customer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+</ion-content>-->
