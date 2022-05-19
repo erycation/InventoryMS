@@ -16,4 +16,22 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\images\IMG-20220412-WA0004.jpg" />
+    <None Include="wwwroot\images\IMG-20220412-WA0005.jpg" />
+    <None Include="wwwroot\images\IMG-20220412-WA0007.jpg" />
+    <None Include="wwwroot\images\IMG-20220412-WA0008.jpg" />
+    <None Include="wwwroot\images\IMG-20220412-WA0009.jpg" />
+    <None Include="wwwroot\images\IMG-20220412-WA0010.jpg" />
+    <None Include="wwwroot\images\IMG-20220412-WA0011.jpg" />
+    <None Include="wwwroot\images\IMG-20220412-WA0012.jpg" />
+    <None Include="wwwroot\images\IMG-20220412-WA0013.jpg" />
+    <None Include="wwwroot\images\IMG-20220412-WA0014.jpg" />
+    <None Include="wwwroot\images\IMG-20220412-WA0015.jpg" />
+    <None Include="wwwroot\images\IMG-20220412-WA0016.jpg" />
+    <None Include="wwwroot\images\IMG-20220412-WA0017.jpg" />
+    <None Include="wwwroot\images\IMG-20220412-WA0018.jpg" />
+    <None Include="wwwroot\images\IMG-20220412-WA0019.jpg" />
+  </ItemGroup>
+
 </Project>

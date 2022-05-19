@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/customer"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{customerDto.fullnames}}</ion-title>
+  </ion-toolbar>
+  <ion-item>
+    <b>Total R : 00000</b>
+    <ion-buttons slot="end">
+    <ion-button fill="outline" color="success">
+      <ion-badge>{{itemsInCart.length}}</ion-badge>
+      <ion-icon slot="end" name="cart"></ion-icon>
+    </ion-button>  
+    </ion-buttons>
+  </ion-item>
+ </ion-header>
+
+<ion-content>
+
+
+  <ion-grid no-padding>      
+    <ion-row>
+      <ion-col size="6" *ngFor="let inventory of inventoryDto">
+        <ion-card style="margin:0%;padding: 0px;">
+          <ion-card-content style="margin:0%;padding: 0px;">
+            <img src="https://localhost:44385/api/FileEnvironment/getfile/{{inventory.image}}"/>
+          </ion-card-content>
+          <div>
+            <p>
+              <b>{{inventory.productName}} @ R {{inventory.price}}</b>
+            </p>
+            <p style="text-align: center;background-color: white;color: red;">
+              <ion-buttons slot="end">
+                <ion-button color="danger"  fill="outline" >              
+                  <ion-icon name="remove-circle"></ion-icon>
+                </ion-button> 
+    
+                <ion-button color="dark">
+                {{inventory?.inventoryQuantity}}
+                </ion-button>
+            
+              <ion-button fill="outline" color="success" (click)="addQuantityToCart(inventory)">
+                <ion-icon name="add-circle"></ion-icon>
+              </ion-button>  
+              </ion-buttons>      
+            </p>
+          </div>
+        </ion-card>
+      </ion-col>    
+    </ion-row>
+  </ion-grid>
+
+
+
+  <!--
+  <ion-grid no-padding>      
+    <ion-row>
+      <ion-col size="6" *ngFor="let item of items">
+        <ion-card style="margin:0%;padding: 0px;">
+          <ion-card-content style="margin:0%;padding: 0px;">
+            <img src="https://localhost:44385/api/FileEnvironment/getfile/IMG-20220412-WA0004.jpg"/>
+          </ion-card-content>
+          <div>
+            <p>
+              <b>Sun Screen @ R 1.200</b>
+            </p>
+            <p style="text-align: center;background-color: white;color: red;">
+              <ion-buttons slot="end">
+                <ion-button color="danger"  fill="outline" (click)="removeToCart(item)">              
+                  <ion-icon name="remove-circle"></ion-icon>
+                </ion-button> 
+    
+                <ion-button *ngIf="item.quantityInCart" color="dark">
+                  {{item.quantityInCart}}
+                </ion-button>
+            
+              <ion-button fill="outline" color="success" (click)="addToCart(item)" >
+                <ion-icon name="add-circle"></ion-icon>
+              </ion-button>  
+              </ion-buttons>      
+            </p>
+          </div>
+        </ion-card>
+      </ion-col>    
+    </ion-row>
+  </ion-grid>-->
+</ion-content>

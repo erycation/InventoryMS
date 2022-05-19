@@ -30,6 +30,11 @@ const routes: Routes = [
     path: 'add-customer',
     loadChildren: () => import('./customer/add-customer/add-customer.module').then( m => m.AddCustomerPageModule),
     canLoad: [AuthGuard] // Secure all child pages
+  } ,
+  {
+    path: 'customer-order/:customerId/:fullnames',
+    loadChildren: () => import('./customer/customer-order/customer-order.module').then( m => m.CustomerOrderPageModule),
+    canLoad: [AuthGuard] // Secure all child pages
   } 
 ];
 

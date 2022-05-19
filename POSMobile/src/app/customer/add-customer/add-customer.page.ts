@@ -48,7 +48,6 @@ export class AddCustomerPage extends ModalResetParams implements OnInit {
           });      
           await alert.present();        
       });
-      
-
+    
 }
 }

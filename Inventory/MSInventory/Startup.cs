@@ -100,8 +100,8 @@ namespace MSInventory
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IOrderItemRepository, OrderItemRepository>();
             services.AddScoped<IOrderItemService, OrderItemService>();
-
-
+            //services.AddScoped<IFilesEnvironment, FilesEnvironment>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

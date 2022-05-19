@@ -12,9 +12,13 @@ namespace m2esolution.co.za.MSInventory.Model.Dtos
         {
             InventoryId = inventory.Id;
             ProductName = inventory.ProductName;
+            Image = inventory.Image;
+            Price = inventory.Price;
         }
 
         public Guid InventoryId { get; set; }
         public string ProductName { get; set; }
+        public string Image { get; set; }
+        public decimal? Price { get; set; }
     }
 }

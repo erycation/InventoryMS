@@ -6,10 +6,52 @@
     <ion-title>{{user.vendorName}} - Customer</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
+  <div class="input-group">
   <ion-button type="button" expand="block" (click)="createNewCustomer()">Create New Customer</ion-button>
-
-  <ion-searchbar mode="ios" style="padding: 16px 0px;"></ion-searchbar>
-   
+  <ion-searchbar
+  placeholder="Enter Customer Name"
+  [(ngModel)]="customerNameSearch"
+  [showCancelButton]="shouldShowCancel"
+  (ionInput)="onInput($event)"
+  (ionCancel)="onCancel($event)">
+</ion-searchbar>
+  <ion-card *ngFor="let customer of customersDto">
+    <ion-item>
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-label>
+        <h1>{{customer.fullnames}}</h1>
+      </ion-label>
+    </ion-item>
+    <ion-card-header>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Cell No : {{customer.cellphoneNo}}</p>
+      <p style="color: green">Code : {{customer.code}}</p>
+      
+    </ion-card-content>
+    <ion-footer>
+      <ion-row>
+        <ion-col center text-center>
+          <ion-button fill="outline" color="secondary">
+            OTP
+            <ion-icon slot="end" name="mail-open"></ion-icon>
+          </ion-button>          
+        </ion-col>
+        <ion-col center text-center>
+          <ion-button fill="outline" color="danger">
+            View
+            <ion-icon slot="end" name="person"></ion-icon>
+          </ion-button>         
+        </ion-col>
+        <ion-col center text-center>       
+          <ion-button fill="outline" color="success" (click)="createNewOrder(customer)">
+            Order
+            <ion-icon slot="end" name="cart"></ion-icon>
+          </ion-button>         
+        </ion-col>
+      </ion-row>
+    </ion-footer>
+  </ion-card>
+  </div>
 </ion-content>

@@ -16,7 +16,8 @@ namespace m2esolution.co.za.MSInventory.Model
         }
 
         public string ProductName { get; set; }
-        public string Image { get; set; }     
+        public string Image { get; set; }
+        public decimal? Price { get; set; }//to be relook and replaced
         public virtual ICollection<InventoryPrice> InventoryPrices { get; set; }
         public virtual ICollection<ExpectedInventory> ExpectedInventories { get; set; }
         public virtual ICollection<InventoryTransaction> InventoryTransactions { get; set; }
