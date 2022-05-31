@@ -44,6 +44,18 @@ namespace m2esolution.co.za.MSInventory.Service
             return new InventoryDto(inventory);
         }
 
+        public async Task<List<InventoryToOrderDto>> GetAllInventoriesToOrder()
+        {
+            var InventoriesToOrderDto = new List<InventoryToOrderDto>();
+            var inventories = await _inventoryRepository.GetAll().ToListAsync();
+            foreach (var inventory in inventories)
+            {
+                InventoriesToOrderDto.Add(new InventoryToOrderDto(inventory));
+            }
+            return InventoriesToOrderDto;
+        }
+        
+
         public Task<InventoryDto> UpdateInventory(InventoryDto inventoryDto)
         {
             throw new NotImplementedException();

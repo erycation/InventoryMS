@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { InventoryDto } from '../Model/Dtos/inventoryDto';
-
+import { InventoryToOrderDto } from '../Model/Dtos/inventoryToOrderDto';
 
  
 @Injectable({
@@ -14,7 +13,7 @@ export class InventoryService {
    
   }
 
-  getAllInventories() {
-      return this.http.get<InventoryDto[]>(`${environment.urlApi}Inventory/GetAll`);
+  getAllInventoriesToOrder() {
+      return this.http.get<InventoryToOrderDto[]>(`${environment.urlApi}Inventory/GetAll/ToOrder`);
   }
 }

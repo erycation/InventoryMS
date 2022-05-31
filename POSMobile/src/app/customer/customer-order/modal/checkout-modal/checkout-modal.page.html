@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Receipts</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!--<p *ngFor="let inventoryToOrder of inventoriesToInCart">
+    {{inventoryToOrder.inventoryQuantity}}
+  </p>-->
+  <ion-grid no-padding>
+
+    <ion-row *ngFor="let inventoryToOrder of inventoriesToInCart">
+      <ion-col size="8">
+        {{inventoryToOrder.inventoryQuantity}} X {{inventoryToOrder.productName}}
+      </ion-col>
+      <ion-col size="4">
+        R {{inventoryToOrder.inventoryQuantity * inventoryToOrder.price}}
+      </ion-col>
+    </ion-row>
+
+
+
+
+
+    <!--<ion-row>
+      <ion-col size="12">
+        <ion-row >
+          <ion-col size="8">
+            {{inventoriesToInCart[0].inventoryQuantity}} X {{inventoriesToInCart[0].productName}}
+          </ion-col>
+          <ion-col size="4">
+            R {{inventoriesToInCart[0].inventoryQuantity * inventoriesToInCart[0].price}}
+          </ion-col>
+        </ion-row>
+        <ion-row >
+          <ion-col size="8">
+            {{inventoriesToInCart[1].inventoryQuantity}} X {{inventoriesToInCart[1].productName}}
+          </ion-col>
+          <ion-col size="4">
+            R {{inventoriesToInCart[1].inventoryQuantity * inventoriesToInCart[1].price}}
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>-->
+  </ion-grid>
+  <ion-footer collapse="fade">
+    <ion-toolbar>
+      <ion-button type="button" expand="block">Complete Checkout</ion-button>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>
+
+<!-- Fade Footer -->
+<ion-footer collapse="fade">
+  <ion-toolbar>
+    <ion-button type="button" expand="block">Complete Checkout</ion-button>
+  </ion-toolbar>
+</ion-footer>

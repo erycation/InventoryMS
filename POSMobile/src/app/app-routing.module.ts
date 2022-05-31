@@ -35,7 +35,12 @@ const routes: Routes = [
     path: 'customer-order/:customerId/:fullnames',
     loadChildren: () => import('./customer/customer-order/customer-order.module').then( m => m.CustomerOrderPageModule),
     canLoad: [AuthGuard] // Secure all child pages
-  } 
+  }/*,
+  {
+    path: 'checkout-modal',
+    loadChildren: () => import('./customer/customer-order/modal/checkout-modal/checkout-modal.module').then( m => m.CheckoutModalPageModule),
+    canLoad: [AuthGuard] // Secure all child pages
+  }  */
 ];
 
 @NgModule({

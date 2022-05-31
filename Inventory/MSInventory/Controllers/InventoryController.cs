@@ -43,5 +43,12 @@ namespace m2esolution.co.za.MSInventory.Controllers
         {
             return await _inventoryService.GetAllInventories();
         }
+
+        [HttpGet("GetAll/ToOrder")]
+        public async Task<ActionResult<List<InventoryToOrderDto>>> GetAllInventoriesToOrder()
+        {
+            return await _inventoryService.GetAllInventoriesToOrder();
+        }
+
     }
 }

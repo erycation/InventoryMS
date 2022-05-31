@@ -6,10 +6,10 @@
     <ion-title>{{customerDto.fullnames}}</ion-title>
   </ion-toolbar>
   <ion-item>
-    <b>Total R : 00000</b>
+    <b>Total R : {{totalOrderPrice | number : '1.2-2'}}</b>
     <ion-buttons slot="end">
-    <ion-button fill="outline" color="success">
-      <ion-badge>{{itemsInCart.length}}</ion-badge>
+    <ion-button fill="outline" color="success" (click)="processOrderToFinish()">
+      <ion-badge>{{totalQuantityToOrder}}</ion-badge>
       <ion-icon slot="end" name="cart"></ion-icon>
     </ion-button>  
     </ion-buttons>
@@ -21,30 +21,49 @@
 
   <ion-grid no-padding>      
     <ion-row>
-      <ion-col size="6" *ngFor="let inventory of inventoryDto">
+      <ion-col size="6" *ngFor="let inventoryToOrder of inventoriesToOrderDto">
         <ion-card style="margin:0%;padding: 0px;">
           <ion-card-content style="margin:0%;padding: 0px;">
-            <img src="https://localhost:44385/api/FileEnvironment/getfile/{{inventory.image}}"/>
+            <img src="{{inventoryToOrder.imageUrl}}"/>
           </ion-card-content>
           <div>
             <p>
-              <b>{{inventory.productName}} @ R {{inventory.price}}</b>
+              <b>{{inventoryToOrder.productName}} @ R {{inventoryToOrder.price}}</b>
             </p>
-            <p style="text-align: center;background-color: white;color: red;">
+            <ion-row>
+              <ion-col size="4">
+                <ion-button color="danger" expand="block" fill="outline" (click)="removeQuantityToCart(inventoryToOrder)">              
+                  <ion-icon name="remove-circle"></ion-icon>
+                </ion-button> 
+              </ion-col>
+              <ion-col size="4">
+                <ion-button color="light" expand="block">
+                  {{inventoryToOrder?.inventoryQuantity}}
+                  </ion-button>               
+              </ion-col>
+              <ion-col size="4">
+                <ion-button fill="outline" expand="block" color="success" (click)="addQuantityToCart(inventoryToOrder)">
+                  <ion-icon name="add-circle"></ion-icon>
+                </ion-button> 
+              </ion-col>
+            </ion-row>
+
+
+            <!--<p style="text-align: center;background-color: white;color: red;">
               <ion-buttons slot="end">
                 <ion-button color="danger"  fill="outline" >              
                   <ion-icon name="remove-circle"></ion-icon>
                 </ion-button> 
     
                 <ion-button color="dark">
-                {{inventory?.inventoryQuantity}}
+                {{inventoryToOrder?.inventoryQuantity}}
                 </ion-button>
             
-              <ion-button fill="outline" color="success" (click)="addQuantityToCart(inventory)">
+              <ion-button fill="outline" color="success" (click)="addQuantityToCart(inventoryToOrder)">
                 <ion-icon name="add-circle"></ion-icon>
               </ion-button>  
               </ion-buttons>      
-            </p>
+            </p>-->
           </div>
         </ion-card>
       </ion-col>    
