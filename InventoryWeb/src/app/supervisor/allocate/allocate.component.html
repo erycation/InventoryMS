@@ -3,8 +3,6 @@
   </div>
 
   <div class="container">
-
-    <div class="zeroPaddingMarginSetting">
       <div class="card mb-4 shadow-sm pd-5">
         <div class="row" style="margin: 1em 0">
             <div class="col-sm-12" style="text-align:right;">
@@ -25,7 +23,6 @@
                     <th>AllocatedTo</th>
                     <th>AllocatedDate</th>
                     <th>Counted</th>
-                    <!--<th>CountedDate</th>-->
                     <th>Processed</th>
                   </tr>
                 </thead>
@@ -35,12 +32,11 @@
                     <td data-name="Name :">{{expected.inventoryName}}</td>
                     <td data-name="Quantity :">{{expected.quantity}}</td>
                     <td data-name="AllocatedTo :">{{expected.adminName}}</td>
-                    <td data-name="AllocatedDate :">{{expected.dateInserted | date: 'd MMM yyyy'}}</td>
+                   <td data-name="AllocatedDate :">{{expected.dateInserted | date: 'd MMM yyyy'}}</td>
                     <td data-name="Counted :">
                         <b
                         [ngStyle]="{'color':expected?.countedStatus === 'Yes' ? 'green' : 'red' }">{{expected.countedStatus}}</b>
-                    </td>
-                    <!--<td data-name="CountedDate :">{{expected?.countedDate | date: 'd MMM yyyy'}}</td> --> 
+                    </td>                   
                     <td data-name="Processed :">
                         <b
                         [ngStyle]="{'color':expected?.sendToVendorStatus === 'Yes' ? 'green' : 'red' }">{{expected.sendToVendorStatus}}</b>
@@ -48,60 +44,15 @@
                   </tr>                        
                 </tbody>              
               </table>
-
-
-
-
-
-
-
-
-
-            
-<!--<table class="table">
-    <thead>
-      <tr>
-        <th colspan="1"></th>
-        <th colspan="1"></th>
-        <th>Product Name</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-name="">X</td>
-        <td data-name="">image</td>
-        <td data-name="Product Name :"> lorem ispeum</td>
-        <td data-name="price :">50</td>
-        <td data-name="Quantity :"><input type="number" value="2" /></td>
-        <td data-name="Total :">100</td>
-      </tr>
-      <tr>
-        <td data-name="">X</td>
-        <td data-name="">image</td>
-        <td data-name="Product Name :"> lorem ispeum</td>
-        <td data-name="price :">50</td>
-        <td data-name="Quantity :"><input type="number" value="2" /></td>
-        <td data-name="Total :">100</td>
-      </tr>
-      <tr>
-        <td data-name="">X</td>
-        <td data-name="">image</td>
-        <td data-name="Product Name :"> lorem ispeum</td>
-        <td data-name="price :">50</td>
-        <td data-name="Quantity :"><input type="number" value="2" /></td>
-        <td data-name="Total :">100</td>
-      </tr>
-  
-    </tbody>
-  
-  </table>-->
-    
+          </div>
+          <div>
+            <p *ngIf="expectedInventoryDto.length === 0" style="color: red;text-align:center;margin: 10px;">
+              <b>{{noRecordFound}}</b>
+            </p>
           </div>
         </div>
       </div>
+  </div>
     
   
 

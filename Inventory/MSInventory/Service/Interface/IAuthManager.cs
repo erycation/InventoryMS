@@ -1,5 +1,5 @@
 ﻿
-namespace m2esolution.co.za.MSInventory.Service.Interface
+namespace MSInventory.Service.Interface
 {
     public interface IAuthManager
     {

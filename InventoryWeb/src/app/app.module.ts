@@ -45,6 +45,10 @@ import { CreateOrderComponent } from './sales-vendor/customer-list/create-order/
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminProductionComponent } from './admin-production/admin-production.component';
 import { CaptureInventoryProductionComponent } from './admin-production/capture-inventory-production/capture-inventory-production.component';
+import { InventoryListComponent } from './supervisor/inventory-list/inventory-list.component';
+import { AddInventoryComponent } from './supervisor/inventory-list/add-inventory/add-inventory.component';
+import { NumberDirective } from './shared/numbers-only.directive';
+import { ModifyInventoryComponent } from './supervisor/inventory-list/modify-inventory/modify-inventory.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +57,7 @@ import { CaptureInventoryProductionComponent } from './admin-production/capture-
     HeaderComponent,
     SidenavListComponent,
     LoginComponent,
+    NumberDirective,
     DashboardComponent,
     ConfirmDialogComponent,
     AlertErrorDialogComponent,
@@ -83,6 +88,9 @@ import { CaptureInventoryProductionComponent } from './admin-production/capture-
     CreateOrderComponent,
     AdminProductionComponent,
     CaptureInventoryProductionComponent,
+    InventoryListComponent,
+    AddInventoryComponent,
+    ModifyInventoryComponent,
   ],
   imports: [
     BrowserModule,

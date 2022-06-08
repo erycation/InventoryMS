@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using m2esolution.co.za.MSInventory.Model.Dtos;
-using m2esolution.co.za.MSInventory.Service.Interface;
+using MSInventory.Model.Dtos;
+using MSInventory.Service.Interface;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace m2esolution.co.za.MSInventory.Controllers
+namespace MSInventory.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -18,25 +18,25 @@ namespace m2esolution.co.za.MSInventory.Controllers
             _inventoryService = inventoryService;
         }
 
-        //[HttpPost("Add")]
-        //public async Task<IActionResult> Add([FromBody] VendorDto vendorDto)
-        //{
-        //    var response = await _vendorService.AddVendor(vendorDto);
-        //    return Ok(new { message = $"Vendor Successfully Created.", data = response });
-        //}
+        [HttpPost("Add")]
+        public async Task<IActionResult> Add([FromBody] InventoryDto inventoryDto)
+        {
+            var response = await _inventoryService.AddInventory(inventoryDto);
+            return Ok(new { message = $"Inventory Successfully Created.", data = response });
+        }
 
-        //[HttpGet("Get/{vendorId}")]
-        //public async Task<VendorDto> GetVendorById(Guid vendorId)
-        //{
-        //    return await _vendorService.GetVendorById(vendorId);
-        //}
+        [HttpGet("Get/{vendorId}")]
+        public async Task<InventoryDto> GetVendorById(Guid inventoryId)
+        {
+            return await _inventoryService.GetInventoryById(inventoryId);
+        }
 
-        //[HttpPost("Update")]
-        //public async Task<IActionResult> Update([FromBody] VendorDto vendorDto)
-        //{
-        //    var response = await _vendorService.UpdateVendor(vendorDto);
-        //    return Ok(new { message = $"Vendor Successfully Updated.", data = response });
-        //}
+        [HttpPost("Update")]
+        public async Task<IActionResult> Update([FromBody] InventoryDto inventoryDto)
+        {
+            var response = await _inventoryService.UpdateInventory(inventoryDto);
+            return Ok(new { message = $"Inventory Successfully Updated.", data = response });
+        }
 
         [HttpGet("GetAll")]       
         public async Task<ActionResult<List<InventoryDto>>> GetAllInventories()

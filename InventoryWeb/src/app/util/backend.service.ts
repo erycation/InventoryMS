@@ -94,7 +94,7 @@ export class BackendService {
 
   public  postWithResponse2<T>(path: string, body: any, options?: BackendOptions
     ) {
-       this.incrementBusyCount();
+      this.busyCount++;
       let response = null;
   
       try {
@@ -105,7 +105,7 @@ export class BackendService {
       } catch (e) {
         this.handleError(e);
       } finally {
-         this.decrementBusyCount();
+        this.busyCount--;
       }
   
       return response;

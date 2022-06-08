@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ExpectedInventoryDto } from 'src/app/model/Dtos/ms-inventory/expectedInventoryDto';
 import { InventoryDto } from 'src/app/model/Dtos/ms-inventory/inventoryDto';
@@ -25,7 +26,8 @@ export class CreateInventoryComponent extends ModalResetParams implements OnInit
   vendorsDto: VendorDto[] = [];
   inventoriesDto: InventoryDto[] = [];
 
-  constructor(accountService: AccountService,
+  constructor(public dialogRef: MatDialogRef<CreateInventoryComponent>,
+    accountService: AccountService,
     router: Router,
     private dialogService : DialogService,
     private userService : UserService,
@@ -44,6 +46,11 @@ export class CreateInventoryComponent extends ModalResetParams implements OnInit
 
   numberOnly(event: { which: any; keyCode: any; }): boolean {
     return SharedFunction.numberOnly(event);
+  }
+  
+  async closeDialog()
+  {
+    this.dialogRef.close();
   }
 
   saveAndAllocateInventory()
@@ -67,6 +74,7 @@ export class CreateInventoryComponent extends ModalResetParams implements OnInit
       this.expectedInventoryService.createAndAllocateExpectedInventory(this.expectedInventoryDto).subscribe(
         data => {         
           this.dialogService.openSuccessModal(`Successfully`, data.message);
+          this.closeDialog();
         },
         error => {        
          this.dialogService.openAlertModal(`Error`, error.error.message);       

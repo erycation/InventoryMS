@@ -1,8 +1,8 @@
-﻿using m2esolution.co.za.MSInventory.Model.Dtos;
-using m2esolution.co.za.MSInventory.Model.Request;
+﻿using MSInventory.Model.Dtos;
+using MSInventory.Model.Request;
 using System.Threading.Tasks;
 
-namespace m2esolution.co.za.MSInventory.Service.Interface
+namespace MSInventory.Service.Interface
 {
     public interface IAuthenticateService
     {

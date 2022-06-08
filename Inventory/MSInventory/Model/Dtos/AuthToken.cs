@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace m2esolution.co.za.MSInventory.Model.Dtos
+namespace MSInventory.Model.Dtos
 {
     public class AuthToken
     {

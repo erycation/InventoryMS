@@ -5,7 +5,7 @@ using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace m2esolution.co.za.MSInventory.Shared.Helpers
+namespace MSInventory.Shared.Helpers
 {
     public class ErrorHandlerMiddleware
     {

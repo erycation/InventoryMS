@@ -1,17 +1,17 @@
 ﻿
 
 using Microsoft.EntityFrameworkCore;
-using m2esolution.co.za.MSInventory.Model;
-using m2esolution.co.za.MSInventory.Model.Dtos;
-using m2esolution.co.za.MSInventory.Repository.Interface;
-using m2esolution.co.za.MSInventory.Service.Interface;
-using m2esolution.co.za.MSInventory.Shared.Helpers;
+using MSInventory.Model;
+using MSInventory.Model.Dtos;
+using MSInventory.Repository.Interface;
+using MSInventory.Service.Interface;
+using MSInventory.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 
-namespace m2esolution.co.za.MSInventory.Service
+namespace MSInventory.Service
 {
     public class ExpectedInventoryService : IExpectedInventoryService
     {

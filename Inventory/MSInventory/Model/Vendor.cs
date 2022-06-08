@@ -1,8 +1,9 @@
 using MSPOSAdmin.Shared;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
-namespace m2esolution.co.za.MSInventory.Model
+namespace MSInventory.Model
 {
 
 
@@ -16,6 +17,8 @@ namespace m2esolution.co.za.MSInventory.Model
             this.ExpectedInventories = new HashSet<ExpectedInventory>();
             this.LocationVendors = new HashSet<InventoryTransaction>();
             this.LocationVendors = new HashSet<InventoryTransaction>();
+            this.InventoryCertificates = new HashSet<InventoryCertificate>();
+            
         }
 
         public string Name { get; set; }
@@ -27,5 +30,11 @@ namespace m2esolution.co.za.MSInventory.Model
         public virtual ICollection<InventoryTransaction> LocationVendors { get; set; }
         [InverseProperty("DestinationVendor")]
         public virtual ICollection<InventoryTransaction> DestinationVendors { get; set; }
+        public virtual ICollection<InventoryCertificate> InventoryCertificates { get; set; }
+        public int CountInventoryInVendor()
+        {
+            var currentCertificate = InventoryCertificates.SingleOrDefault(b => b.ClosingDate == null);
+            return currentCertificate == null? 0 : currentCertificate.InventoryBalances.Count;
+        }
     }
 }

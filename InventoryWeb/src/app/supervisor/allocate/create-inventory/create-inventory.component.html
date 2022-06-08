@@ -7,7 +7,7 @@
     <div class="card mb-4 shadow-sm pd-5" style="color: black;">
       <div class="card-body">
         <div class="form-group">
-          <label for="exampleFormControlTextarea1">Vendor Name</label>
+          <label for="exampleFormControlTextarea1">Destination Vendor</label>
           <select [(ngModel)]="expectedInventoryDto.vendorId" class="form-control text-left"
             placeholder="Select Vendor">
             <option *ngFor="let item of vendorsDto" [value]="item.vendorId">

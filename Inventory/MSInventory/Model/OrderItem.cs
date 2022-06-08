@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace m2esolution.co.za.MSInventory.Model
+namespace MSInventory.Model
 {
 
     [Table("OrderItem")]

@@ -1,9 +1,9 @@
 ﻿
-using m2esolution.co.za.MSInventory.Model;
-using m2esolution.co.za.MSInventory.Repository.Interface;
-using m2esolution.co.za.MSInventory.Shared;
+using MSInventory.Model;
+using MSInventory.Repository.Interface;
+using MSInventory.Shared;
 
-namespace m2esolution.co.za.MSInventory.Repository
+namespace MSInventory.Repository
 {
     public class InventoryCertificateRepository : Repository<InventoryCertificate>, IInventoryCertificateRepository
     {

@@ -1,13 +1,13 @@
 ﻿
 
-using m2esolution.co.za.MSInventory.Model;
-using m2esolution.co.za.MSInventory.Model.Dtos;
-using m2esolution.co.za.MSInventory.Shared.Utils;
+using MSInventory.Model;
+using MSInventory.Model.Dtos;
+using MSInventory.Shared.Utils;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace m2esolution.co.za.MSInventory.Service.Interface
+namespace MSInventory.Service.Interface
 {
     public interface IUsersService
     {        

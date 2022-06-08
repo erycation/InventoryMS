@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ExpectedInventoryDto } from 'src/app/model/Dtos/ms-inventory/expectedInventoryDto';
 import { AccountService } from 'src/app/service/account.service';
@@ -17,7 +17,8 @@ export class StartCountInventoryComponent extends ModalResetParams implements On
 
   expectedInventoryDto = {} as ExpectedInventoryDto;
   variance : number = 0;
-  constructor(accountService: AccountService,
+  constructor(public dialogRef: MatDialogRef<StartCountInventoryComponent>,
+    accountService: AccountService,
     router: Router,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogService : DialogService,
@@ -29,6 +30,11 @@ export class StartCountInventoryComponent extends ModalResetParams implements On
   }
 
   ngOnInit(): void {
+  }
+
+  async closeDialog()
+  {
+    this.dialogRef.close();
   }
 
   numberOnly(event: { which: any; keyCode: any; }): boolean {
@@ -49,6 +55,7 @@ export class StartCountInventoryComponent extends ModalResetParams implements On
     this.expectedInventoryService.countExpectedInventory(this.expectedInventoryDto).subscribe(
       data => {         
         this.dialogService.openSuccessModal(`Successfully`, data.message);
+        this.closeDialog();   
       },
       error => {        
        this.dialogService.openAlertModal(`Error`, error.error.message);       

@@ -1,7 +1,7 @@
 ﻿
 using System.Collections;
 
-namespace m2esolution.co.za.MSInventory.Shared.Utils
+namespace MSInventory.Shared.Utils
 {
     public static class ObjectUtil
     {

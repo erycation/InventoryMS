@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\SourceGit\Projects\InventoryMS\MSInventoryApiPublish</_PublishTargetUrl>
+    <History>True|2022-06-03T17:16:06.9213423Z;True|2022-06-03T19:12:41.9615239+02:00;True|2022-06-03T19:04:02.1006180+02:00;True|2022-06-03T18:06:58.8807148+02:00;True|2022-06-03T17:58:53.6864029+02:00;True|2022-06-03T17:54:43.5998184+02:00;True|2022-06-03T17:48:55.2345899+02:00;False|2022-06-03T17:47:54.1407188+02:00;True|2022-06-03T17:41:49.0857623+02:00;True|2022-06-03T17:40:30.6108923+02:00;True|2022-06-03T17:34:51.0047532+02:00;True|2022-06-03T17:20:47.7834352+02:00;</History>
+  </PropertyGroup>
+</Project>

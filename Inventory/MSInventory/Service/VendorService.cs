@@ -1,25 +1,27 @@
 ﻿
 
 using Microsoft.EntityFrameworkCore;
-using m2esolution.co.za.MSInventory.Model;
-using m2esolution.co.za.MSInventory.Model.Dtos;
-using m2esolution.co.za.MSInventory.Repository.Interface;
-using m2esolution.co.za.MSInventory.Service.Interface;
-using m2esolution.co.za.MSInventory.Shared.Helpers;
+using MSInventory.Model;
+using MSInventory.Model.Dtos;
+using MSInventory.Repository.Interface;
+using MSInventory.Service.Interface;
+using MSInventory.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace m2esolution.co.za.MSInventory.Service
+namespace MSInventory.Service
 {
     public class VendorService : IVendorService
     {
 
         private readonly IVendorRepository _vendorRepository;
-
-        public VendorService(IVendorRepository vendorRepository)
+        private IInventoryCertificateService _inventoryCertificateService;
+        public VendorService(IVendorRepository vendorRepository,
+                             IInventoryCertificateService inventoryCertificateService)
         {
             _vendorRepository = vendorRepository;
+            _inventoryCertificateService = inventoryCertificateService;
         }
 
         public async Task<VendorDto> AddVendor(VendorDto vendorDto)
@@ -35,6 +37,15 @@ namespace m2esolution.co.za.MSInventory.Service
             };
 
             var responseBranch = await _vendorRepository.AddAsync(requestBranch);
+            if (responseBranch != null)
+            {
+                var requestCertificate = new InventoryCertificateDto
+                {
+                    VendorId = responseBranch.Id
+                };
+                await _inventoryCertificateService.AddInventoryCertificate(requestCertificate);
+            }
+
             return responseBranch != null ? new VendorDto(responseBranch) : throw new AppException($"Failed To Create Branch");
         }
 

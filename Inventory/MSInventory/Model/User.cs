@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
-namespace m2esolution.co.za.MSInventory.Model
+namespace MSInventory.Model
 {
 
 

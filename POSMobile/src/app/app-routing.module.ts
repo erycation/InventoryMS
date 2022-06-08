@@ -3,6 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
+
+  /*
   {
     path: '',
     redirectTo: 'folder/Inbox',
@@ -12,6 +14,7 @@ const routes: Routes = [
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
   },
+  */
   {
     path: 'inventory',
     loadChildren: () => import('./inventory/inventory.module').then( m => m.InventoryPageModule),
@@ -22,7 +25,7 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'customer',
+    path: '',
     loadChildren: () => import('./customer/customer.module').then( m => m.CustomerPageModule),
     canLoad: [AuthGuard] // Secure all child pages
   } ,

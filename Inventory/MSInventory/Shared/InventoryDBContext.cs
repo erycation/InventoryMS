@@ -1,10 +1,10 @@
 ﻿
 
-using m2esolution.co.za.MSInventory.Model;
-using m2esolution.co.za.MSInventory.Model.Dtos;
+using MSInventory.Model;
+using MSInventory.Model.Dtos;
 using Microsoft.EntityFrameworkCore;
 
-namespace m2esolution.co.za.MSInventory.Shared
+namespace MSInventory.Shared
 {
     public class InventoryDBContext : DbContext
     {

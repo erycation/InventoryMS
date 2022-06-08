@@ -1,17 +1,18 @@
 ﻿
 
 using Microsoft.EntityFrameworkCore;
-using m2esolution.co.za.MSInventory.Model;
-using m2esolution.co.za.MSInventory.Model.Dtos;
-using m2esolution.co.za.MSInventory.Repository.Interface;
-using m2esolution.co.za.MSInventory.Service.Interface;
-using m2esolution.co.za.MSInventory.Shared.Helpers;
+using MSInventory.Model;
+using MSInventory.Model.Dtos;
+using MSInventory.Repository.Interface;
+using MSInventory.Service.Interface;
+using MSInventory.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using MSInventory.Shared.Utils;
 
-namespace m2esolution.co.za.MSInventory.Service
+namespace MSInventory.Service
 {
     public class InventoryCertificateService : IInventoryCertificateService
     {
@@ -23,6 +24,19 @@ namespace m2esolution.co.za.MSInventory.Service
             _inventoryCertificateRepository = inventoryCertificateRepository;
         }
 
+        public async Task<InventoryCertificateDto> AddInventoryCertificate(InventoryCertificateDto inventoryCertificateDto)
+        {
+            var requestCertificate = new InventoryCertificate
+            {
+                OpeningDate = DateTime.Now.StartOfDay(),
+                ClosingDate = null,
+                VendorId = inventoryCertificateDto.VendorId,
+                GeneratedById = null
+            };
+
+            var responseCertificate = await _inventoryCertificateRepository.AddAsync(requestCertificate);
+            return responseCertificate != null ? new InventoryCertificateDto(responseCertificate) : throw new AppException($"Failed To Create Opening Certificate");
+        }
         public async Task<List<InventoryCertificateDto>> GetAllInventoryCertificateByVendorId(Guid vendorId)
         {
             var inventoryCertificatesDto = new List<InventoryCertificateDto>();
@@ -32,6 +46,12 @@ namespace m2esolution.co.za.MSInventory.Service
                 inventoryCertificatesDto.Add(new InventoryCertificateDto(inventoryCertificate));
             }
             return inventoryCertificatesDto;
+        }
+
+        public async Task<InventoryCertificateDto> GetOpeningBalanceCertificateByVendorId(Guid vendorId)
+        {
+            var openingCertificate = await _inventoryCertificateRepository.GetAll().Where(b => b.VendorId == vendorId && b.ClosingDate == null && b.GeneratedById == null).FirstOrDefaultAsync();
+            return new InventoryCertificateDto(openingCertificate);
         }
     }
 }

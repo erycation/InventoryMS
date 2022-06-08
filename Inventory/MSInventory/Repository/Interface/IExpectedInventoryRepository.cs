@@ -1,7 +1,7 @@
-﻿using m2esolution.co.za.MSInventory.Model;
-using m2esolution.co.za.MSInventory.Shared;
+﻿using MSInventory.Model;
+using MSInventory.Shared;
 
-namespace m2esolution.co.za.MSInventory.Repository.Interface
+namespace MSInventory.Repository.Interface
 {
     public interface IExpectedInventoryRepository : IRepository<ExpectedInventory>
     {

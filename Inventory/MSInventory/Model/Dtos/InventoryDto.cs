@@ -1,6 +1,7 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace m2esolution.co.za.MSInventory.Model.Dtos
+namespace MSInventory.Model.Dtos
 {
     public class InventoryDto
     {
@@ -18,7 +19,7 @@ namespace m2esolution.co.za.MSInventory.Model.Dtos
 
         public Guid InventoryId { get; set; }
         public string ProductName { get; set; }
-        public string Image { get; set; }
+        public string Image { get; set; }       
         public decimal? Price { get; set; }
     }
 }

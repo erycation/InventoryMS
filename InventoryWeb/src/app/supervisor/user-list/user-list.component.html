@@ -12,8 +12,7 @@
               </nav>
             </div>
           </div>
-        <div class="card-body">
-           
+        <div class="card-body">           
           <div class="form-row">
             <table class="table">
                 <thead>
@@ -24,7 +23,7 @@
                     <th>Vendor</th>
                     <th>Role</th>
                     <th>Status</th>
-                    <th>Select</th>
+                    <th>View</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -35,10 +34,11 @@
                     <td data-name="Vendor :">{{user.vendorName}}</td>
                     <td data-name="Role :">{{user.roleDescription}}</td>
                     <td data-name="Status :">{{user.userStatus}}</td>
-                    <td data-name="Select :">
-                        <button type="button" class="btn btn-outline-primary" (click)="modifyUser(user)" *ngIf="!supervisorRight(user.roleDescription)">
-                            Select
-                          </button>
+                    <td data-name="View :">
+                      <button type="button" class="btn btn-link pl-1"  *ngIf="!supervisorRight(user.roleDescription)">
+                        <i class="fa fa-edit" aria-hidden="true" style="color: blue;"
+                            (click)="modifyUser(user)"></i>
+                    </button> 
                     </td>   
                   </tr>   
                 </tbody>              

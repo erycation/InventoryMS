@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace m2esolution.co.za.MSInventory.Shared.Helpers
+namespace MSInventory.Shared.Helpers
 {
     public class AppException : Exception
     {

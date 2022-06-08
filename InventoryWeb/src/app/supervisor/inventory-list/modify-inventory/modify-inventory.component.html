@@ -1,0 +1,31 @@
+<div class="custom-dialog">
+    <button mat-raised-button [mat-dialog-close]="true" style="float: right;">Close</button>
+    <h2 mat-dialog-title>Update Inventory</h2>
+    <mat-dialog-content>
+      <mat-divider></mat-divider>
+  
+      <div class="card mb-4 shadow-sm pd-5" style="color: black;">
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="inputEmail4">Inventory Name</label>
+              <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Inventory Name" 
+                [(ngModel)]="inventoryDto.productName">
+            </div>            
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="inputEmail4">Price</label>
+              <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Inventory Price" 
+                [(ngModel)]="inventoryDto.price" numbersOnly>
+            </div>            
+          </div>
+         
+          <button type="button" class="btn btn-outline-success" style="float: right;" (click)="updateInventory()">
+            Update
+          </button>
+        </div>
+      </div>
+    </mat-dialog-content>
+  </div>

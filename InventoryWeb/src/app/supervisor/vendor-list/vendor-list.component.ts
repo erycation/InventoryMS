@@ -6,7 +6,6 @@ import { VendorService } from 'src/app/service/ms-inventory/vendor.service';
 import { DialogService } from 'src/app/shared/dialog/dialog.service';
 import { ModalResetParams } from 'src/app/shared/modal-reset-params';
 import { AddVendorComponent } from './add-vendor/add-vendor.component';
-import { ModifyVendorComponent } from './modify-vendor/modify-vendor.component';
 
 @Component({
   selector: 'app-vendor-list',
@@ -42,7 +41,6 @@ export class VendorListComponent extends ModalResetParams implements OnInit {
 
   async modifyVendor(vendorDto: VendorDto)
   {
-    await this.dialogService.openReturnModalService(ModifyVendorComponent, `Modify Vendor`, vendorDto, () => { });
-    await this.loadVendors();
+    this.goToPageOneParams('modify-vendor',vendorDto.vendorId)
   }
 }

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSInventory", "MSInventory\MSInventory.csproj", "{F0142838-80FD-493D-B6B5-C74AFA13D84D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSInventory", "MSInventory\MSInventory.csproj", "{F0142838-80FD-493D-B6B5-C74AFA13D84D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GWInventory", "GWInventory\GWInventory.csproj", "{EE13E8CF-482A-4DC9-9A06-BD7999DDFBFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GWInventory", "GWInventory\GWInventory.csproj", "{EE13E8CF-482A-4DC9-9A06-BD7999DDFBFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

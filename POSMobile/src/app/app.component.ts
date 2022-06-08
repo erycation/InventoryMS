@@ -11,10 +11,10 @@ import { ModalResetParams } from './shared/modal-reset-params';
 export class AppComponent extends ModalResetParams{
 
   public appPages = [
-    { title: 'Customer', url: '/folder/Customer', icon: 'mail' },
+    { title: 'Customer', url: '', icon: 'mail' },
     { title: 'Receive Inventory', url: '/inventory/', icon: 'paper-plane' },
     { title: 'Stock Taking', url: '/folder/Stock Taking', icon: 'heart' },
-    { title: 'Logout', url: '/folder/Spam', icon: 'warning' },
+    { title: 'Logout', url: '/login', icon: 'warning' },
   ];
   /*
   public appPages = [

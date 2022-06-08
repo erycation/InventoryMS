@@ -1,13 +1,13 @@
-﻿using m2esolution.co.za.MSInventory.Model.Dtos;
-using m2esolution.co.za.MSInventory.Repository.Interface;
-using m2esolution.co.za.MSInventory.Shared;
+﻿using MSInventory.Model.Dtos;
+using MSInventory.Repository.Interface;
+using MSInventory.Shared;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace m2esolution.co.za.MSInventory.Repository
+namespace MSInventory.Repository
 {
     public class ReportRepository : IReportRepository
     {

@@ -1,10 +1,43 @@
-C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\m2esolution.co.za.MSInventory.exe
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\MSInventory.exe
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\IMG-20220412-WA0004.jpg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\IMG-20220412-WA0005.jpg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\IMG-20220412-WA0007.jpg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\IMG-20220412-WA0008.jpg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\IMG-20220412-WA0009.jpg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\IMG-20220412-WA0010.jpg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\IMG-20220412-WA0011.jpg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\IMG-20220412-WA0012.jpg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\IMG-20220412-WA0013.jpg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\IMG-20220412-WA0014.jpg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\IMG-20220412-WA0015.jpg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\IMG-20220412-WA0016.jpg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\IMG-20220412-WA0017.jpg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\IMG-20220412-WA0018.jpg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\IMG-20220412-WA0019.jpg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\IMG-20220524-WA0016.jpg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WBodyButter.jpeg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WCleansingFoam.jpeg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WCombo.jpeg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WComboFinal.jpeg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WhatsApp Image 2022-06-06 at 8.20.03 AM (3).jpeg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WhatsApp Image 2022-06-06 at 8.20.04 AM.jpeg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WhatsApp Image 2022-06-06 at 8.20.06 AM (2).jpeg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WhatsApp Image 2022-06-06 at 8.20.06 AM.jpeg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WhatsApp Image 2022-06-06 at 8.20.07 AM (1).jpeg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WhatsApp Image 2022-06-06 at 8.20.07 AM.jpeg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WHydratingSerum.jpeg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WPeelingSerum.jpeg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WPegmentationDarkSpotsCream.jpeg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WPigmentationSerum.jpeg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WPimpleSerum.jpeg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WTissueOil.jpeg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WToner.jpeg
 C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\appsettings.Development.json
 C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\appsettings.json
-C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\m2esolution.co.za.MSInventory.dll
-C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\m2esolution.co.za.MSInventory.deps.json
-C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\m2esolution.co.za.MSInventory.runtimeconfig.json
-C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\m2esolution.co.za.MSInventory.pdb
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\MSInventory.dll
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\MSInventory.deps.json
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\MSInventory.runtimeconfig.json
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\MSInventory.pdb
 C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\BCrypt.Net-Next.dll
 C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\Castle.Core.dll
 C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll

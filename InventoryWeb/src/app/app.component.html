@@ -2,20 +2,24 @@
   <mat-sidenav-container>
     <mat-sidenav #sidenav role="navigation">
       <app-sidenav-list (sidenavClose)="sidenav.close()" *ngIf="user"></app-sidenav-list>
-    </mat-sidenav>    
+    </mat-sidenav>
     <mat-sidenav-content>
-      <app-header (sidenavToggle)="sidenav.toggle()" *ngIf="user"></app-header>      
-      <main>
+      <app-header (sidenavToggle)="sidenav.toggle()" *ngIf="user"></app-header>     
+        <div *ngIf="busy" class="overlay">
+        </div>
+        <div style="max-width: 1500px;margin: 0px; padding : 0px;">
+            <router-outlet></router-outlet>           
+        <!--</div>
+
         <div *ngIf="busy" class="overlay"></div>
         <div class="overflow-y: scroll overflow-x: hidden" style="margin: 0px;padding: 0px;">
-          <router-outlet></router-outlet>  
-          <div class="row" style="padding: 20px;margin-top: 10px;">    
+          <router-outlet></router-outlet>-->
+          <div class="row" style="padding: 0px;margin-top: 10px;">
             <div class="col-sm text-center">
               &copy; CopyRight 2022 - M2ESolution
             </div>
-        </div>          
-        </div>  
-      </main>
+          </div>
+        </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </app-layout>

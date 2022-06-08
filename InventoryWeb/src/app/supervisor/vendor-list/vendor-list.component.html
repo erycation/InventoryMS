@@ -3,7 +3,6 @@
   </div>
 
   <div class="container">
-    <div class="zeroPaddingMarginSetting">
       <div class="card mb-4 shadow-sm pd-5">
         <div class="row" style="margin: 1em 0">
             <div class="col-sm-12" style="text-align:right;">
@@ -12,36 +11,38 @@
               </nav>
             </div>
           </div>
-        <div class="card-body">
-           
+        <div class="card-body">           
           <div class="form-row">
             <table class="table">
                 <thead>
                   <tr>
                     <th>Vendor</th>
-                    <th>Action</th>
-                    <th>Opening Inventory</th>
+                    <th>Inventories</th>    
+                    <th>View</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr  *ngFor="let vendor of vendorsDto">
                     <td data-name="Vendor :">{{vendor.vendorName}}</td>
-                    <td data-name="Select :">
-                        <button type="button" class="btn btn-outline-primary" (click)="modifyVendor(vendor)">
-                            Select
-                          </button>
+                    <td data-name="Inventories :">{{vendor.inventoryInVendor}}</td> 
+                    <td data-name="View :">
+                      <button type="button" class="btn btn-link pl-1" *ngIf = "vendor.vendorName != 'Warehouse'">
+                        <i class="fa fa-edit" aria-hidden="true" style="color: blue;"
+                            (click)="modifyVendor(vendor)"></i>
+                    </button>                       
                     </td>
-                    <td data-name="Opening Inventory :">
-                      <button type="button" class="btn btn-outline-success" (click)="modifyVendor(vendor)">
-                          Select
-                        </button>
-                  </td>
                   </tr>                        
                 </tbody>              
               </table>
           </div>
+          <div>
+            <p *ngIf="vendorsDto.length === 0" style="color: red;text-align:center;margin: 10px;">
+              <b>{{noRecordFound}}</b>
+            </p>
+          </div>
         </div>
       </div>
+  </div>
     
   
 

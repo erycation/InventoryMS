@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace m2esolution.co.za.MSInventory.Model.Dtos
+namespace MSInventory.Model.Dtos
 {
     public class VendorDto
     {
@@ -14,11 +14,12 @@ namespace m2esolution.co.za.MSInventory.Model.Dtos
             VendorId = vendor.Id;
             VendorName = vendor.Name;
             VendorCode = vendor.Code;
+            InventoryInVendor = vendor.CountInventoryInVendor();
         }
 
         public Guid VendorId { get; set; }
         public string VendorName { get; set; }
         public string VendorCode { get; set; }
-        
+        public int InventoryInVendor { set; get; }
     }
 }

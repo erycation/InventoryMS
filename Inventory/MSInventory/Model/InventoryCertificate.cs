@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
-namespace m2esolution.co.za.MSInventory.Model
+namespace MSInventory.Model
 {
     [Table("InventoryCertificate")]
     public class InventoryCertificate : HasId

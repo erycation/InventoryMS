@@ -1,9 +1,9 @@
-using m2esolution.co.za.MSInventory.Repository;
-using m2esolution.co.za.MSInventory.Repository.Interface;
-using m2esolution.co.za.MSInventory.Service;
-using m2esolution.co.za.MSInventory.Service.Interface;
-using m2esolution.co.za.MSInventory.Shared;
-using m2esolution.co.za.MSInventory.Shared.Helpers;
+using MSInventory.Repository;
+using MSInventory.Repository.Interface;
+using MSInventory.Service;
+using MSInventory.Service.Interface;
+using MSInventory.Shared;
+using MSInventory.Shared.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -101,7 +101,10 @@ namespace MSInventory
             services.AddScoped<IOrderItemRepository, OrderItemRepository>();
             services.AddScoped<IOrderItemService, OrderItemService>();
             //services.AddScoped<IFilesEnvironment, FilesEnvironment>();
-            
+
+            services.AddScoped<IInventoryBalanceRepository, InventoryBalanceRepository>();
+            services.AddScoped<IInventoryBalanceService, InventoryBalanceService>();
+            //InventoryBalanceRepository : Repository<InventoryBalance>, IInventoryBalanceRepository
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

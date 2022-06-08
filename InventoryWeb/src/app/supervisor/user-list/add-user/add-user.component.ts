@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { RoleDto } from 'src/app/model/Dtos/ms-inventory/roleDto';
 import { UserDto } from 'src/app/model/Dtos/ms-inventory/userDto';
@@ -23,7 +24,8 @@ export class AddUserComponent extends ModalResetParams implements OnInit {
   vendorsDto: VendorDto[] = [];
   confirmPassword : string;
 
-  constructor(accountService: AccountService,
+  constructor(public dialogRef: MatDialogRef<AddUserComponent>,
+    accountService: AccountService,
     router: Router,
     private dialogService : DialogService,
     private userService: UserService,
@@ -37,6 +39,11 @@ export class AddUserComponent extends ModalResetParams implements OnInit {
   async ngOnInit() {
     this.rolesDto = await this.roleService.getAllRoles();
     this.vendorsDto = await this.vendorService.getAllVendors();
+  }
+
+  async closeDialog()
+  {
+    this.dialogRef.close();
   }
 
   async saveUser()
@@ -68,6 +75,7 @@ export class AddUserComponent extends ModalResetParams implements OnInit {
     this.userService.createUser(this.userDto).subscribe(
       data => {         
         this.dialogService.openSuccessModal(`Successfully`, data.message);
+        this.closeDialog();
       },
       error => {        
        this.dialogService.openAlertModal(`Error`, error.error.message);       

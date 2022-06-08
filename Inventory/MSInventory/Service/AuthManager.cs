@@ -1,11 +1,11 @@
-﻿using m2esolution.co.za.MSInventory.Service.Interface;
+﻿using MSInventory.Service.Interface;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace m2esolution.co.za.MSInventory.Service
+namespace MSInventory.Service
 {
     public class AuthManager : IAuthManager
     {

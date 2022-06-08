@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { VendorDto } from 'src/app/model/Dtos/ms-inventory/vendorDto';
 import { AccountService } from 'src/app/service/account.service';
@@ -16,7 +17,8 @@ export class AddVendorComponent extends ModalResetParams implements OnInit {
 
   vendorDto = {} as VendorDto;
 
-  constructor(accountService: AccountService,
+  constructor(public dialogRef: MatDialogRef<AddVendorComponent>,
+    accountService: AccountService,
     router: Router,
     private dialogService : DialogService,
     private vendorService : VendorService) {
@@ -28,6 +30,10 @@ export class AddVendorComponent extends ModalResetParams implements OnInit {
 
   }
 
+  async closeDialog()
+  {
+    this.dialogRef.close();
+  }
 
   saveVendor()
   {
@@ -41,6 +47,8 @@ export class AddVendorComponent extends ModalResetParams implements OnInit {
       this.vendorService.createVendor(this.vendorDto).subscribe(
         data => {         
           this.dialogService.openSuccessModal(`Successfully`, data.message);
+          this.closeDialog();
+          this.goToPageOneParams('modify-vendor', data.data.vendorId)
         },
         error => {        
          this.dialogService.openAlertModal(`Error`, error.error.message);       

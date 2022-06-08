@@ -1,10 +1,10 @@
 ﻿using BCryptNet = BCrypt.Net.BCrypt;
-using m2esolution.co.za.MSInventory.Model.Dtos;
-using m2esolution.co.za.MSInventory.Model.Request;
-using m2esolution.co.za.MSInventory.Service.Interface;
+using MSInventory.Model.Dtos;
+using MSInventory.Model.Request;
+using MSInventory.Service.Interface;
 using System.Threading.Tasks;
 
-namespace m2esolution.co.za.MSInventory.Service
+namespace MSInventory.Service
 {
     public class AuthenticateService : IAuthenticateService
     {

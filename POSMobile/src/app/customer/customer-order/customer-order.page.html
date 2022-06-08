@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/customer"></ion-back-button>
+      <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title>{{customerDto.fullnames}}</ion-title>
   </ion-toolbar>
@@ -27,7 +27,7 @@
             <img src="{{inventoryToOrder.imageUrl}}"/>
           </ion-card-content>
           <div>
-            <p>
+            <p style="text-align: center;">
               <b>{{inventoryToOrder.productName}} @ R {{inventoryToOrder.price}}</b>
             </p>
             <ion-row>

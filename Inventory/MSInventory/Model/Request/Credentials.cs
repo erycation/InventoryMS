@@ -1,5 +1,5 @@
 ﻿
-namespace m2esolution.co.za.MSInventory.Model.Request
+namespace MSInventory.Model.Request
 {
     public class Credentials
     {

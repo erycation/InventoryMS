@@ -11,7 +11,17 @@ export class InventoryService {
 
     }
 
+    createInventory(inventoryDto:InventoryDto)
+    {
+        return this.backend.postWithResponse1<any>(`Inventory/Add`, inventoryDto);
+    }
+
     async getAllInventories() {
         return await this.backend.get<InventoryDto[]>(`Inventory/GetAll`);
+    }
+
+    updateInventory(inventoryDto:InventoryDto)
+    {
+        return this.backend.postWithResponse1<any>(`Inventory/Update`, inventoryDto);
     }
 }

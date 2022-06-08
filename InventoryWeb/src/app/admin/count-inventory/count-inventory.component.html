@@ -3,13 +3,11 @@
   </div>
 
   <div class="container">
-
-    <div class="zeroPaddingMarginSetting">
       <div class="card mb-4 shadow-sm pd-5">
         <div class="row" style="margin: 1em 0">
             <div class="col-sm-12" style="text-align:right;">
               <nav class="nav" style="float: right;">                  
-                <button type="button" class="btn btn-primary" (click) = "sendInventoryToVendor()">Send To Vendor 
+                <button type="button" class="btn btn-primary" (click) = "sendInventoryToVendor()" [disabled]="countedItems === 0">Send To Vendor 
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                     {{countedItems}}
                    </span>
@@ -42,9 +40,7 @@
                     <td data-name="Counted :">
                         <b
                         [ngStyle]="{'color':expected?.countedStatus === 'Yes' ? 'green' : 'red' }">{{expected.countedStatus}}</b>
-                    </td>
-                    <!--<td data-name="CountedDate :">{{expected?.countedDate | date: 'd MMM yyyy'}}</td> --> 
-                    <td data-name="Count :">
+                    </td><td data-name="Count :">
                         <button type="button" class="btn btn-outline-primary" *ngIf="!expected?.counted" (click)="startCountInventory(expected)">Start Count</button>
                     </td>
                   </tr>                        
@@ -52,8 +48,14 @@
               </table>
     
           </div>
+          <div>
+            <p *ngIf="expectedInventoryDto.length === 0" style="color: red;text-align:center;margin: 10px;">
+              <b>{{noRecordFound}}</b>
+            </p>
+          </div>
         </div>
       </div>
+  </div>
     
   
 

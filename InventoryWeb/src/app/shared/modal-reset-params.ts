@@ -5,7 +5,8 @@ import { AccountService } from "../service/account.service";
 export class ModalResetParams {
 
     user: AuthToken;
- 
+    noRecordFound : string = `No Results Found`;
+
     constructor(private accountService: AccountService,
         private router: Router) {
         this.user = this.accountService.userValue;
@@ -35,4 +36,6 @@ export class ModalResetParams {
 
     public resetValidationFields(): void {
     } 
+
+    
 }

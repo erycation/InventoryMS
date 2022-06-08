@@ -2,7 +2,9 @@
     <a mat-list-item routerLink="/" (click)="onSidenavClose()">
         <mat-icon style="margin-right: 16px">dashboard</mat-icon> <span class="nav-caption">DashBoard</span>
     </a>
-
+    <a mat-list-item (click)="goToPage('inventory-list')" *ngIf="supervisorRight()">
+      <mat-icon style="margin-right: 16px">inventory</mat-icon> <span class="nav-caption">Inventory Management</span>
+  </a>
     <mat-list-item [matMenuTriggerFor]="supervisorMenu" *ngIf="supervisorRight()">
         <mat-icon style="margin-right: 16px">settings</mat-icon>
         <a matline>Supervisor</a> 
@@ -21,10 +23,10 @@
         <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>        
         Allocate Inventory
       </button>
-      <button mat-menu-item (click)="goToPage('monitor-stock-taking')">
+      <!--<button mat-menu-item (click)="goToPage('monitor-stock-taking')">
         <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>        
         Monitor Stock Taking
-      </button>     
+      </button> -->    
     </mat-menu>
 
     <mat-list-item [matMenuTriggerFor]="adminMenu" *ngIf="adminRight()">

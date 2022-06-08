@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <AssemblyName>m2esolution.co.za.MSInventory</AssemblyName>
-    <RootNamespace>m2esolution.co.za.MSInventory</RootNamespace>
+	<PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+    <AssemblyName>MSInventory</AssemblyName>
+    <RootNamespace>MSInventory</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

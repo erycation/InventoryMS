@@ -1,22 +1,82 @@
-<div class="custom-dialog">
-    <button mat-raised-button [mat-dialog-close]="true" style="float: right;">Close</button>
-    <h2 mat-dialog-title>Modify Vendor</h2>
-    <mat-dialog-content>
-      <mat-divider></mat-divider>
-  
+<div class="row subHeader" style="padding-left: 10px;">
+  <h2>Modify Vendor</h2>
+</div>
+
+<div class="container">
+  <div class="card mb-4 shadow-sm pd-5">
+    <div class="row" style="margin: 1em 0">
+      <div class="col-sm-12" style="text-align:right;">
+        <nav class="nav" style="float: right;">
+          <button type="button" class="btn btn-primary" (click)="listVendors()">View Vendors</button>
+        </nav>
+      </div>
+    </div>
+    <div class="card-body">
       <div class="card mb-4 shadow-sm pd-5" style="color: black;">
         <div class="card-body">
           <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
               <label for="inputEmail4">Vendor Name</label>
-              <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Vendor Name" 
+              <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Vendor Name"
                 [(ngModel)]="vendorDto.vendorName">
-            </div>            
-          </div>         
-          <button type="button" class="btn btn-outline-success" style="float: right;" (click)="updateVendor()">
-            Save
-          </button>
+            </div>
+            <div class="form-group col-md-3"></div>
+            <div class="form-group col-md-3">
+              <br />
+              <button type="button" class="btn btn-outline-success" style="float: right;" (click)="updateVendor()">
+                Update
+              </button>
+            </div>
+          </div>
+
+          <br />
+          <b>Add Inventory</b>
+          <mat-divider></mat-divider>
+          <br />
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="exampleFormControlTextarea1">Inventory Name</label>
+              <select [(ngModel)]="inventoryBalanceDto.inventoryId" class="form-control text-left"
+                placeholder="Select Inventory">
+                <option *ngFor="let item of inventoriesDto" [value]="item.inventoryId">
+                  {{item.productName}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="exampleFormControlTextarea1">Quantity</label>
+              <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Quantity"
+                [(ngModel)]="inventoryBalanceDto.quantity" (keypress)="numberOnly($event)">
+            </div>
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-2">
+              <br />
+              <button type="button" class="btn btn-outline-success" style="float: right;"
+                (click)="addOpeningInventory()">
+                Add
+              </button>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Inventory</th>
+                  <th>Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let inventory of inventoriesLinkedVendor">
+                  <td data-name="Inventory :">{{inventory.inventoryName}}</td>
+                  <td data-name="Quantity :">{{inventory.quantity}}</td>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <p *ngIf="inventoriesLinkedVendor.length === 0" style="color: red;text-align:center;margin: 10px;">
+              <b>{{noRecordFound}}</b>
+            </p>
+          </div>
         </div>
       </div>
-    </mat-dialog-content>
+    </div>
   </div>
+</div>

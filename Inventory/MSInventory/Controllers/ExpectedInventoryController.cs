@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using m2esolution.co.za.MSInventory.Model.Dtos;
-using m2esolution.co.za.MSInventory.Service.Interface;
+using MSInventory.Model.Dtos;
+using MSInventory.Service.Interface;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace m2esolution.co.za.MSInventory.Controllers
+namespace MSInventory.Controllers
 {
 
     [Route("api/[controller]")]

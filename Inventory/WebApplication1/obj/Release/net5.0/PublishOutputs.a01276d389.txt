@@ -1,0 +1,11 @@
+C:\SourceGit\Projects\InventoryMS\Inventory\WebApplication1\obj\Release\net5.0\PubTmp\Out\WebApplication1.exe
+C:\SourceGit\Projects\InventoryMS\Inventory\WebApplication1\obj\Release\net5.0\PubTmp\Out\appsettings.Development.json
+C:\SourceGit\Projects\InventoryMS\Inventory\WebApplication1\obj\Release\net5.0\PubTmp\Out\appsettings.json
+C:\SourceGit\Projects\InventoryMS\Inventory\WebApplication1\obj\Release\net5.0\PubTmp\Out\WebApplication1.dll
+C:\SourceGit\Projects\InventoryMS\Inventory\WebApplication1\obj\Release\net5.0\PubTmp\Out\WebApplication1.deps.json
+C:\SourceGit\Projects\InventoryMS\Inventory\WebApplication1\obj\Release\net5.0\PubTmp\Out\WebApplication1.runtimeconfig.json
+C:\SourceGit\Projects\InventoryMS\Inventory\WebApplication1\obj\Release\net5.0\PubTmp\Out\WebApplication1.pdb
+C:\SourceGit\Projects\InventoryMS\Inventory\WebApplication1\obj\Release\net5.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\SourceGit\Projects\InventoryMS\Inventory\WebApplication1\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+C:\SourceGit\Projects\InventoryMS\Inventory\WebApplication1\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\SourceGit\Projects\InventoryMS\Inventory\WebApplication1\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

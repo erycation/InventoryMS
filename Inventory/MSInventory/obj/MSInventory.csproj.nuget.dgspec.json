@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\SourceGit\\Projects\\InventoryMS\\Inventory\\MSInventory\\MSInventory.csproj",
-        "projectName": "m2esolution.co.za.MSInventory",
+        "projectName": "MSInventory",
         "projectPath": "C:\\SourceGit\\Projects\\InventoryMS\\Inventory\\MSInventory\\MSInventory.csproj",
         "packagesPath": "C:\\Users\\ericm\\.nuget\\packages\\",
         "outputPath": "C:\\SourceGit\\Projects\\InventoryMS\\Inventory\\MSInventory\\obj\\",
