@@ -1,24 +1,11 @@
 <div class="fixed-top header" style="padding: 5px;">
   <div class="col-md-12">
-    <div>
+    <div *ngIf="user">
       <h2><button mat-icon-button (click)="onToggleSidenav()">
         <mat-icon>menu</mat-icon>
       </button>
       Welcome : {{user.username}} - {{user.vendorName}}</h2>
     </div>
+    <h1 style="text-align:center;" *ngIf="!user"><i>Inventory Management System</i></h1>
   </div>
- 
-
-  <!--<div class="col-md-4" style="text-align: right;">
-    <nav class="nav" style="float: right;">
-      <a class="nav-link disabled" href="javascript:void(0)" style="color: white;border-right: solid 1px white;">
-        <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp; {{user?.username}}
-      </a>
-      <a class="nav-link" href="javascript:void(0)" style="color: white;border-right: solid 1px white;" (click)="goToPage('')">
-        <i class="fa fa-home" aria-hidden="true"></i>&nbsp; {{user?.branchName}}
-      </a>
-      <a class="nav-link" href="javascript:void(0)" style="color: white;" (click)="goToPage('login')">
-        <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Logout</a>
-    </nav>
-  </div>-->
 </div>

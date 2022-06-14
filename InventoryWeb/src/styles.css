@@ -84,6 +84,7 @@
 
           .table tr:nth-child(:first-child) {
               text-align: center;
+             
           }
 
           .table td::before {
@@ -94,7 +95,7 @@
               text-align: left;
               padding-left: 22px;
               font-size: 0.9rem;
-              font-weight: 600;
+              font-weight: 900;
 
           }
       }
@@ -103,7 +104,10 @@
 
 
 
-
+.cardContentStyle
+{
+  border: solid 1px #6b84ab;
+}
     
  .subHeader
  {

@@ -2,8 +2,8 @@
   <h2>Modify Vendor</h2>
 </div>
 
-<div class="container">
-  <div class="card mb-4 shadow-sm pd-5">
+<div class="container" style="padding: 0px;">
+  <div class="card mb-4 shadow-sm pd-5" style="border: solid 1px #6b84ab;">
     <div class="row" style="margin: 1em 0">
       <div class="col-sm-12" style="text-align:right;">
         <nav class="nav" style="float: right;">
@@ -12,29 +12,116 @@
       </div>
     </div>
     <div class="card-body">
-      <div class="card mb-4 shadow-sm pd-5" style="color: black;">
-        <div class="card-body">
-          <div class="form-row">
-            <div class="form-group col-md-6">
+        <div class="card-body" style="padding: 0px;margin: 1px;">
+
+          <div class="row">
+            <div class="col-10">
               <label for="inputEmail4">Vendor Name</label>
               <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Vendor Name"
                 [(ngModel)]="vendorDto.vendorName">
             </div>
-            <div class="form-group col-md-3"></div>
-            <div class="form-group col-md-3">
-              <br />
+            <div class="col-2">
+              <br/>
               <button type="button" class="btn btn-outline-success" style="float: right;" (click)="updateVendor()">
                 Update
               </button>
             </div>
           </div>
+         
 
-          <br />
+
+
+
+
+
+
+
+
+
+          <!--<div class="form-row" style="padding:0px;">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Vendor Name</label>
+              <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Vendor Name"
+                [(ngModel)]="vendorDto.vendorName">
+            </div>
+            <div class="form-group col-md-6">
+            </div>
+          </div>
+          <div class="form-row" style="padding:0px;">
+            <div class="form-group col-md-4">
+            </div>
+            <div class="form-group col-md-2">
+              <button type="button" class="btn btn-outline-success" style="float: right;" (click)="updateVendor()">
+                Update
+              </button>
+            </div>
+            <div class="form-group col-md-6"></div>
+          </div>-->
+          <br/>
           <b>Add Inventory</b>
           <mat-divider></mat-divider>
           <br />
+          <div class="row">
+            <div class="col-7">
+              <label for="exampleFormControlTextarea1">Inventory Name</label>
+              <select [(ngModel)]="inventoryBalanceDto.inventoryId" class="form-control text-left"
+                placeholder="Select Inventory">
+                <option *ngFor="let item of inventoriesDto" [value]="item.inventoryId">
+                  {{item.productName}}
+                </option>
+              </select>
+            </div>
+            <div class="col-3">
+              <label for="exampleFormControlTextarea1">QTY</label>
+              <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Quantity"
+                [(ngModel)]="inventoryBalanceDto.quantity" (keypress)="numberOnly($event)">
+            </div>
+            <div class="col-2">
+              <br/>
+              <button type="button" class="btn btn-outline-success" style="float: right;"
+                (click)="addOpeningInventory()">
+                Add 
+              </button>
+            </div>
+          </div>
+
+          <!--<div class="row">
+            <div class="col align-self-start">
+              One of three columns
+            </div>
+            <div class="col align-self-center">
+              One of three columns
+            </div>
+            <div class="col align-self-end">
+              One of three columns
+            </div>
+          </div>-->
+
+         <!-- <div class="row">
+            <div class="col align-self-start">
+              <label for="exampleFormControlTextarea1">Inventory Name</label>
+              <select [(ngModel)]="inventoryBalanceDto.inventoryId" class="form-control text-left"
+                placeholder="Select Inventory">
+                <option *ngFor="let item of inventoriesDto" [value]="item.inventoryId">
+                  {{item.productName}}
+                </option>
+              </select>
+            </div>
+            <div class="col align-self-center">
+              <label for="exampleFormControlTextarea1">Quantity</label>
+              <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Quantity"
+                [(ngModel)]="inventoryBalanceDto.quantity" (keypress)="numberOnly($event)">
+            </div>
+            <div class="col align-self-end">
+              <button type="button" class="btn btn-outline-success" style="float: right;"
+                (click)="addOpeningInventory()">
+                Add 
+              </button>
+            </div>
+          </div>-->
+          
           <div class="form-row">
-            <div class="form-group col-md-6">
+            <!--<div class="form-group col-md-6">
               <label for="exampleFormControlTextarea1">Inventory Name</label>
               <select [(ngModel)]="inventoryBalanceDto.inventoryId" class="form-control text-left"
                 placeholder="Select Inventory">
@@ -55,7 +142,7 @@
                 (click)="addOpeningInventory()">
                 Add
               </button>
-            </div>
+            </div>-->
             <table class="table">
               <thead>
                 <tr>
@@ -76,7 +163,6 @@
             </p>
           </div>
         </div>
-      </div>
     </div>
   </div>
 </div>

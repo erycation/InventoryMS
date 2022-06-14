@@ -20,8 +20,8 @@ export class AddVendorComponent extends ModalResetParams implements OnInit {
   constructor(public dialogRef: MatDialogRef<AddVendorComponent>,
     accountService: AccountService,
     router: Router,
-    private dialogService : DialogService,
-    private vendorService : VendorService) {
+    private dialogService: DialogService,
+    private vendorService: VendorService) {
     super(accountService,
       router);
   }
@@ -30,28 +30,28 @@ export class AddVendorComponent extends ModalResetParams implements OnInit {
 
   }
 
-  async closeDialog()
-  {
+  async closeDialog() {
     this.dialogRef.close();
   }
 
-  saveVendor()
-  {
+  saveVendor() {
 
     if (!SharedFunction.checkUndefinedObjectValue(this.vendorDto.vendorName)) {
-      this.dialogService.openAlertModal(`Alert`,`Vendor required`);
+      this.dialogService.openAlertModal(`Alert`, `Vendor required`);
       return;
     }
-    else
-    {
+    else {
+      this.loading = true;
       this.vendorService.createVendor(this.vendorDto).subscribe(
-        data => {         
+        data => {
           this.dialogService.openSuccessModal(`Successfully`, data.message);
+          this.loading = false;
           this.closeDialog();
           this.goToPageOneParams('modify-vendor', data.data.vendorId)
         },
-        error => {        
-         this.dialogService.openAlertModal(`Error`, error.error.message);       
+        error => {
+          this.loading = false;
+          this.dialogService.openAlertModal(`Error`, error.error.message);
         });
     }
   }

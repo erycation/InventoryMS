@@ -4,8 +4,10 @@ import { AccountService } from "../service/account.service";
 
 export class ModalResetParams {
 
+    loading = false;
     user: AuthToken;
     noRecordFound : string = `No Results Found`;
+    
 
     constructor(private accountService: AccountService,
         private router: Router) {

@@ -49,6 +49,7 @@ import { InventoryListComponent } from './supervisor/inventory-list/inventory-li
 import { AddInventoryComponent } from './supervisor/inventory-list/add-inventory/add-inventory.component';
 import { NumberDirective } from './shared/numbers-only.directive';
 import { ModifyInventoryComponent } from './supervisor/inventory-list/modify-inventory/modify-inventory.component';
+import { VendorPipe } from './shared/pipes/vendor.pipes';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ModifyInventoryComponent } from './supervisor/inventory-list/modify-inv
     LayoutComponent,
     HeaderComponent,
     SidenavListComponent,
+    VendorPipe,
     LoginComponent,
     NumberDirective,
     DashboardComponent,

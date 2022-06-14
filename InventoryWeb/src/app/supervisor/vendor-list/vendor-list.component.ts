@@ -15,6 +15,7 @@ import { AddVendorComponent } from './add-vendor/add-vendor.component';
 export class VendorListComponent extends ModalResetParams implements OnInit {
 
   vendorsDto: VendorDto[] = [];
+  searchText: string = '';
 
   constructor(accountService: AccountService,
     router: Router,
