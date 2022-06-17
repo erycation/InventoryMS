@@ -70,7 +70,7 @@ namespace MSInventory.Service
         public async Task<List<ExpectedInventoryDto>> GetCountedExpectedInventoryByVendor(Guid adminId, Guid vendorId)
         {
             var expectedInventoriesDto = new List<ExpectedInventoryDto>();
-            var expectedInventories = await _expectedInventoryRepository.GetAll().Where(x => x.AdminId == adminId && !x.SendToVendor && x.VendorId == vendorId).ToListAsync();// x => x.Id == expectedInventoryId);
+            var expectedInventories = await _expectedInventoryRepository.GetAll().Where(x => x.AdminId == adminId && !x.SendToVendor && x.VendorId == vendorId && x.Counted).ToListAsync();// x => x.Id == expectedInventoryId);
             foreach (var expectedInventory in expectedInventories)
             {
                 expectedInventoriesDto.Add(new ExpectedInventoryDto(expectedInventory));
@@ -103,7 +103,7 @@ namespace MSInventory.Service
             return responseExpectedInventory != null ? new ExpectedInventoryDto(responseExpectedInventory) : throw new AppException($"Failed To Count Expected Inventory");
         }
       
-        public async Task<ExpectedInventoryDto> SendExpectedInventoryToVendor(List<ExpectedInventoryDto> expectedInventoriesDto, Guid locationId)
+        public async Task<string> SendExpectedInventoryToVendor(List<ExpectedInventoryDto> expectedInventoriesDto, Guid locationId)
         {
             var trackingNumber = $"AEON_{DateTime.Now:yyyyMMddHHmmss}_{Guid.NewGuid().ToString().Substring(1,5)}";
             foreach (var expectedInventoryDto in expectedInventoriesDto)
@@ -122,7 +122,7 @@ namespace MSInventory.Service
 
 
             }
-            return new ExpectedInventoryDto();
+            return trackingNumber;
         }
     }
 }

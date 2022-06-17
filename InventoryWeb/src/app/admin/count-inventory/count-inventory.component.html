@@ -2,9 +2,9 @@
     <h2>Count Inventories</h2>
   </div>
 
-  <div class="container">
-      <div class="card mb-4 shadow-sm pd-5">
-        <div class="row" style="margin: 1em 0">
+  <div class="container" style="padding: 0px;">
+    <div class="card mb-4 shadow-sm pd-5 cardContentStyle" style="border: solid 1px #6b84ab;">
+      <div class="row" style="margin: 1em 0">
             <div class="col-sm-12" style="text-align:right;">
               <nav class="nav" style="float: right;">                  
                 <button type="button" class="btn btn-primary" (click) = "sendInventoryToVendor()" [disabled]="countedItems === 0">Send To Vendor 
@@ -15,9 +15,8 @@
               </nav>
             </div>
           </div>
-        <div class="card-body">
-           
-          <div class="form-row">
+          <div class="card-body" style="padding: 3px;margin: 1px;">
+            <div class="form-row" style="padding:1px;">
             <table class="table">
                 <thead>
                   <tr>
@@ -56,6 +55,7 @@
         </div>
       </div>
   </div>
+
     
   
 

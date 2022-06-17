@@ -172,4 +172,58 @@ export class BackendService {
         break;
     }
   }
+
+
+
+  public async downloadFilePDF<T>(path: string, params?: { [param: string]: string | string[]; }) {
+    await this.incrementBusyCount();
+
+    try {
+      const response = await this.http.get(
+        environment.apiUrl + path,
+        { params, responseType: 'blob' }
+      ).toPromise();
+//for now
+      this.openPdf(response, path)
+    } catch (e) {
+      this.handleError(e);
+    } finally {
+      await this.decrementBusyCount();
+    }
+  }
+
+
+  public async download<T>(path: string, params?: { [param: string]: string | string[]; }) {
+    await this.incrementBusyCount();
+
+    try {
+      const response = await this.http.get(
+        environment.apiUrl + path,
+        { params, responseType: 'blob' }
+      ).toPromise();
+
+      
+      this.openPdf(response)
+    } catch (e) {
+      this.handleError(e);
+    } finally {
+      await this.decrementBusyCount();
+    }
+  }
+  private openPdf(response: Blob, fileName?: string) {
+    const newBlob = new Blob([response], { type: "application/pdf" });
+
+    var a = document.createElement("a");
+    document.body.appendChild(a);
+    var csvUrl = URL.createObjectURL(newBlob);
+    a.href = csvUrl;
+    a.target = "_blank";
+
+    if (fileName !== null)
+      a.download = fileName;
+
+    a.click();
+    URL.revokeObjectURL(a.href)
+    a.remove();
+  }
 }

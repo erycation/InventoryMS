@@ -10,7 +10,7 @@ namespace MSInventory.Service.Interface
     {
         Task<ExpectedInventoryDto> CreateAndAllocateExpectedInventory(ExpectedInventoryDto expectedInventory);
         Task<ExpectedInventoryDto> CountExpectedInventory(ExpectedInventoryDto expectedInventoryDto);
-        Task<ExpectedInventoryDto> SendExpectedInventoryToVendor(List<ExpectedInventoryDto> expectedInventoriesDto, Guid locationId);
+        Task<string> SendExpectedInventoryToVendor(List<ExpectedInventoryDto> expectedInventoriesDto, Guid locationId);
         Task<ExpectedInventoryDto> GetExpectedInventoryById(Guid expectedInventoryId);
         Task<List<ExpectedInventoryDto>> GetExpectedInventoriesAllocatedToAdmin(Guid adminId);
         Task<List<ExpectedInventoryDto>> GetCountedExpectedInventoryByVendor(Guid adminId, Guid vendorId);

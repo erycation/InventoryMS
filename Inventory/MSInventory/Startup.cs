@@ -101,9 +101,12 @@ namespace MSInventory
             services.AddScoped<IOrderItemRepository, OrderItemRepository>();
             services.AddScoped<IOrderItemService, OrderItemService>();
             //services.AddScoped<IFilesEnvironment, FilesEnvironment>();
-
             services.AddScoped<IInventoryBalanceRepository, InventoryBalanceRepository>();
             services.AddScoped<IInventoryBalanceService, InventoryBalanceService>();
+            services.AddScoped<IVendorInvoiceReportRepository, VendorInvoiceReportRepository>();
+            services.AddScoped<IVendorInvoiceReportService, VendorInvoiceReportService>();
+
+         
             //InventoryBalanceRepository : Repository<InventoryBalance>, IInventoryBalanceRepository
         }
 

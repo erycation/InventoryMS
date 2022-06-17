@@ -4,6 +4,7 @@ import { ExpectedInventoryDto } from 'src/app/model/Dtos/ms-inventory/expectedIn
 import { VendorDto } from 'src/app/model/Dtos/ms-inventory/vendorDto';
 import { AccountService } from 'src/app/service/account.service';
 import { ExpectedInventoryService } from 'src/app/service/ms-inventory/expected-inventory.service';
+import { VendorInvoiceReportService } from 'src/app/service/ms-inventory/vendor-Invoice-report.service';
 import { VendorService } from 'src/app/service/ms-inventory/vendor.service';
 import { DialogService } from 'src/app/shared/dialog/dialog.service';
 import { ModalResetParams } from 'src/app/shared/modal-reset-params';
@@ -27,7 +28,8 @@ export class SendToVendorComponent extends ModalResetParams implements OnInit {
     router: Router,
     private dialogService : DialogService,
     private vendorService : VendorService,
-    private expectedInventoryService: ExpectedInventoryService) {
+    private expectedInventoryService: ExpectedInventoryService,
+    private vendorInvoiceReportService: VendorInvoiceReportService) {
     super(accountService,
       router);
   }
@@ -90,10 +92,11 @@ export class SendToVendorComponent extends ModalResetParams implements OnInit {
     }else
     {
     this.expectedInventoryService.sendExpectedInventoryToVendor(this.selectedExpectedInventoryDto, this.user.vendorId).subscribe(
-      data => {         
+      async data => {         
         this.dialogService.openSuccessModal(`Successfully`, data.message);
-        this.searchInventoryToProcess();
-        this.getNumberOfCountedInventoryToBeProcessed();
+        await this.searchInventoryToProcess();
+        await this.getNumberOfCountedInventoryToBeProcessed();
+        await this.vendorInvoiceReportService.downloadVendorInvoiceReport(data.data, `pdf`);
       },
       error => {        
        this.dialogService.openAlertModal(`Error`, error.error.message);       

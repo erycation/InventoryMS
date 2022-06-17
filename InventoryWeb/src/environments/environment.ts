@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   version: '1.0.0.0',
-  apiUrl : 'https://localhost:44385/api/' 
-  //apiUrl :'https://aeonapi.m2esolution.com/api/'
+  //apiUrl : 'https://localhost:44385/api/' 
+  apiUrl :'https://aeonapi.m2esolution.com/api/'
 };
 
 /*
