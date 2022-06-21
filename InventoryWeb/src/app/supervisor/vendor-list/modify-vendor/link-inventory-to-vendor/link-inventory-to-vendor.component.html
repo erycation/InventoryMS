@@ -1,0 +1,28 @@
+<div class="custom-dialog">
+    <button mat-raised-button [mat-dialog-close]="true" style="float: right;">Close</button>
+    <h2 mat-dialog-title>Add Inventory</h2>
+    <mat-dialog-content>
+      <mat-divider></mat-divider>
+  
+      <div class="card mb-4 shadow-sm pd-5" style="color: black;">
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="exampleFormControlTextarea1">Inventory Name</label>
+                <select [(ngModel)]="inventoryBalanceDto.inventoryId" class="form-control text-left"
+                  placeholder="Select Inventory">
+                  <option *ngFor="let item of inventoriesDto" [value]="item.inventoryId">
+                    {{item.productName}}
+                  </option>
+                </select>
+            </div>            
+          </div>
+         
+          <button  [disabled]="loading" type="button" class="btn btn-outline-success" style="float: right;" (click)="saveInventoryToVendor()">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Save
+          </button>
+        </div>
+      </div>
+    </mat-dialog-content>
+  </div>

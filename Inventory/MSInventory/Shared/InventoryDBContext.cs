@@ -17,7 +17,8 @@ namespace MSInventory.Shared
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<StockCountSheetReportDto>().HasNoKey();
-            modelBuilder.Entity<VendorInvoiceReportDto>().HasNoKey();            
+            modelBuilder.Entity<VendorInvoiceReportDto>().HasNoKey();
+            modelBuilder.Entity<VendorInvoiceItemDto>().HasNoKey();            
         }
 
         public virtual DbSet<User> Users { get; set; }
@@ -34,7 +35,7 @@ namespace MSInventory.Shared
         public virtual DbSet<OrderItem> OrderItems { get; set; }
         public virtual DbSet<StockCountSheetReportDto> StockCountSheetReportDtos { get; set; }
         public virtual DbSet<VendorInvoiceReportDto> VendorInvoiceReportDtos { get; set; }
+        public virtual DbSet<VendorInvoiceItemDto> VendorInvoiceItemDtos { get; set; }
         
-
     }
 }

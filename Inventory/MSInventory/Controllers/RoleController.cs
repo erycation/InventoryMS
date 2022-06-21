@@ -23,5 +23,11 @@ namespace MSInventory.Controllers
         {
             return _roleService.GetAllRoles();
         }
+
+        [HttpGet("NonCustomer/All")]
+        public ActionResult<List<RoleDto>> GetAllNonCustomerRoles()
+        {
+            return _roleService.GetAllNonCustomerRoles();
+        }
     }
 }

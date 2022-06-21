@@ -1,78 +1,83 @@
-<mat-nav-list>   
-    <a mat-list-item routerLink="/" (click)="onSidenavClose()">
-        <mat-icon style="margin-right: 16px">dashboard</mat-icon> <span class="nav-caption">DashBoard</span>
-    </a>
-    <a mat-list-item (click)="goToPage('inventory-list')" *ngIf="supervisorRight()">
-      <mat-icon style="margin-right: 16px">inventory</mat-icon> <span class="nav-caption">Inventory Management</span>
+<mat-nav-list>
+  <a mat-list-item routerLink="/" (click)="onSidenavClose()">
+    <mat-icon style="margin-right: 16px">dashboard</mat-icon> <span class="nav-caption">DashBoard</span>
   </a>
-    <mat-list-item [matMenuTriggerFor]="supervisorMenu" *ngIf="supervisorRight()">
-        <mat-icon style="margin-right: 16px">settings</mat-icon>
-        <a matline>Supervisor</a> 
-        <mat-icon style=" margin-right: -100px">unfold_more</mat-icon>
-    </mat-list-item>
-    <mat-menu #supervisorMenu="matMenu" xPosition="after" >
-      <button mat-menu-item (click)="goToPage('vendor-list')">
-        <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>        
-        Vendor
-      </button>
-      <button mat-menu-item (click)="goToPage('user-list')">
-        <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>        
-        User Management
-      </button>
-       <button mat-menu-item (click)="goToPage('allocate')">
+  <a mat-list-item (click)="goToPage('allocate')" *ngIf="supervisorRight()">
+    <mat-icon style="margin-right: 16px">send</mat-icon>
+    <span class="nav-caption">Allocate Inventory</span>
+  </a>
+  <a mat-list-item (click)="goToPage('inventory-list')" *ngIf="supervisorRight()">
+    <mat-icon style="margin-right: 16px">inventory</mat-icon> <span class="nav-caption">Inventory Management</span>
+  </a>
+  <mat-list-item [matMenuTriggerFor]="supervisorMenu" *ngIf="supervisorRight()">
+    <mat-icon style="margin-right: 16px">settings</mat-icon>
+    <a matline>Supervisor</a>
+    <mat-icon style=" margin-right: -100px">unfold_more</mat-icon>
+  </mat-list-item>
+  <mat-menu #supervisorMenu="matMenu" xPosition="after">
+    <button mat-menu-item (click)="goToPage('vendor-list')">
+      <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>
+      Vendor
+    </button>
+    <button mat-menu-item (click)="goToPage('user-list')">
+      <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>
+      User Management
+    </button>
+    <!--
+         <button mat-menu-item (click)="goToPage('allocate')">
         <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>        
         Allocate Inventory
       </button>
-      <!--<button mat-menu-item (click)="goToPage('monitor-stock-taking')">
+      <button mat-menu-item (click)="goToPage('monitor-stock-taking')">
         <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>        
         Monitor Stock Taking
-      </button> -->    
-    </mat-menu>
+      </button> -->
+  </mat-menu>
 
-    <mat-list-item [matMenuTriggerFor]="adminMenu" *ngIf="adminRight()">
-        <mat-icon style="margin-right: 16px">person</mat-icon>
-        <a matline>Admin WareHouse</a> 
-        <mat-icon style=" margin-right: -100px">unfold_more</mat-icon>
-    </mat-list-item>
-    <mat-menu #adminMenu="matMenu" xPosition="after" >
-       <button mat-menu-item (click)="goToPage('count-inventory')">
-        <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>        
-        Count Inventory
-      </button>
-    </mat-menu>
-
-    <mat-list-item [matMenuTriggerFor]="adminProductionMenu" *ngIf="adminProductionRights()">
-      <mat-icon style="margin-right: 16px">person</mat-icon>
-      <a matline>Production</a> 
-      <mat-icon style=" margin-right: -100px">unfold_more</mat-icon>
+  <mat-list-item [matMenuTriggerFor]="adminMenu" *ngIf="adminRight()">
+    <mat-icon style="margin-right: 16px">person</mat-icon>
+    <a matline>Admin WareHouse</a>
+    <mat-icon style=" margin-right: -100px">unfold_more</mat-icon>
   </mat-list-item>
-  <mat-menu #adminProductionMenu="matMenu" xPosition="after" >
-     <button mat-menu-item (click)="goToPage('admin-production')">
-      <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>        
+  <mat-menu #adminMenu="matMenu" xPosition="after">
+    <button mat-menu-item (click)="goToPage('count-inventory')">
+      <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>
+      Count Inventory
+    </button>
+  </mat-menu>
+
+  <mat-list-item [matMenuTriggerFor]="adminProductionMenu" *ngIf="adminProductionRights()">
+    <mat-icon style="margin-right: 16px">person</mat-icon>
+    <a matline>Production</a>
+    <mat-icon style=" margin-right: -100px">unfold_more</mat-icon>
+  </mat-list-item>
+  <mat-menu #adminProductionMenu="matMenu" xPosition="after">
+    <button mat-menu-item (click)="goToPage('admin-production')">
+      <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>
       Send To WareHouse
     </button>
   </mat-menu>
 
-    <mat-list-item [matMenuTriggerFor]="salesMenu" *ngIf="salesRight()">
-        <mat-icon style="margin-right: 16px">person</mat-icon>
-        <a matline>Sales</a> 
-        <mat-icon style=" margin-right: -100px">unfold_more</mat-icon>
-    </mat-list-item>
-    <mat-menu #salesMenu="matMenu" xPosition="after" >
-      <button mat-menu-item (click)="goToPage('customer-list')">
-        <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>        
-        Customer Management
-      </button>
-       <button mat-menu-item (click)="goToPage('stock-taking')">
-        <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>        
-        Stock Taking
-      </button>
-    </mat-menu>
+  <mat-list-item [matMenuTriggerFor]="salesMenu" *ngIf="salesRight()">
+    <mat-icon style="margin-right: 16px">person</mat-icon>
+    <a matline>Sales</a>
+    <mat-icon style=" margin-right: -100px">unfold_more</mat-icon>
+  </mat-list-item>
+  <mat-menu #salesMenu="matMenu" xPosition="after">
+    <button mat-menu-item (click)="goToPage('customer-list')">
+      <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>
+      Customer Management
+    </button>
+    <button mat-menu-item (click)="goToPage('stock-taking')">
+      <mat-icon style="margin-right: 16px">keyboard_arrow_right</mat-icon>
+      Stock Taking
+    </button>
+  </mat-menu>
 
 
 
-    
-    <!--
+
+  <!--
     <mat-list-item [matMenuTriggerFor]="menu" *ngIf = "canAccessAdminSection()">
         <mat-icon style="margin-right: 16px">settings</mat-icon>
         <a matline>Admin</a> 
@@ -119,7 +124,7 @@
     </a>
 
 -->
-<!--
+  <!--
 
     <a mat-list-item (click)="goToPage('contruction')">
         <mat-icon style="margin-right: 16px">group</mat-icon> <span class="nav-caption">Customer</span>
@@ -127,11 +132,11 @@
 -->
 
 
-    <!--<a mat-list-item (click)="goToPage('inventory-type')"  *ngIf = "canAccessAdminSection()"> 
+  <!--<a mat-list-item (click)="goToPage('inventory-type')"  *ngIf = "canAccessAdminSection()"> 
         <mat-icon style="margin-right: 16px">account_tree</mat-icon> <span class="nav-caption">Manage Inventory</span>
     </a>-->
- 
-   <!--<mat-list-item [matMenuTriggerFor]="menu">
+
+  <!--<mat-list-item [matMenuTriggerFor]="menu">
         <mat-icon>unfold_more</mat-icon>
         <a matline>Transaction</a>s
     </mat-list-item>
@@ -148,9 +153,18 @@
     <a mat-list-item (click)="goToPage('inventory-ledger')"> 
         <mat-icon>report</mat-icon> <span class="nav-caption">Inventory Ledger</span>
     </a>-->
-    <a mat-list-item routerLink="/login" (click)="onSidenavClose()">
-        <mat-icon style="margin-right: 16px;color: red;">logout</mat-icon> 
-        <span class="nav-caption">Logout</span>   
-    </a>
-</mat-nav-list>
 
+
+
+
+
+  <a mat-list-item (click)="goToPage('reports')" *ngIf="supervisorRight()">
+    <mat-icon style="margin-right: 16px">report</mat-icon>
+    <span class="nav-caption">Reports</span>
+  </a>
+
+  <a mat-list-item routerLink="/login" (click)="onSidenavClose()">
+    <mat-icon style="margin-right: 16px;color: red;">logout</mat-icon>
+    <span class="nav-caption">Logout</span>
+  </a>
+</mat-nav-list>

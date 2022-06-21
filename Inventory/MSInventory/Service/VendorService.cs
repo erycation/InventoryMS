@@ -8,6 +8,7 @@ using MSInventory.Service.Interface;
 using MSInventory.Shared.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MSInventory.Service
@@ -83,6 +84,17 @@ namespace MSInventory.Service
         {
             var vendorsDto = new List<VendorDto>();
             var vendors = await _vendorRepository.GetAll().ToListAsync();
+            foreach (var vendor in vendors)
+            {
+                vendorsDto.Add(new VendorDto(vendor));
+            }
+            return vendorsDto;
+        }
+
+        public async Task<List<VendorDto>> GetNonWarehouseVendors()
+        {
+            var vendorsDto = new List<VendorDto>();
+            var vendors = await _vendorRepository.GetAll().Where(v => v.Name.ToLower() != "warehouse").ToListAsync();
             foreach (var vendor in vendors)
             {
                 vendorsDto.Add(new VendorDto(vendor));

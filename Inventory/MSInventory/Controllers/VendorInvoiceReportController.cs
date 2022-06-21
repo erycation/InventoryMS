@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MSInventory.Model.Dtos;
+using MSInventory.Model.Request;
 using MSInventory.Service.Interface;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,13 @@ namespace MSInventory.Controllers
         public VendorInvoiceReportController(IVendorInvoiceReportService vendorInvoiceReportService)
         {
             _vendorInvoiceReportService = vendorInvoiceReportService;
+        }
+
+        [HttpGet("GetAll/{vendorId}")]
+        public async Task<List<VendorInvoiceItemDto>> GetVendorInvoiceReportByVendorId(Guid vendorId, [FromQuery] RequestVendorInvoice requestVendorInvoice)
+        {
+            return await _vendorInvoiceReportService.GetVendorInvoiceReportByVendorId(vendorId, requestVendorInvoice);
+
         }
 
         [HttpGet("{invoiceNumber}/{reportType}")]

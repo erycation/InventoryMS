@@ -13,5 +13,6 @@ namespace MSInventory.Service.Interface
         Task<VendorDto> GetVendorById(Guid vendorId);
         Task<VendorDto> GetVendorByName(string name);
         Task<List<VendorDto>> GetAllVendors();
+        Task<List<VendorDto>> GetNonWarehouseVendors();
     }
 }

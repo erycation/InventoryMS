@@ -23,13 +23,15 @@ namespace MSInventory.Repository
         {
             return await _inventoryDBContext.VendorInvoiceReportDtos.FromSqlRaw("get_VendorInvoice @InvoiceNumber",
                                                                        new SqlParameter("@InvoiceNumber", invoiceNumber)).ToListAsync();
-        }  
+        }
 
-        //public async Task<List<StockCountSheetReportDto>> GetExistingStockCountSheetReport(Guid certificateId, Guid locationId)
-        //{
-        //    return await _inventoryDBContext.StockCountSheetReportDtos.FromSqlRaw("sp_ExistingStockCountSheet @InventoryCertificateId, @LocationVendorId",
-        //                                                               new SqlParameter("@InventoryCertificateId", certificateId),
-        //                                                                new SqlParameter("@LocationVendorId", locationId)).ToListAsync();
-        //}
+        public async Task<List<VendorInvoiceItemDto>> GetVendorInvoiceReportByVendorId(Guid vendorId, DateTime startDate, DateTime endDate)
+        {
+            return await _inventoryDBContext.VendorInvoiceItemDtos.FromSqlRaw("get_VendorInvoiceByVendorId @VendorId, @StartDate, @EndDate",
+                                                                       new SqlParameter("@VendorId", vendorId),
+                                                                        new SqlParameter("@StartDate", startDate),
+                                                                         new SqlParameter("@EndDate", endDate)).ToListAsync();
+
+        }
     }
 }

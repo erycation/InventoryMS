@@ -9,7 +9,7 @@
         <div class="form-group">
           <label for="exampleFormControlTextarea1">Destination Vendor</label>
           <select [(ngModel)]="expectedInventoryDto.vendorId" class="form-control text-left"
-            placeholder="Select Vendor">
+            placeholder="Select Vendor" (change)="getInvetoriesInVendorByVendorId($event)">
             <option *ngFor="let item of vendorsDto" [value]="item.vendorId">
               {{item.vendorName}}
             </option>
@@ -28,8 +28,8 @@
           <label for="exampleFormControlTextarea1">Product Name</label>
           <select [(ngModel)]="expectedInventoryDto.inventoryId" class="form-control text-left"
             placeholder="Select Inventory">
-            <option *ngFor="let item of inventoriesDto" [value]="item.inventoryId">
-              {{item.productName}}
+            <option *ngFor="let item of inventoriesAtVendor" [value]="item.inventoryId">
+              {{item.inventoryName}}
             </option>
           </select>
         </div>
@@ -42,8 +42,8 @@
           <div class="form-group col-md-6">            
           </div>
         </div>
-       
-        <button type="button" class="btn btn-outline-success" style="float: right;" (click)="saveAndAllocateInventory()">
+        <button type="button" [disabled]="loading" class="btn btn-outline-success" style="float: right;" (click)="saveAndAllocateInventory()">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
           Allocate Inventory
         </button>
       </div>

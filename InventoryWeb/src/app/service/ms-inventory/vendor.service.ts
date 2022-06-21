@@ -15,6 +15,10 @@ export class VendorService {
         return await this.backend.get<VendorDto[]>(`Vendor/GetAll`);
     }
 
+    async getNonWareHouseVendors() {
+        return await this.backend.get<VendorDto[]>(`Vendor/NonWareHouse/All`);
+    }
+
     createVendor(vendorDto: VendorDto) {
         return this.backend.postWithResponse1<any>(`Vendor/Add`, vendorDto);
     }

@@ -43,5 +43,11 @@ namespace MSInventory.Controllers
         {
             return await _vendorService.GetAllVendors();
         }
+
+        [HttpGet("NonWareHouse/All")]
+        public async Task<ActionResult<List<VendorDto>>> GetNonWarehouseVendors()
+        {
+            return await _vendorService.GetNonWarehouseVendors();
+        }
     }
 }

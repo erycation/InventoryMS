@@ -9,5 +9,6 @@ namespace MSInventory.Service.Interface
     public interface IRoleService
     {
         List<RoleDto> GetAllRoles();
+        List<RoleDto> GetAllNonCustomerRoles();
     }
 }

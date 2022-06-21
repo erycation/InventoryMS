@@ -50,6 +50,11 @@ import { AddInventoryComponent } from './supervisor/inventory-list/add-inventory
 import { NumberDirective } from './shared/numbers-only.directive';
 import { ModifyInventoryComponent } from './supervisor/inventory-list/modify-inventory/modify-inventory.component';
 import { VendorPipe } from './shared/pipes/vendor.pipes';
+import { ReportsComponent } from './supervisor/reports/reports.component';
+import { InvoiceReportComponent } from './supervisor/reports/invoice-report/invoice-report.component';
+import { ReconcilationReportComponent } from './supervisor/reports/reconcilation-report/reconcilation-report.component';
+import { StockTakingReportComponent } from './supervisor/reports/stock-taking-report/stock-taking-report.component';
+import { LinkInventoryToVendorComponent } from './supervisor/vendor-list/modify-vendor/link-inventory-to-vendor/link-inventory-to-vendor.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +98,11 @@ import { VendorPipe } from './shared/pipes/vendor.pipes';
     InventoryListComponent,
     AddInventoryComponent,
     ModifyInventoryComponent,
+    ReportsComponent,
+    InvoiceReportComponent,
+    ReconcilationReportComponent,
+    StockTakingReportComponent,
+    LinkInventoryToVendorComponent,
   ],
   imports: [
     BrowserModule,

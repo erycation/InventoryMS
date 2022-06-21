@@ -1,68 +1,55 @@
-<div class="row subHeader" style="padding-left: 10px;">
-    <h2>Allocated Inventories</h2>
-  </div>
-
-  <div class="container" style="padding: 0px;">
-    <div class="card mb-4 shadow-sm pd-5 cardContentStyle" style="border: solid 1px #6b84ab;">
-        <div class="row" style="margin: 1em 0">
-            <div class="col-sm-12" style="text-align:right;">
-              <nav class="nav" style="float: right;">
-                <button type="button" class="btn btn-primary" (click)="allocateInventory()">Allocate Inventory</button>
-              </nav>
-            </div>
-          </div>
-          <div class="card-body" style="padding: 3px;margin: 1px;">
-            <div class="form-row" style="padding:1px;">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th>Vendor</th>
-                    <th>Name</th>
-                    <th>Quantity</th>
-                    <th>AllocatedTo</th>
-                    <th>AllocatedDate</th>
-                    <th>Counted</th>
-                    <th>Processed</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr  *ngFor="let expected of expectedInventoryDto">
-                    <td data-name="Vendor :">{{expected.vendorName}}</td>
-                    <td data-name="Name :">{{expected.inventoryName}}</td>
-                    <td data-name="Quantity :">{{expected.quantity}}</td>
-                    <td data-name="AllocatedTo :">{{expected.adminName}}</td>
-                   <td data-name="AllocatedDate :">{{expected.dateInserted | date: 'd MMM yyyy'}}</td>
-                    <td data-name="Counted :">
-                        <b
-                        [ngStyle]="{'color':expected?.countedStatus === 'Yes' ? 'green' : 'red' }">{{expected.countedStatus}}</b>
-                    </td>                   
-                    <td data-name="Processed :">
-                        <b
-                        [ngStyle]="{'color':expected?.sendToVendorStatus === 'Yes' ? 'green' : 'red' }">{{expected.sendToVendorStatus}}</b>
-                    </td>
-                  </tr>                        
-                </tbody>              
-              </table>
-          </div>
-          <div>
-            <p *ngIf="expectedInventoryDto.length === 0" style="color: red;text-align:center;margin: 10px;">
-              <b>{{noRecordFound}}</b>
-            </p>
-          </div>
-        </div>
+<div class="container" style="padding: 0px;">
+  <div class="card mb-4 shadow-sm pd-5 cardContentStyle" style="border: solid 1px #6b84ab;">
+    <div class="row subHeader" style="padding: 0px;margin: 0px;text-align: center;">
+      <div class="col-md-12" style="text-align: center;">
+        <h2>Allocate Inventory</h2>
       </div>
+    </div>
+    <div class="row" style="margin: 1em 0">
+      <div class="col-sm-12" style="text-align:right;">
+        <nav class="nav" style="float: right;">
+          <button type="button" class="btn btn-primary" (click)="allocateInventory()">Allocate</button>
+        </nav>
+      </div>
+    </div>
+    <div class="card-body" style="padding: 3px;margin: 1px;">
+      <div class="form-row" style="padding:1px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Vendor</th>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>AllocatedTo</th>
+              <th>AllocatedDate</th>
+              <th>Counted</th>
+              <th>Processed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let expected of expectedInventoryDto">
+              <td data-name="Vendor :">{{expected.vendorName}}</td>
+              <td data-name="Name :">{{expected.inventoryName}}</td>
+              <td data-name="Quantity :">{{expected.quantity}}</td>
+              <td data-name="AllocatedTo :">{{expected.adminName}}</td>
+              <td data-name="AllocatedDate :">{{expected.dateInserted | date: 'd MMM yyyy'}}</td>
+              <td data-name="Counted :">
+                <b
+                  [ngStyle]="{'color':expected?.countedStatus === 'Yes' ? 'green' : 'red' }">{{expected.countedStatus}}</b>
+              </td>
+              <td data-name="Processed :">
+                <b
+                  [ngStyle]="{'color':expected?.sendToVendorStatus === 'Yes' ? 'green' : 'red' }">{{expected.sendToVendorStatus}}</b>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <p *ngIf="expectedInventoryDto.length === 0" style="color: red;text-align:center;margin: 10px;">
+          <b>{{noRecordFound}}</b>
+        </p>
+      </div>
+    </div>
   </div>
-    
-  
-
-
-
-
-
-
-
-
-
-
-
-
+</div>

@@ -1,0 +1,78 @@
+<div class="container" style="padding: 0px;">
+    <div class="card mb-4 shadow-sm pd-5 cardContentStyle" style="border: solid 1px #6b84ab;">
+        <div class="row subHeader" style="padding: 0px;margin: 0px;text-align: center;">
+            <div class="col-md-12" style="text-align: center;">
+                <h2>Invoice Reports</h2>
+            </div>           
+        </div>
+      
+
+            <div class="card-body" style="padding: 3px;margin: 1px;">
+                <div class="form-row" style="padding:1px;">
+                    <div class="form-group col-md-4">
+                        <label for="exampleFormControlTextarea1">Vendor</label>
+                        <select [(ngModel)]="vendorDto.vendorId" class="form-control text-left"
+                        placeholder="Select Vendor">
+                        <option *ngFor="let item of vendorsDto" [value]="item.vendorId">
+                            {{item.vendorName}}
+                        </option>
+                        </select>
+                    </div>
+        
+                    <div class="form-group col-md-3">
+                        <label for="exampleFormControlTextarea1">Start Date</label>
+                        <input type="date" class="form-control"  [(ngModel)]="startDate" >
+                      
+                    </div>
+        
+                    <div class="form-group col-md-3">
+                        <label for="exampleFormControlTextarea1">End Date</label>
+                        <input type="date" class="form-control"  [(ngModel)]="endDate" >
+                        
+                    </div>
+                    <div class="form-group col-md-2">
+                        <button type="button" class="btn btn-secondary" (click)="getInvoiceReports()">
+                            Search &nbsp;<i class="fa fa-search" aria-hidden="true" style="color:white"></i>
+                        </button>
+                        
+                    </div>
+
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Vendor Name</th>
+                        <th>Invoice Number</th>
+                        <th>Invoice Date</th>
+                        <th>Process By</th>
+                        <th>Export PDF</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let vendorInvoice of vendorInvoiceItemsDto">
+                        <td data-name="Vendor Name:">{{vendorInvoice.vendorName}}</td>
+                        <td data-name="Invoice Number :">{{vendorInvoice.invoiceNumber}}</td>
+                        <td data-name="Invoice Date :">{{vendorInvoice.transactionDate}}</td>
+                        <td data-name="Process By :">{{vendorInvoice.processedBy}}</td>
+                        <td data-name="Export Pdf :">
+                          <button type="button" class="btn btn-link pl-1" (click)="exportPdf(vendorInvoice)">
+                            <i class="fa fa-edit" aria-hidden="true" style="color: blue;" ></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div>
+                  <p *ngIf="vendorsDto.length === 0" style="color: red;text-align:center;margin: 10px;">
+                    <b>{{noRecordFound}}</b>
+                  </p>
+                </div>
+              </div>
+
+
+            
+           
+
+
+    </div>
+</div>

@@ -1,48 +1,47 @@
-<div class="row subHeader" style="padding-left: 10px;">
-    <h2>Inventory Management</h2>
-  </div>
-
-  <div class="container">
-      <div class="card mb-4 shadow-sm pd-5">
-        <div class="row" style="margin: 1em 0">
-            <div class="col-sm-12" style="text-align:right;">
-              <nav class="nav" style="float: right;">
-                <button type="button" class="btn btn-primary" (click)="addInventory()">Add Inventory</button>
-              </nav>
-            </div>
-          </div>
-        <div class="card-body">
-           
-          <div class="form-row">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th>Inventory</th>
-                    <th>Price</th>                                   
-                    <th>View</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr  *ngFor="let inventory of inventoriesDto">
-                    <td data-name="Inventory :">{{inventory.productName}}</td>
-                    <td data-name="Price :" style="text-align: right"><b>R&nbsp;</b>{{inventory?.price | number :
-                        '1.2-2'}}</td>                   
-                    <td data-name="View :">
-                      <button type="button" class="btn btn-link pl-1">
-                        <i class="fa fa-edit" aria-hidden="true" style="color: blue;"
-                            (click)="goToEditInventory(inventory)"></i>
-                    </button>
-                     </td>
-                  </tr>                        
-                </tbody>              
-              </table>              
-          </div>
-          <div>
-            <p *ngIf="inventoriesDto.length === 0" style="color: red;text-align:center;margin: 10px;">
-              <b>{{noRecordFound}}</b>
-            </p>
-          </div>         
-        </div>
+<div class="container" style="padding: 0px;">
+  <div class="card mb-4 shadow-sm pd-5 cardContentStyle" style="border: solid 1px #6b84ab;">
+    <div class="row subHeader" style="padding: 0px;margin: 0px;text-align: center;">
+      <div class="col-md-12" style="text-align: center;">
+        <h2>Inventory Management</h2>
       </div>
+    </div>
+    <div class="row" style="margin: 1em 0">
+      <div class="col-sm-12" style="text-align:right;">
+        <nav class="nav" style="float: right;">
+          <button type="button" class="btn btn-primary" (click)="addInventory()">Add Inventory</button>
+        </nav>
+      </div>
+    </div>
+    <div class="card-body" style="padding: 3px;margin: 1px;">
+      <div class="form-row" style="padding:1px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Inventory</th>
+              <th>Price</th>
+              <th>View</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let inventory of inventoriesDto">
+              <td data-name="Inventory :">{{inventory.productName}}</td>
+              <td data-name="Price :" style="text-align: right"><b>R&nbsp;</b>{{inventory?.price | number :
+                '1.2-2'}}</td>
+              <td data-name="View :">
+                <button type="button" class="btn btn-link pl-1">
+                  <i class="fa fa-edit" aria-hidden="true" style="color: blue;"
+                    (click)="goToEditInventory(inventory)"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <p *ngIf="inventoriesDto.length === 0" style="color: red;text-align:center;margin: 10px;">
+          <b>{{noRecordFound}}</b>
+        </p>
+      </div>
+    </div>
   </div>
-    
+</div>

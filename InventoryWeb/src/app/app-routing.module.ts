@@ -11,6 +11,10 @@ import { StockTakingComponent } from './sales-vendor/stock-taking/stock-taking.c
 import { AllocateComponent } from './supervisor/allocate/allocate.component';
 import { InventoryListComponent } from './supervisor/inventory-list/inventory-list.component';
 import { MonitorStockTakingComponent } from './supervisor/monitor-stock-taking/monitor-stock-taking.component';
+import { InvoiceReportComponent } from './supervisor/reports/invoice-report/invoice-report.component';
+import { ReconcilationReportComponent } from './supervisor/reports/reconcilation-report/reconcilation-report.component';
+import { ReportsComponent } from './supervisor/reports/reports.component';
+import { StockTakingReportComponent } from './supervisor/reports/stock-taking-report/stock-taking-report.component';
 import { UserListComponent } from './supervisor/user-list/user-list.component';
 import { ModifyVendorComponent } from './supervisor/vendor-list/modify-vendor/modify-vendor.component';
 import { VendorListComponent } from './supervisor/vendor-list/vendor-list.component';
@@ -30,6 +34,10 @@ const routes: Routes = [
   { path: 'stock-taking', component: StockTakingComponent, canActivate: [AuthGuard] },
   { path: 'monitor-stock-taking', component: MonitorStockTakingComponent, canActivate: [AuthGuard] },
   { path: 'admin-production', component: AdminProductionComponent, canActivate: [AuthGuard] },
+  { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard] },
+  { path: 'invoice-report', component: InvoiceReportComponent, canActivate: [AuthGuard] },
+  { path: 'reconcilation-report', component: ReconcilationReportComponent, canActivate: [AuthGuard] },
+  { path: 'stock-taking-report', component: StockTakingReportComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent }
 ];
 

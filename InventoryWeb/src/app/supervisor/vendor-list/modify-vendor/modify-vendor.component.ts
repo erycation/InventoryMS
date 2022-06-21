@@ -11,6 +11,7 @@ import { VendorService } from 'src/app/service/ms-inventory/vendor.service';
 import { DialogService } from 'src/app/shared/dialog/dialog.service';
 import { ModalResetParams } from 'src/app/shared/modal-reset-params';
 import { SharedFunction } from 'src/app/shared/shared-function';
+import { LinkInventoryToVendorComponent } from './link-inventory-to-vendor/link-inventory-to-vendor.component';
 
 @Component({
   selector: 'app-modify-vendor',
@@ -58,27 +59,8 @@ export class ModifyVendorComponent extends ModalResetParams implements OnInit {
 
   async addOpeningInventory()
   {
-    
-    if (!SharedFunction.checkUndefinedObjectValue(this.inventoryBalanceDto.inventoryId)) {
-      this.dialogService.openAlertModal(`Alert`,`Inventory required`);
-      return;
-    }
-    else  if (!SharedFunction.checkUndefinedObjectValue(this.inventoryBalanceDto.quantity)) {
-      this.dialogService.openAlertModal(`Alert`,`Quantity required`);
-      return;
-    }
-    else
-    {
-      this.inventoryBalanceService.createInventoryBalance(this.route.snapshot.params.vendorId, this.inventoryBalanceDto).subscribe(
-        data => {         
-          this.dialogService.openSuccessModal(`Successfully`, data.message);
-          this.inventoryBalanceDto.quantity = 0;
-          this.getOpeningInventories();
-        },
-        error => {        
-         this.dialogService.openAlertModal(`Error`, error.error.message);       
-        });
-    }
+    await this.dialogService.openReturnModalService(LinkInventoryToVendorComponent, `Add Inventories`, this.route.snapshot.params.vendorId, () => { });
+    await this.getOpeningInventories();
   }
 
   async listVendors()

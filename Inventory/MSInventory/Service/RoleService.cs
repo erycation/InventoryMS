@@ -31,5 +31,15 @@ namespace MSInventory.Service
             }
             return rolesDto;
         }
+        public List<RoleDto> GetAllNonCustomerRoles()
+        {
+            var rolesDto = new List<RoleDto>();
+            foreach (string role in Enum.GetNames(typeof(UserRoleEnum)))
+            {
+                if (role.ToLower() != "customer")
+                    rolesDto.Add(new RoleDto { RoleName = role });
+            }
+            return rolesDto;
+        }
     }
 }

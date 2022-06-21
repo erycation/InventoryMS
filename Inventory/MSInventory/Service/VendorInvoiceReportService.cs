@@ -1,7 +1,10 @@
 ﻿
 using AspNetCore.Reporting;
+using MSInventory.Model.Dtos;
+using MSInventory.Model.Request;
 using MSInventory.Repository.Interface;
 using MSInventory.Service.Interface;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +21,10 @@ namespace MSInventory.Service
             _vendorInvoiceReportRepository = vendorInvoiceReportRepository;
         }
 
+        public async Task<List<VendorInvoiceItemDto>> GetVendorInvoiceReportByVendorId(Guid vendorId, RequestVendorInvoice requestVendorInvoice)
+        {
+            return await _vendorInvoiceReportRepository.GetVendorInvoiceReportByVendorId(vendorId, requestVendorInvoice.StartDate, requestVendorInvoice.EndDate);
+        }
         public async Task<byte[]> GenerateVendorInvoiceByInvoiceNumber(string invoiceNumber, string reportType)
         {
             string rdlcFilePath = string.Format("wwwroot\\ReportFiles\\VendorInvoice.rdl");

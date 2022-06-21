@@ -22,12 +22,12 @@ export class AddUserComponent extends ModalResetParams implements OnInit {
   userDto = {} as UserDto;
   rolesDto: RoleDto[] = [];
   vendorsDto: VendorDto[] = [];
-  confirmPassword : string;
+  confirmPassword: string;
 
   constructor(public dialogRef: MatDialogRef<AddUserComponent>,
     accountService: AccountService,
     router: Router,
-    private dialogService : DialogService,
+    private dialogService: DialogService,
     private userService: UserService,
     private roleService: RoleService,
     private vendorService: VendorService) {
@@ -37,48 +37,48 @@ export class AddUserComponent extends ModalResetParams implements OnInit {
   }
 
   async ngOnInit() {
-    this.rolesDto = await this.roleService.getAllRoles();
+    this.rolesDto = await this.roleService.getAllNonCustomerRoles();
     this.vendorsDto = await this.vendorService.getAllVendors();
   }
 
-  async closeDialog()
-  {
+  async closeDialog() {
     this.dialogRef.close();
   }
 
-  async saveUser()
-  {
+  async saveUser() {
 
     if (!SharedFunction.checkUndefinedObjectValue(this.userDto.firstname)) {
-      this.dialogService.openAlertModal(`Alert`,`Firstname required`);
+      this.dialogService.openAlertModal(`Alert`, `Firstname required`);
       return;
-    }else if (!SharedFunction.checkUndefinedObjectValue(this.userDto.surname)) {
-      this.dialogService.openAlertModal(`Alert`,`Surname required`);
+    } else if (!SharedFunction.checkUndefinedObjectValue(this.userDto.surname)) {
+      this.dialogService.openAlertModal(`Alert`, `Surname required`);
       return;
-    }else if (!SharedFunction.checkUndefinedObjectValue(this.userDto.username)) {
-      this.dialogService.openAlertModal(`Alert`,`Username required`);
+    } else if (!SharedFunction.checkUndefinedObjectValue(this.userDto.username)) {
+      this.dialogService.openAlertModal(`Alert`, `Username required`);
       return;
-    }else if (!SharedFunction.checkUndefinedObjectValue(this.userDto.password)) {
-      this.dialogService.openAlertModal(`Alert`,`Password required`);
+    } else if (!SharedFunction.checkUndefinedObjectValue(this.userDto.password)) {
+      this.dialogService.openAlertModal(`Alert`, `Password required`);
       return;
-    }else if (this.userDto.password != this.confirmPassword) {
-      this.dialogService.openAlertModal(`Alert`,`Password not same as confirm password`);
+    } else if (this.userDto.password != this.confirmPassword) {
+      this.dialogService.openAlertModal(`Alert`, `Password not same as confirm password`);
       return;
-    }else if (!SharedFunction.checkUndefinedObjectValue(this.userDto.vendorId)) {
-      this.dialogService.openAlertModal(`Alert`,`Vendor required`);
+    } else if (!SharedFunction.checkUndefinedObjectValue(this.userDto.vendorId)) {
+      this.dialogService.openAlertModal(`Alert`, `Vendor required`);
       return;
-    }else if (!SharedFunction.checkUndefinedObjectValue(this.userDto.roleDescription)) {
-      this.dialogService.openAlertModal(`Alert`,`Role required`);
+    } else if (!SharedFunction.checkUndefinedObjectValue(this.userDto.roleDescription)) {
+      this.dialogService.openAlertModal(`Alert`, `Role required`);
       return;
     }
-
+    this.loading = true;
     this.userService.createUser(this.userDto).subscribe(
-      data => {         
+      data => {
+        this.loading = false;
         this.dialogService.openSuccessModal(`Successfully`, data.message);
         this.closeDialog();
       },
-      error => {        
-       this.dialogService.openAlertModal(`Error`, error.error.message);       
+      error => {
+        this.loading = false;
+        this.dialogService.openAlertModal(`Error`, error.error.message);
       });
   }
 }
