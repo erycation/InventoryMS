@@ -44,7 +44,7 @@ namespace MSInventory.Service
 
             parameters.Add("InventoryCertificateId", certificateId.ToString());
 
-            var reconcilationDatasetValues = await _reconcilationReportRepository.GetVendorInvoiceReportByInvoiceNumber(certificateId);
+            var reconcilationDatasetValues = await _reconcilationReportRepository.GetReconReportByCertificateId(certificateId);
 
             report.AddDataSource("DataSet1", reconcilationDatasetValues);
             var result = report.Execute(GetRenderType(reportType), 1, parameters);

@@ -28,7 +28,7 @@ namespace MSInventory.Repository
                                                                        new SqlParameter("@generateById", generateById)).ToList().FirstOrDefault();
         }
 
-        public async Task<List<ReconcilationReportDto>> GetVendorInvoiceReportByInvoiceNumber(Guid inventoryCertificateId)
+        public async Task<List<ReconcilationReportDto>> GetReconReportByCertificateId(Guid inventoryCertificateId)
         {
             return await _inventoryDBContext.ReconcilationReportDtos.FromSqlRaw("sp_getPrevStockTakingByCertificateId @InventoryCertificateId",
                                                                        new SqlParameter("@InventoryCertificateId", inventoryCertificateId)).ToListAsync();
