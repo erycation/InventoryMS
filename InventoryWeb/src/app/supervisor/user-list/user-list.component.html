@@ -35,7 +35,7 @@
               <td data-name="Role :">{{user.roleDescription}}</td>
               <td data-name="Status :">{{user.userStatus}}</td>
               <td data-name="View :">
-                <button type="button" class="btn btn-link pl-1" *ngIf="!supervisorRight(user.roleDescription)">
+                <button type="button" class="btn btn-link pl-1" [disabled]="supervisorRight(user.roleDescription)">
                   <i class="fa fa-edit" aria-hidden="true" style="color: blue;" (click)="modifyUser(user)"></i>
                 </button>
               </td>

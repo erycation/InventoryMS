@@ -2,7 +2,6 @@
     <button mat-raised-button [mat-dialog-close]="true" style="float: right;">Close</button>
     <h2 mat-dialog-title>Add Vendor</h2>
     <mat-dialog-content>
-      <mat-divider></mat-divider>
   
       <div class="card mb-4 shadow-sm pd-5" style="color: black;">
         <div class="card-body">
@@ -13,7 +12,13 @@
                 [(ngModel)]="vendorDto.vendorName">
             </div>            
           </div>
-         
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="inputEmail4">Contact Number</label>
+              <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Contact Number" 
+                [(ngModel)]="vendorDto.contactNumber">
+            </div>            
+          </div>         
           <button  [disabled]="loading" type="button" class="btn btn-outline-success" style="float: right;" (click)="saveVendor()">
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
             Save

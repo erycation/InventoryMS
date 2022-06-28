@@ -76,11 +76,14 @@ export class ModifyVendorComponent extends ModalResetParams implements OnInit {
     }
     else
     {
+      this.loading = true;
       this.vendorService.updateVendor(this.vendorDto).subscribe(
         data => {         
+          this.loading = false;
           this.dialogService.openSuccessModal(`Successfully`, data.message);
         },
-        error => {        
+        error => {    
+          this.loading = false;    
          this.dialogService.openAlertModal(`Error`, error.error.message);       
         });
     }

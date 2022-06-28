@@ -41,7 +41,8 @@
           </div>
           </div>
          
-          <button type="button" class="btn btn-outline-success" style="float: right;" (click)="countAllocateInventory()">
+          <button type="button"  [disabled]="loading" class="btn btn-outline-success" style="float: right;" (click)="countAllocateInventory()">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
             Confirm
           </button>
         </div>

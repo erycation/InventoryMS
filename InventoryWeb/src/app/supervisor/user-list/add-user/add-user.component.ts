@@ -21,6 +21,7 @@ export class AddUserComponent extends ModalResetParams implements OnInit {
 
   userDto = {} as UserDto;
   rolesDto: RoleDto[] = [];
+  vendorDto = {} as VendorDto;
   vendorsDto: VendorDto[] = [];
   confirmPassword: string;
 
@@ -33,12 +34,15 @@ export class AddUserComponent extends ModalResetParams implements OnInit {
     private vendorService: VendorService) {
     super(accountService,
       router);
-
   }
 
   async ngOnInit() {
-    this.rolesDto = await this.roleService.getAllNonCustomerRoles();
-    this.vendorsDto = await this.vendorService.getAllVendors();
+    this.vendorsDto = await this.vendorService.getVendorsManageInventories();
+  }
+
+  async populateRoleByVendorType(value: any) {
+    this.rolesDto = [];
+    this.rolesDto = await this.roleService.getRolesByVendor(value.type);
   }
 
   async closeDialog() {
@@ -47,6 +51,8 @@ export class AddUserComponent extends ModalResetParams implements OnInit {
 
   async saveUser() {
 
+    this.userDto.vendorId = this.vendorDto.vendorId;
+    
     if (!SharedFunction.checkUndefinedObjectValue(this.userDto.firstname)) {
       this.dialogService.openAlertModal(`Alert`, `Firstname required`);
       return;

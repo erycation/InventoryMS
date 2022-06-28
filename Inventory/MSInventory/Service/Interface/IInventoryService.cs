@@ -12,6 +12,5 @@ namespace MSInventory.Service.Interface
         Task<InventoryDto> UpdateInventory(InventoryDto inventoryDto);
         Task<InventoryDto> GetInventoryById(Guid inventoryId);
         Task<List<InventoryDto>> GetAllInventories();
-        Task<List<InventoryToOrderDto>> GetAllInventoriesToOrder();
     }
 }

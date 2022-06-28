@@ -29,10 +29,6 @@ namespace MSInventory.Service
         public async Task<CustomerDto> AddCustomer(CustomerDto customerDto)
         {
 
-            var customerEmail = await _customerRepository.GetAll().FirstOrDefaultAsync(x => x.EmailAddress == customerDto.EmailAddress);
-            if (customerEmail != null)
-                throw new AppException($"Email Address Already Exist.");
-
             var customerPhone = await _customerRepository.GetAll().FirstOrDefaultAsync(x => x.CellphoneNo == customerDto.CellphoneNo);
             if (customerPhone != null)
                 throw new AppException($"Phone Number Already Exist.");

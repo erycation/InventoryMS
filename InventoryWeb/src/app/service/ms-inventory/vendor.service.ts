@@ -15,8 +15,12 @@ export class VendorService {
         return await this.backend.get<VendorDto[]>(`Vendor/GetAll`);
     }
 
-    async getNonWareHouseVendors() {
-        return await this.backend.get<VendorDto[]>(`Vendor/NonWareHouse/All`);
+    async getWarehouseVendors() {
+        return await this.backend.get<VendorDto[]>(`Vendor/Warehouse`);
+    }
+
+    async getVendorsManageInventories() {
+        return await this.backend.get<VendorDto[]>(`Vendor/Manage/Inventories`);
     }
 
     createVendor(vendorDto: VendorDto) {

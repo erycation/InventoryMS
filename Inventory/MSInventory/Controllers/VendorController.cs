@@ -44,10 +44,16 @@ namespace MSInventory.Controllers
             return await _vendorService.GetAllVendors();
         }
 
-        [HttpGet("NonWareHouse/All")]
-        public async Task<ActionResult<List<VendorDto>>> GetNonWarehouseVendors()
+        [HttpGet("Manage/Inventories")]
+        public async Task<ActionResult<List<VendorDto>>> GetVendorsToManageInventories()
         {
-            return await _vendorService.GetNonWarehouseVendors();
+            return await _vendorService.GetVendorsToManageInventories();
+        }
+
+        [HttpGet("Warehouse")]
+        public async Task<ActionResult<List<VendorDto>>> GetWarehouseVendors()
+        {
+            return await _vendorService.GetWarehouseVendors();
         }
     }
 }

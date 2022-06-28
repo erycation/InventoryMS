@@ -32,7 +32,7 @@
               <td data-name="Vendor Name:">{{vendor.vendorName}}</td>
               <td data-name="No OF Inventories :">{{vendor.inventoryInVendor}}</td>
               <td data-name="Select :">
-                <button type="button" class="btn btn-link pl-1" [disabled]="vendor.vendorName == 'Warehouse'">
+                <button type="button" class="btn btn-link pl-1">
                   <i class="fa fa-edit" aria-hidden="true" style="color: blue;" (click)="modifyVendor(vendor)"></i>
                 </button>
               </td>

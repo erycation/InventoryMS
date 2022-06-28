@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { InventoryDto } from 'src/app/model/Dtos/ms-inventory/inventoryDto';
+import { InventoryBalanceDto } from 'src/app/model/Dtos/ms-inventory/inventoryBalanceDto';
 import { InventoryTransactionDto } from 'src/app/model/Dtos/ms-inventory/inventoryTransactionDto';
 import { AccountService } from 'src/app/service/account.service';
+import { InventoryBalanceService } from 'src/app/service/ms-inventory/Inventory-balance.service';
 import { InventoryTransactionService } from 'src/app/service/ms-inventory/inventory-transaction.service';
 import { InventoryService } from 'src/app/service/ms-inventory/inventory.service';
 import { DialogService } from 'src/app/shared/dialog/dialog.service';
@@ -17,19 +19,24 @@ import { SharedFunction } from 'src/app/shared/shared-function';
 export class CaptureInventoryProductionComponent extends ModalResetParams implements OnInit {
 
   inventoryTransactionDto = {} as InventoryTransactionDto;
-  inventoriesDto: InventoryDto[] = [];
+  inventoriesAtVendor: InventoryBalanceDto[] = [];
 
-  constructor(accountService: AccountService,
+  constructor(public dialogRef: MatDialogRef<CaptureInventoryProductionComponent>,
+    accountService: AccountService,
     router: Router,
     private dialogService : DialogService,
-    private inventoryService : InventoryService,
+    private inventoryBalanceService: InventoryBalanceService,
     private inventoryTransactionService: InventoryTransactionService) {
     super(accountService,
       router);
   }
 
   async ngOnInit() {
-      this.inventoriesDto = await this.inventoryService.getAllInventories();
+      this.inventoriesAtVendor = await this.inventoryBalanceService.getOpeningInventoryByVendorId(this.user.vendorId);
+  }
+
+  async closeDialog() {
+    this.dialogRef.close();
   }
 
   numberOnly(event: { which: any; keyCode: any; }): boolean {
@@ -49,12 +56,15 @@ export class CaptureInventoryProductionComponent extends ModalResetParams implem
     }
     else
     {
-      
+      this.loading = true;
       this.inventoryTransactionService.captureTransactionInventoryInToProduction(this.inventoryTransactionDto).subscribe(
-        data => {         
+        data => {   
+          this.loading = false;     
+          this.closeDialog(); 
           this.dialogService.openSuccessModal(`Successfully`, data.message);
         },
-        error => {        
+        error => { 
+          this.loading = false;       
          this.dialogService.openAlertModal(`Error`, error.error.message);       
         });
         

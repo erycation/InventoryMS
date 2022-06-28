@@ -55,6 +55,8 @@ import { InvoiceReportComponent } from './supervisor/reports/invoice-report/invo
 import { ReconcilationReportComponent } from './supervisor/reports/reconcilation-report/reconcilation-report.component';
 import { StockTakingReportComponent } from './supervisor/reports/stock-taking-report/stock-taking-report.component';
 import { LinkInventoryToVendorComponent } from './supervisor/vendor-list/modify-vendor/link-inventory-to-vendor/link-inventory-to-vendor.component';
+import { CheckedOutComponent } from './sales-vendor/customer-list/create-order/checked-out/checked-out.component';
+import { PrintReceiptComponent } from './sales-vendor/customer-list/create-order/print-receipt/print-receipt.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +105,8 @@ import { LinkInventoryToVendorComponent } from './supervisor/vendor-list/modify-
     ReconcilationReportComponent,
     StockTakingReportComponent,
     LinkInventoryToVendorComponent,
+    CheckedOutComponent,
+    PrintReceiptComponent,
   ],
   imports: [
     BrowserModule,

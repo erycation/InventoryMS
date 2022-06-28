@@ -18,6 +18,4 @@ export class ReportService {
     async getExistingStockCountSheetReportByLocation(certificateId :string, locationId : string) {
         return await this.backend.get<StockCountSheetReportDto[]>(`Report/StockCount/Existing/${certificateId}/${locationId}`);
     }
-
-  
 }

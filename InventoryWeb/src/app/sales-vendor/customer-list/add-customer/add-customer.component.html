@@ -1,43 +1,41 @@
-<div class="custom-dialog">
-    <button mat-raised-button [mat-dialog-close]="true" style="float: right;">Close</button>
-    <h2 mat-dialog-title>Customer Management - New</h2>
-    <mat-dialog-content>
-      <mat-divider></mat-divider>
-  
-      <div class="card mb-4 shadow-sm pd-5" style="color: black;">
-        <div class="card-body">
-
-            <div class="form-row">
-               
-                <div class="form-group col-md-6">      
-                    <label for="exampleFormControlTextarea1">FirstName</label>
-                    <input type="text" class="form-control text-left" id="inputEmail4" placeholder="FirstName" 
-                        [(ngModel)]="customerDto.firstName">     
-              </div>
-                <div class="form-group col-md-6">      
-                    <label for="exampleFormControlTextarea1">Surname</label>
-                    <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Surname" 
-                    [(ngModel)]="customerDto.surname"> 
-              </div>
-              </div>
-
-
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1">Email Address</label>
-            <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Email Address" 
-            [(ngModel)]="customerDto.emailAddress">
-          </div>
-
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1">Cellphone Number</label>
-            <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Cellphone Number" 
-            [(ngModel)]="customerDto.cellphoneNo">
-          </div>
-         
-          <button type="button" class="btn btn-outline-success" style="float: right;" (click)="saveCustomer()">
-            Save
-          </button>
+<div class="container" style="padding: 0px;">
+  <div class="card mb-4 shadow-sm pd-5 cardContentStyle" style="border: solid 1px #6b84ab;">
+    <div class="row subHeader" style="padding: 0px;margin: 0px;text-align: center;">
+      <div class="col-md-12" style="text-align: center;">
+        <h2>Register Customer</h2>
+      </div>
+    </div>
+    <div class="card-body" style="padding: 3px;margin: 1px;">
+      <br />
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="exampleFormControlTextarea1">FirstName</label>
+          <input type="text" class="form-control text-left" id="inputEmail4" placeholder="FirstName"
+            [(ngModel)]="customerDto.firstName">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="exampleFormControlTextarea1">Surname</label>
+          <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Surname"
+            [(ngModel)]="customerDto.surname">
         </div>
       </div>
-    </mat-dialog-content>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Email Address</label>
+        <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Email Address"
+          [(ngModel)]="customerDto.emailAddress">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Cellphone Number</label>
+        <input type="text" class="form-control text-left" id="inputEmail4" (keypress)="numberOnly($event)"
+          placeholder="Cellphone Number" [(ngModel)]="customerDto.cellphoneNo">
+      </div>
+      <div class="form-group">
+        <button [disabled]="loading" type="button" class="btn btn-outline-success" style="float: right;"
+          (click)="saveCustomer()">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Register Customer
+        </button>
+      </div>
+    </div>
   </div>
+</div>

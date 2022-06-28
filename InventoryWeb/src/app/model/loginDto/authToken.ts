@@ -11,5 +11,6 @@ export interface AuthToken {
     roleDescription?: string | undefined;
     vendorId: string;
     vendorName?: string | undefined;
+    vendorType?: string | undefined;
 }
 

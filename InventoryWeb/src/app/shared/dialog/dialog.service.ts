@@ -106,4 +106,31 @@ export class DialogService {
       return Promise.resolve(dialogConfig.data.results);
     });  
   }
+
+
+async openPrintSlipModalService(component : any, title:string, message:any, yes:Function = null, no:Function = null) {
+  const dialogConfig = new MatDialogConfig();
+
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+  dialogConfig.data = {
+      title: title,
+      message:message,
+      results:null
+  };
+
+  dialogConfig.position = {
+    'top': '2'
+  };
+
+  dialogConfig.minWidth = 350;
+
+  const dialogRef = this.dialog.open(component , dialogConfig);
+
+  return dialogRef.afterClosed()
+  .toPromise()
+  .then(result => {
+    return Promise.resolve(dialogConfig.data.results);
+  });  
+}
 }

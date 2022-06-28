@@ -55,17 +55,6 @@ namespace MSInventory.Service
             var inventory = await _inventoryRepository.GetAll().FirstOrDefaultAsync(x => x.Id == inventoryId);
             return new InventoryDto(inventory);
         }
-
-        public async Task<List<InventoryToOrderDto>> GetAllInventoriesToOrder()
-        {
-            var InventoriesToOrderDto = new List<InventoryToOrderDto>();
-            var inventories = await _inventoryRepository.GetAll().ToListAsync();
-            foreach (var inventory in inventories)
-            {
-                InventoriesToOrderDto.Add(new InventoryToOrderDto(inventory));
-            }
-            return InventoriesToOrderDto;
-        }
         
         public async Task<InventoryDto> UpdateInventory(InventoryDto inventoryDto)
         {

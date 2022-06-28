@@ -31,7 +31,7 @@ export class VendorListComponent extends ModalResetParams implements OnInit {
 
   async loadVendors()
   {
-    this.vendorsDto = await this.vendorService.getAllVendors();
+    this.vendorsDto = await this.vendorService.getVendorsManageInventories();
   }
 
   async addVendor()

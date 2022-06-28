@@ -27,7 +27,7 @@ export class AddVendorComponent extends ModalResetParams implements OnInit {
   }
 
   async ngOnInit() {
-
+    
   }
 
   async closeDialog() {

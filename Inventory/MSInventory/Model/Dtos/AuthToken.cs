@@ -16,5 +16,6 @@ namespace MSInventory.Model.Dtos
         public string RoleDescription { get; set; }
         public Guid VendorId { get; set; }
         public string VendorName { get; set; }
+        public string VendorType { get; set; }
     }
 }

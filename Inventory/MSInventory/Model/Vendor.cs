@@ -22,7 +22,9 @@ namespace MSInventory.Model
         }
 
         public string Name { get; set; }
-        public string Code { get; set; }        
+        public string Code { get; set; }
+        public string ContactNumber { get; set; }
+        public string Type { get; set; }
         public virtual ICollection<User> Users { get; set; }
         public virtual ICollection<VendorLocation> VendorLocations { get; set; }
         public virtual ICollection<ExpectedInventory> ExpectedInventories { get; set; }

@@ -57,7 +57,7 @@
       .table {
           width: 100%;
           border-collapse: collapse;
-          text-align: center;
+          text-align: left;
       }
 
       @media(max-width: 500px) {
@@ -107,6 +107,7 @@
 .cardContentStyle
 {
   border: solid 1px #6b84ab;
+
 }
     
  .subHeader

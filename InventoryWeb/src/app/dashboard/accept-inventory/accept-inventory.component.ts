@@ -21,17 +21,20 @@ export class AcceptInventoryComponent extends ModalResetParams implements OnInit
 
   constructor(accountService: AccountService,
     router: Router,
-    @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogService : DialogService,
     private userService : UserService,
     private inventoryTransactionService: InventoryTransactionService) {
     super(accountService,
       router);
-      this.inventoryTransactionDto = data.message;
   }
 
   async ngOnInit() {
+    await this.loadInventoryWaitingForAccepted();
+  }
 
+  async loadInventoryWaitingForAccepted()
+  {
+    this.inventoryTransactionDto = await this.inventoryTransactionService.getInventoriesAwaitingToAcceptByVendor(this.user.vendorId);
   }
 
   async selectToAcceptInventoryTransaction(inventoryTransactionDto : InventoryTransactionDto)
@@ -57,13 +60,16 @@ export class AcceptInventoryComponent extends ModalResetParams implements OnInit
       return;
     }else
     {
-      
+      this.loading = true;
         this.inventoryTransactionService.acceptTransactionInventoryInToVendor(this.acceptedTransactionDto, this.user.vendorId, this.user.userId).subscribe(
-          data => {         
+          async data => {      
+            this.loading = false;   
             this.dialogService.openSuccessModal(`Successfully`, data.message);
+             await this.loadInventoryWaitingForAccepted();
           },
-          error => {        
-          this.dialogService.openAlertModal(`Error`, error.error.message);       
+          error => {     
+            this.loading = false;   
+            this.dialogService.openAlertModal(`Error`, error.error.message);       
           });
     }
   }

@@ -3,6 +3,7 @@
 using MSInventory.Model;
 using MSInventory.Model.Dtos;
 using Microsoft.EntityFrameworkCore;
+using MSInventory.Shared.Utils;
 
 namespace MSInventory.Shared
 {
@@ -17,8 +18,12 @@ namespace MSInventory.Shared
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<StockCountSheetReportDto>().HasNoKey();
+            modelBuilder.Entity<StockTakingDto>().HasNoKey();            
             modelBuilder.Entity<VendorInvoiceReportDto>().HasNoKey();
-            modelBuilder.Entity<VendorInvoiceItemDto>().HasNoKey();            
+            modelBuilder.Entity<VendorInvoiceItemDto>().HasNoKey();
+            modelBuilder.Entity<InventoryInStockDto>().HasNoKey();
+            modelBuilder.Entity<ReconcilationReportDto>().HasNoKey();
+            modelBuilder.Entity<ReturnResult>().HasNoKey();            
         }
 
         public virtual DbSet<User> Users { get; set; }
@@ -33,9 +38,13 @@ namespace MSInventory.Shared
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderItem> OrderItems { get; set; }
+        public virtual DbSet<StockTakingDto> StockTakingDtos { get; set; }
         public virtual DbSet<StockCountSheetReportDto> StockCountSheetReportDtos { get; set; }
         public virtual DbSet<VendorInvoiceReportDto> VendorInvoiceReportDtos { get; set; }
         public virtual DbSet<VendorInvoiceItemDto> VendorInvoiceItemDtos { get; set; }
+        public virtual DbSet<InventoryInStockDto> InventoryInStockDtos { get; set; }
+        public virtual DbSet<ReconcilationReportDto> ReconcilationReportDtos { get; set; }
+        public virtual DbSet<ReturnResult> ReturnResults { get; set; }
         
     }
 }

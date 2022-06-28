@@ -22,7 +22,8 @@
             </div>            
           </div>
          
-          <button type="button" class="btn btn-outline-success" style="float: right;" (click)="updateInventory()">
+          <button type="button" [disabled]="loading" class="btn btn-outline-success" style="float: right;" (click)="updateInventory()">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
             Update
           </button>
         </div>

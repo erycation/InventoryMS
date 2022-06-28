@@ -21,6 +21,7 @@ export class ModifyUserComponent extends ModalResetParams implements OnInit {
 
   userDto = {} as UserDto;
   rolesDto: RoleDto[] = [];
+  vendorDto = {} as VendorDto;
   vendorsDto: VendorDto[] = [];
   confirmPassword : string;
 
@@ -38,8 +39,14 @@ export class ModifyUserComponent extends ModalResetParams implements OnInit {
   }
 
   async ngOnInit() {
-    this.rolesDto = await this.roleService.getAllRoles();
-    this.vendorsDto = await this.vendorService.getAllVendors();
+    this.vendorsDto = await this.vendorService.getVendorsManageInventories();
+    this.vendorDto = this.vendorsDto.find(v => v.vendorId == this.userDto.vendorId);
+    this.rolesDto = await this.roleService.getRolesByVendor(this.vendorDto.type);
+  }
+
+  async populateRoleByVendorType(value: any) {
+    this.rolesDto = [];
+    this.rolesDto = await this.roleService.getRolesByVendor(value.type);
   }
 
   async closeDialog()
@@ -49,6 +56,8 @@ export class ModifyUserComponent extends ModalResetParams implements OnInit {
 
   async saveUser()
   {
+
+    this.userDto.vendorId = this.vendorDto.vendorId;
 
     if (!SharedFunction.checkUndefinedObjectValue(this.userDto.firstname)) {
       this.dialogService.openAlertModal(`Alert`,`Firstname required`);
@@ -66,13 +75,15 @@ export class ModifyUserComponent extends ModalResetParams implements OnInit {
       this.dialogService.openAlertModal(`Alert`,`Role required`);
       return;
     }
-
+    this.loading = true;
     this.userService.updateUser(this.userDto).subscribe(
       data => {         
+        this.loading = false;
         this.dialogService.openSuccessModal(`Successfully`, data.message);
         this.closeDialog();
       },
-      error => {        
+      error => {     
+        this.loading = false;   
        this.dialogService.openAlertModal(`Error`, error.error.message);       
       });
   }

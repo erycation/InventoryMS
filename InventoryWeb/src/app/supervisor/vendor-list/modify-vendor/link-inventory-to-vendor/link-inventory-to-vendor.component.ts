@@ -51,13 +51,16 @@ export class LinkInventoryToVendorComponent extends ModalResetParams implements 
     }
     else
     {
+      this.loading = true;
       this.inventoryBalanceDto.quantity = 0;
       this.inventoryBalanceService.createInventoryBalance(this.vendorId, this.inventoryBalanceDto).subscribe(
         data => {
+          this.loading = false;
           this.dialogService.openSuccessModal(`Successfully`, data.message);
           this.closeDialog();
         },
         error => {
+          this.loading = false;
           this.dialogService.openAlertModal(`Error`, error.error.message);
         });
     }

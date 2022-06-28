@@ -3,8 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminProductionComponent } from './admin-production/admin-production.component';
 import { CountInventoryComponent } from './admin/count-inventory/count-inventory.component';
 import { SendToVendorComponent } from './admin/count-inventory/send-to-vendor/send-to-vendor.component';
+import { AcceptInventoryComponent } from './dashboard/accept-inventory/accept-inventory.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { AddCustomerComponent } from './sales-vendor/customer-list/add-customer/add-customer.component';
 import { CreateOrderComponent } from './sales-vendor/customer-list/create-order/create-order.component';
 import { CustomerListComponent } from './sales-vendor/customer-list/customer-list.component';
 import { StockTakingComponent } from './sales-vendor/stock-taking/stock-taking.component';
@@ -29,6 +31,7 @@ const routes: Routes = [
   { path: 'user-list', component: UserListComponent, canActivate: [AuthGuard] },
   { path: 'count-inventory', component: CountInventoryComponent, canActivate: [AuthGuard] },
   { path: 'customer-list', component: CustomerListComponent, canActivate: [AuthGuard] },
+  { path: 'add-customer', component: AddCustomerComponent, canActivate: [AuthGuard] },
   { path: 'create-order/:customerId', component: CreateOrderComponent, canActivate: [AuthGuard] },
   { path: 'send-inventory-vendor', component: SendToVendorComponent, canActivate: [AuthGuard] },
   { path: 'stock-taking', component: StockTakingComponent, canActivate: [AuthGuard] },
@@ -38,6 +41,8 @@ const routes: Routes = [
   { path: 'invoice-report', component: InvoiceReportComponent, canActivate: [AuthGuard] },
   { path: 'reconcilation-report', component: ReconcilationReportComponent, canActivate: [AuthGuard] },
   { path: 'stock-taking-report', component: StockTakingReportComponent, canActivate: [AuthGuard] },
+  { path: 'accept-inventory', component: AcceptInventoryComponent, canActivate: [AuthGuard] },
+  
   { path: 'login', component: LoginComponent }
 ];
 

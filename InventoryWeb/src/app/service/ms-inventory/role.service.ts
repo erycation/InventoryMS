@@ -15,6 +15,10 @@ export class RoleService {
         return await this.backend.get<RoleDto[]>(`Role/GetAll`);
     }
 
+    async getRolesByVendor(vendorType: string) {
+        return await this.backend.get<RoleDto[]>(`Role/Get/${vendorType}`);
+    }
+
     async getAllNonCustomerRoles() {
         return await this.backend.get<RoleDto[]>(`Role/NonCustomer/All`);
     }

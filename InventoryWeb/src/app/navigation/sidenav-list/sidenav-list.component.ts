@@ -44,8 +44,6 @@ export class SidenavListComponent implements OnInit {
     return this.user?.roleDescription != null ? this.user?.roleDescription?.toLocaleLowerCase() == 'sales' : true? false : false;
   }
 
-  
-  
   public onSidenavClose = () => {
     this.sidenavClose.emit();
   }

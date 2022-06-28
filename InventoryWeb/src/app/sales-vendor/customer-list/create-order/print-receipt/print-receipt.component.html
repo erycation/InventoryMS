@@ -1,0 +1,63 @@
+<div class="custom-dialog">
+    <button mat-raised-button [mat-dialog-close]="true" style="float: right;">Close</button>
+    <h2 mat-dialog-title>Receipt</h2>
+
+    <br />
+
+    <div class="card-body" style="padding: 0px;margin:0px;">
+
+        <div class="row" style="text-align: right;" style="padding: 2px;margin:0px;">
+            <div class="col-4" style="text-align: left;">
+                <b>Name : </b>
+            </div>
+            <div class="col-8" style="text-align: left;text-transform: uppercase;">
+                <b>{{printOrderSlipDto.customerFirstName}} {{printOrderSlipDto.customerSurname}}</b>
+            </div>
+        </div>
+        <div class="row" style="text-align: right;" style="padding: 2px;margin:0px;">
+            <div class="col-4" style="text-align: left;">
+                <b>Date : </b>
+            </div>
+            <div class="col-8" style="text-align: left;">
+                <b>{{dateOrder | date:'MMM d, y, h:mm:ss a'}}</b>
+            </div>
+        </div>
+
+        <div class="row" style="text-align: right;" style="padding: 5px;margin:0px;border-bottom: 1px solid;">
+            <div class="col-6" style="text-align: left;">
+                <b>Product</b>
+            </div>
+            <div class="col-2" style="text-align: left;">
+                <b>Qty</b>
+            </div>
+            <div class="col-4" style="text-align: left;">
+                <b>Amount</b>
+            </div>
+        </div>
+
+        <div class="row" style="text-align: right;" style="padding: 5px;margin:0px;border-bottom: 1px dotted"
+            *ngFor="let customerOrder of printOrderSlipDto.customerOrderItemToBePlacedDto">
+            <div class="col-6" style="text-align: left;">
+                {{customerOrder.inventoryName}}
+            </div>
+            <div class="col-2" style="text-align: left;">
+                {{customerOrder.quantity}}
+            </div>
+            <div class="col-4" style="text-align: left;">
+                R {{customerOrder.amount | number : '1.2-2'}}
+            </div>
+        </div>
+    </div>
+    <div class="col" style="text-align: right;padding: 5px">
+        <br />
+        <b>Total : R {{printOrderSlipDto.totalOrderPrice | number : '1.2-2'}}</b>
+        <br />
+    </div>
+
+    <div class="col">
+        <button type="button" [disabled]="loading" class="btn btn-outline-primary btn-block" (click)="confirmOrderPrintReceipt()">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Print Receipt
+        </button>
+    </div>
+</div>

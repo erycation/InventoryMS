@@ -14,4 +14,8 @@ export class InventoryCertificateService {
     async getAllInventoryCertificateByVendorId(vendorId : string) {
         return await this.backend.get<InventoryCertificateDto[]>(`InventoryCertificate/GetAll/${vendorId}`);
     }
-}
+
+    async getHistoryInventoryCertificateByVendorId(params: any) {
+        return await this.backend.get<InventoryCertificateDto[]>(`InventoryCertificate/History`, params);
+    }
+ }

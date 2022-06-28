@@ -28,6 +28,10 @@ export class AddCustomerComponent extends ModalResetParams implements OnInit {
 
   }
 
+  numberOnly(event: { which: any; keyCode: any; }): boolean {
+    return SharedFunction.numberOnly(event);
+  }
+
   async saveCustomer()
   {
 
@@ -38,17 +42,20 @@ export class AddCustomerComponent extends ModalResetParams implements OnInit {
       this.dialogService.openAlertModal(`Alert`,`Surname required`);
       return;
     }else if (!SharedFunction.checkUndefinedObjectValue(this.customerDto.emailAddress)) {
-      this.dialogService.openAlertModal(`Alert`,`Email Address required`);
-      return;
+      this.customerDto.emailAddress = 'noemail@m2esolution.com';
     }else if (!SharedFunction.checkUndefinedObjectValue(this.customerDto.cellphoneNo)) {
       this.dialogService.openAlertModal(`Alert`,`Cellphone required`);
       return;
     }
+    this.loading = true;
     this.customerService.createCustomer(this.customerDto).subscribe(
-      data => {         
+      data => {     
+        this.loading = false;    
         this.dialogService.openSuccessModal(`Successfully`, data.message);
+        this.goToPageOneParams('create-order',data.data.customerId);
       },
-      error => {        
+      error => {  
+        this.loading = false;      
        this.dialogService.openAlertModal(`Error`, error.error.message);       
       });
   }

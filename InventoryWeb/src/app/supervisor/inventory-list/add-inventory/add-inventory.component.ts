@@ -48,12 +48,15 @@ export class AddInventoryComponent extends ModalResetParams implements OnInit {
     }
     else
     {
+      this.loading = true;
       this.inventoryService.createInventory(this.inventoryDto).subscribe(
         data => {         
           this.dialogService.openSuccessModal(`Successfully`, data.message);
+          this.loading = false;
           this.closeDialog();          
         },
-        error => {        
+        error => {     
+          this.loading = false;   
          this.dialogService.openAlertModal(`Error`, error.error.message);       
         });
     }

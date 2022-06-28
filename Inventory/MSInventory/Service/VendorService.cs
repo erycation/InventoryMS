@@ -5,6 +5,7 @@ using MSInventory.Model;
 using MSInventory.Model.Dtos;
 using MSInventory.Repository.Interface;
 using MSInventory.Service.Interface;
+using MSInventory.Shared.Enum;
 using MSInventory.Shared.Helpers;
 using System;
 using System.Collections.Generic;
@@ -27,14 +28,15 @@ namespace MSInventory.Service
 
         public async Task<VendorDto> AddVendor(VendorDto vendorDto)
         {
-
             var branchResults = await _vendorRepository.GetAll().AsNoTracking().FirstOrDefaultAsync(b => b.Name.Replace(" ", String.Empty) == vendorDto.VendorName.Replace(" ", String.Empty));
             if (branchResults != null)
                 throw new AppException($"Vendor {vendorDto.VendorName} Already Exist");
 
             var requestBranch = new Vendor
             {
-                Name = vendorDto.VendorName
+                Name = vendorDto.VendorName,
+                ContactNumber = vendorDto.ContactNumber,
+                Type = VendorTypeEnum.Vendor.ToString()
             };
 
             var responseBranch = await _vendorRepository.AddAsync(requestBranch);
@@ -63,7 +65,10 @@ namespace MSInventory.Service
             var requestVendor = new Vendor
             {
                 Id = vendorDto.VendorId,
-                Name = vendorDto.VendorName
+                Name = vendorDto.VendorName,
+                ContactNumber = vendorDto.ContactNumber,
+                Type = vendorDto.Type
+
             };
 
             var responseBranch = await _vendorRepository.UpdateAsync(requestVendor);
@@ -91,15 +96,33 @@ namespace MSInventory.Service
             return vendorsDto;
         }
 
-        public async Task<List<VendorDto>> GetNonWarehouseVendors()
+        public async Task<List<VendorDto>> GetVendorsToManageInventories()
         {
+            var vendorTypes = new List<string>() { VendorTypeEnum.Warehouse.ToString(),
+                                                   VendorTypeEnum.Production.ToString(),
+                                                   VendorTypeEnum.Vendor.ToString() };
+
             var vendorsDto = new List<VendorDto>();
-            var vendors = await _vendorRepository.GetAll().Where(v => v.Name.ToLower() != "warehouse").ToListAsync();
+            var vendors = await _vendorRepository.GetAll().Where(v => vendorTypes.Contains(v.Type)).ToListAsync();
             foreach (var vendor in vendors)
             {
                 vendorsDto.Add(new VendorDto(vendor));
             }
             return vendorsDto;
         }
+
+        public async Task<List<VendorDto>> GetWarehouseVendors()
+        {
+            var vendorTypes = new List<string>() { VendorTypeEnum.Warehouse.ToString()};
+
+            var vendorsDto = new List<VendorDto>();
+            var vendors = await _vendorRepository.GetAll().Where(v => vendorTypes.Contains(v.Type)).ToListAsync();
+            foreach (var vendor in vendors)
+            {
+                vendorsDto.Add(new VendorDto(vendor));
+            }
+            return vendorsDto;
+        }
+
     }
 }

@@ -105,9 +105,14 @@ namespace MSInventory
             services.AddScoped<IInventoryBalanceService, InventoryBalanceService>();
             services.AddScoped<IVendorInvoiceReportRepository, VendorInvoiceReportRepository>();
             services.AddScoped<IVendorInvoiceReportService, VendorInvoiceReportService>();
+            services.AddScoped<IStockTakingRepository, StockTakingRepository>();
+            services.AddScoped<IStockTakingService, StockTakingService>();
+            services.AddScoped<IInventoryInStockRepository, InventoryInStockRepository>();
+            services.AddScoped<IInventoriesInStockService, InventoriesInStockService>();
+            services.AddScoped<IReconcilationReportService, ReconcilationReportService>();
+            services.AddScoped<IReconcilationReportRepository, ReconcilationReportRepository>();
 
-         
-            //InventoryBalanceRepository : Repository<InventoryBalance>, IInventoryBalanceRepository
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

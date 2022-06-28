@@ -1,42 +1,49 @@
-<div class="custom-dialog">
-    <button mat-raised-button [mat-dialog-close]="true" style="float: right;">Close</button>
-    <h2 mat-dialog-title>Accept Inventory</h2>
-    <mat-dialog-content>
-      <mat-divider></mat-divider>
-  
-      <div class="card mb-4 shadow-sm pd-5" style="color: black;">
-        <div class="card-body">
-         
-            <div class="form-row">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>From</th>
-                      <th>ProcessedBy</th>
-                      <th>Name</th>
-                      <th>Quantity</th>
-                      <th>Select</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let inventory of inventoryTransactionDto">
-                      <td data-name="From :">{{inventory.locationVendorName}}</td>
-                      <td data-name="ProcessedBy :">{{inventory.userPerocessed}}</td>
-                      <td data-name="Name :">{{inventory.inventoryName}}</td>
-                      <td data-name="Quantity :">{{inventory.quantity}}</td>
-                      <td data-name="Select :">
-                        <mat-checkbox (change)="selectToAcceptInventoryTransaction(inventory)">
-                        </mat-checkbox>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-         
-          <button type="button" class="btn btn-outline-success" style="float: right;" (click)="acceptInventoyryInVendor()">
-            Accept
-          </button>
-        </div>
-      </div>
-    </mat-dialog-content>
+<div class="container" style="padding: 0px;">
+  <div class="card mb-4 shadow-sm pd-5 cardContentStyle" style="border: solid 1px #6b84ab;">
+    <div class="row subHeader" style="padding: 0px;margin: 0px;text-align: center;">
+      <div class="col-md-12" style="text-align: center;">
+          <h2>Accept Inventories</h2>
+      </div>           
   </div>
+    <div class="card-body" style="padding: 3px;margin: 1px;">
+      <div class="form-row" style="padding:1px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>From</th>
+              <th>ProcessedBy</th>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Select</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let inventory of inventoryTransactionDto">
+              <td data-name="From :">{{inventory.locationVendorName}}</td>
+              <td data-name="ProcessedBy :">{{inventory.userPerocessed}}</td>
+              <td data-name="Name :">{{inventory.inventoryName}}</td>
+              <td data-name="Quantity :">{{inventory.quantity}}</td>
+              <td data-name="Select :">
+                <mat-checkbox (change)="selectToAcceptInventoryTransaction(inventory)">
+                </mat-checkbox>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <p *ngIf="inventoryTransactionDto.length === 0" style="color: red;text-align:center;margin: 10px;">
+          <b>{{noRecordFound}}</b>
+        </p>
+      </div>
+      <button type="button" *ngIf="inventoryTransactionDto.length != 0" [disabled]="loading" class="btn btn-outline-success" style="float: right;" (click)="acceptInventoyryInVendor()">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Accept Inventories
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+

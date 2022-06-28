@@ -31,6 +31,30 @@ namespace MSInventory.Service
             }
             return rolesDto;
         }
+
+        public List<RoleDto> GetAllRolesByVendorType(string vendorType)
+        {
+            var rolesDto = new List<RoleDto>();
+
+            if (vendorType == VendorTypeEnum.Vendor.ToString())
+            {
+                rolesDto.Add(new RoleDto { RoleName = UserRoleEnum.Sales.ToString() });
+            }
+
+            if (vendorType == VendorTypeEnum.Production.ToString())
+            {
+                rolesDto.Add(new RoleDto { RoleName = UserRoleEnum.AdminProduction.ToString() });
+            }
+
+            if (vendorType == VendorTypeEnum.Warehouse.ToString())
+            {
+                rolesDto.Add(new RoleDto { RoleName = UserRoleEnum.Admin.ToString() });
+                rolesDto.Add(new RoleDto { RoleName = UserRoleEnum.Supervisor.ToString() });
+            }
+
+            return rolesDto;
+        }
+
         public List<RoleDto> GetAllNonCustomerRoles()
         {
             var rolesDto = new List<RoleDto>();

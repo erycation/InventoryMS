@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MSInventory.Model.Dtos;
+using MSInventory.Model.Request;
 using MSInventory.Service.Interface;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,12 @@ namespace MSInventory.Controllers
         public async Task<ActionResult<List<InventoryCertificateDto>>> GetAllInventoryCertificateByVendorId(Guid vendorId)
         {
             return await _inventoryCertificateService.GetAllInventoryCertificateByVendorId(vendorId);
+        }
+
+        [HttpGet("History")]
+        public async Task<ActionResult<List<InventoryCertificateDto>>> GetHistoryInventoryCertificateByVendorId([FromQuery] RequestHistoryInventoryCertificate requestHistoryInventoryCertificate)
+        {
+            return await _inventoryCertificateService.GetHistoryInventoryCertificateByVendorId(requestHistoryInventoryCertificate);
         }
     }
 }

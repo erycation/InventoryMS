@@ -44,7 +44,7 @@ export class CreateInventoryComponent extends ModalResetParams implements OnInit
 
   async ngOnInit() {
       this.usersDto = await this.userService.getAdminUsers();
-      this.vendorsDto = await this.vendorService.getNonWareHouseVendors();
+      this.vendorsDto = await this.vendorService.getVendorsManageInventories();
       this.inventoriesDto = await this.inventoryService.getAllInventories();
   }
 

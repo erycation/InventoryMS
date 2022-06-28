@@ -1,95 +1,60 @@
-<div class="row subHeader" style="padding-left: 10px;">
-  <h2>Order For {{customerDto.fullnames}}</h2>
-</div>
+<div class="container" style="padding: 0px;">
+  <div class="card mb-4 shadow-sm pd-5 cardContentStyle" style="border: solid 1px #6b84ab;">
+    <div class="row subHeader" style="padding: 0px;margin: 0px;text-align: center;">
+      <div class="col-md-12" style="text-align: center;text-transform: uppercase;">
+        <h2>Checkout : {{customerDto.fullnames}} - {{customerDto.cellphoneNo}}</h2>
+      </div>
+    </div>
 
-<div class="container">
-  <div class="card mb-4 shadow-sm pd-5">
+    <div class="card-body" style="padding: 5px;margin: 1px;">
+      <div class="form-row" style="text-align: center;padding: 10px;">
+        <div class="col" style="text-align: left;">
+          <b>Total : R {{totalOrderPrice | number : '1.2-2'}}</b>
+        </div>
+        <div class="col"> </div>
+        <div class="col" style="text-align: right;">
+          <button type="button" class="btn btn-outline-success btn-block" (click)="checkedOut()">
+            <mat-icon>shopping_cart</mat-icon>&nbsp;&nbsp;CHECKOUT
+            <span class="badge">{{totalQuantityToOrder}}</span>
+          </button>
+        </div>
+      </div>
 
-    <div class="card-body">
-      <ul ngbNav #nav="ngbNav" class="nav-tabs">
-        <li [ngbNavItem]="1">
-          <a ngbNavLink>Create Order</a>
-          <ng-template ngbNavContent>
-            <div class="form-row">
-              <div class="form-group col-md-5">
-                <label for="inputEmail4">Inventory</label>
-                <select [(ngModel)]="inventoryDto" class="form-control text-left" placeholder="Select Inventory">
-                  <option *ngFor="let item of inventoriesDto" [ngValue]="item">
-                    {{item.productName}}
-                  </option>
-                </select>
+      <div class="form-row" style="overflow-y: auto">
+        <div class="col-md-4 col-xl-4" style="padding: 4px;" *ngFor="let inventoryInStock of inventoriesInStockDto">
+          <div class="card bg-c-white order-card" style="color: black;">
+            <img src="{{inventoryInStock.imageUrl}}" />
+            <div class="row" style="text-align: center;margin: 2px;">
+              <div class="col">
+                <b style="color: blue;  text-transform: uppercase;">{{inventoryInStock.productName}}</b>
               </div>
-              <div class="form-group col-md-2">
-                <label for="inputEmail4">Quantity</label>
-                <input type="text" class="form-control text-left" id="inputEmail4" placeholder="Quantity"
-                  (keypress)="numberOnly($event)" [(ngModel)]="customerOrderToBePlacedItem.quantity">
-              </div>
-              <div class="form-group col-md-3"><br />
-                <button type="button" class="btn btn-outline-success" (click)="addCustomerItemToOrder()">Add
-                  Item</button>
-              </div>
-              <div class="form-group col-md-2"></div>
             </div>
-
-            <mat-card class="example-card">
-              <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
-              </mat-card-header>
-              <mat-card-content>
-                <div class="form-row" style="border-bottom:solid 1px black">               
-                <div class="form-group col-md-5">
-                 <b> Description</b>
-                </div>
-                <div class="form-group col-md-2">
-                  <b> Quantity</b>
-                </div>
-                <div class="form-group col-md-2">
-                  <b>Amount</b>
-                </div>
-                <div class="form-group col-md-3">
-                  <b> Remove</b>
-                </div>
+            <div class="row" style="text-align: center;margin: 2px;">
+              <div class="col">
+                <b style="color: red;">R {{inventoryInStock.price | number : '1.2-2'}}</b>
               </div>
-                <div class="form-row" style="padding: 5px"
-                  *ngFor="let inventory of customerOrdersToBePlacedItemsDto; let indexOfelement=index;">
-                  <div class="form-group col-md-5">
-                    {{inventory.inventoryName}}
-                  </div>
-                  <div class="form-group col-md-2">
-                    {{inventory.quantity}}
-                  </div>
-                  <div class="form-group col-md-2">
-                    R 0.00
-                  </div>
-                  <div class="form-group col-md-3">
-                    <button type="button" class="btn btn-outline-danger" (click)="removeItem(indexOfelement)">
-                      Remove</button>
-                  </div>
-                  
-                </div>
-              </mat-card-content>
-              <mat-card-actions>
-                <div class="form-row">
-                  <div class="form-group col-md-10">
-                  </div>
-                  <div class="form-group col-md-2">
-                    <button type="button" class="btn btn-outline-success" (click)="checkoutInventory()">
-                      CheckOut</button>
-                  </div>
-                </div>
-              </mat-card-actions>
-            </mat-card>
-          </ng-template>
-        </li>
-        <li [ngbNavItem]="2">
-          <a ngbNavLink>History</a>
-          <ng-template ngbNavContent>
-            <p>Customer History</p>
-          </ng-template>
-        </li>
-      </ul>
-      <br />
-      <div [ngbNavOutlet]="nav" class="tabContentStyle"></div>
+            </div>
+            <div class="row" style="text-align: center;margin: 2px;">
+              <div class="col">
+                <button type="button" class="btn btn-outline-primary btn-block"
+                  (click)="removeQuantityToCart(inventoryInStock)">
+                  <mat-icon>remove</mat-icon>
+                </button>
+              </div>
+              <div class="col">
+                <button type="button" class="btn btn-secondary btn-block">
+                  {{inventoryInStock.inventoryQuantity}}
+                </button>
+              </div>
+              <div class="col">
+                <button type="button" class="btn btn-outline-success btn-block"
+                  (click)="addQuantityToCart(inventoryInStock)">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>

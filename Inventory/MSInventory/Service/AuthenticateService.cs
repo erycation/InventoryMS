@@ -45,6 +45,7 @@ namespace MSInventory.Service
                 authToken.RoleDescription = userResponse.RoleDescription;
                 authToken.VendorId = userResponse.Vendor.Id;
                 authToken.VendorName = userResponse.Vendor.Name;
+                authToken.VendorType = userResponse.Vendor.Type;                
                 authToken.Token = _authManager.Authenticate(credentials.Username);
             }
 

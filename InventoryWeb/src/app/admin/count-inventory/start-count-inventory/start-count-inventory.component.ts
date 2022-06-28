@@ -52,12 +52,15 @@ export class StartCountInventoryComponent extends ModalResetParams implements On
       return;
     }
 
+    this.loading = true;
     this.expectedInventoryService.countExpectedInventory(this.expectedInventoryDto).subscribe(
-      data => {         
+      data => {  
+        this.loading = false;       
         this.dialogService.openSuccessModal(`Successfully`, data.message);
         this.closeDialog();   
       },
-      error => {        
+      error => {      
+        this.loading = false;  
        this.dialogService.openAlertModal(`Error`, error.error.message);       
       });
   }

@@ -43,12 +43,5 @@ namespace MSInventory.Controllers
         {
             return await _inventoryService.GetAllInventories();
         }
-
-        [HttpGet("GetAll/ToOrder")]
-        public async Task<ActionResult<List<InventoryToOrderDto>>> GetAllInventoriesToOrder()
-        {
-            return await _inventoryService.GetAllInventoriesToOrder();
-        }
-
     }
 }

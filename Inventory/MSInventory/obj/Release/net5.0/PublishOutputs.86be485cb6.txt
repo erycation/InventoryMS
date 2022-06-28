@@ -32,6 +32,7 @@ C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTm
 C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WPimpleSerum.jpeg
 C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WTissueOil.jpeg
 C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\images\WToner.jpeg
+C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\ReportFiles\ReconCertReport.rdl
 C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\wwwroot\ReportFiles\VendorInvoice.rdl
 C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\appsettings.Development.json
 C:\SourceGit\Projects\InventoryMS\Inventory\MSInventory\obj\Release\net5.0\PubTmp\Out\appsettings.json

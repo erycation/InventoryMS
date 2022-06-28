@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using MSInventory.Shared.Utils;
+using MSInventory.Model.Request;
 
 namespace MSInventory.Service
 {
@@ -52,6 +53,17 @@ namespace MSInventory.Service
         {
             var openingCertificate = await _inventoryCertificateRepository.GetAll().Where(b => b.VendorId == vendorId && b.ClosingDate == null && b.GeneratedById == null).FirstOrDefaultAsync();
             return new InventoryCertificateDto(openingCertificate);
+        }
+
+        public async Task<List<InventoryCertificateDto>> GetHistoryInventoryCertificateByVendorId(RequestHistoryInventoryCertificate requestHistoryInventoryCertificate)
+        {
+            var inventoryCertificatesDto = new List<InventoryCertificateDto>();
+            var inventoryCertificatesHistory = await _inventoryCertificateRepository.GetAll().Where(b => b.VendorId == requestHistoryInventoryCertificate.VendorId && b.OpeningDate >= requestHistoryInventoryCertificate.StartDate.StartOfDay() && b.ClosingDate <= requestHistoryInventoryCertificate.EndDate.EndOfDay()).OrderByDescending(c => c.OpeningDate).ToListAsync();
+            foreach (var inventoryCertificate in inventoryCertificatesHistory)
+            {
+                inventoryCertificatesDto.Add(new InventoryCertificateDto(inventoryCertificate));
+            }
+            return inventoryCertificatesDto;
         }
     }
 }

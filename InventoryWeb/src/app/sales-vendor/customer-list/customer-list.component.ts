@@ -46,6 +46,5 @@ export class CustomerListComponent extends ModalResetParams implements OnInit {
   goToCreateOrderPage(customersDto: CustomerDto)
   {
     this.goToPageOneParams('create-order',customersDto.customerId)
-//create-order:/customerId
   }
 }
