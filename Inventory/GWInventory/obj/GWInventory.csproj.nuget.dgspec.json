@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\SourceGit\\Projects\\InventoryMS\\Inventory\\GWInventory\\GWInventory.csproj": {}
+    "C:\\ProjectGit\\Inventory\\Inventory\\GWInventory\\GWInventory.csproj": {}
   },
   "projects": {
-    "C:\\SourceGit\\Projects\\InventoryMS\\Inventory\\GWInventory\\GWInventory.csproj": {
+    "C:\\ProjectGit\\Inventory\\Inventory\\GWInventory\\GWInventory.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SourceGit\\Projects\\InventoryMS\\Inventory\\GWInventory\\GWInventory.csproj",
+        "projectUniqueName": "C:\\ProjectGit\\Inventory\\Inventory\\GWInventory\\GWInventory.csproj",
         "projectName": "GWInventory",
-        "projectPath": "C:\\SourceGit\\Projects\\InventoryMS\\Inventory\\GWInventory\\GWInventory.csproj",
-        "packagesPath": "C:\\Users\\ericm\\.nuget\\packages\\",
-        "outputPath": "C:\\SourceGit\\Projects\\InventoryMS\\Inventory\\GWInventory\\obj\\",
+        "projectPath": "C:\\ProjectGit\\Inventory\\Inventory\\GWInventory\\GWInventory.csproj",
+        "packagesPath": "C:\\Users\\37414\\.nuget\\packages\\",
+        "outputPath": "C:\\ProjectGit\\Inventory\\Inventory\\GWInventory\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ericm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\37414\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -63,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
