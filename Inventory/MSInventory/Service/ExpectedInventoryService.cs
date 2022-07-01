@@ -105,7 +105,7 @@ namespace MSInventory.Service
       
         public async Task<string> SendExpectedInventoryToVendor(List<ExpectedInventoryDto> expectedInventoriesDto, Guid locationId)
         {
-            var trackingNumber = $"AEON_{DateTime.Now:yyyyMMddHHmmss}_{Guid.NewGuid().ToString().Substring(1,5)}";
+            var trackingNumber = $"AEON{DateTime.Now:yyyyMMddHHmmss}";
             foreach (var expectedInventoryDto in expectedInventoriesDto)
             {
                 var expectedInventory = await _expectedInventoryRepository.GetAll().FirstOrDefaultAsync(x => x.Id == expectedInventoryDto.ExpectedInventoryId);

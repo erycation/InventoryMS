@@ -9,8 +9,7 @@ namespace MSInventory.Repository.Interface
 {
     public interface IReconcilationReportRepository
     {
-        //Task<ReturnResult> GenerateInventoryCertificate(Guid vendorId, Guid generateById);
         ReturnResult GenerateInventoryCertificate(Guid vendorId, Guid generateById);
-        Task<List<ReconcilationReportDto>> GetVendorInvoiceReportByInvoiceNumber(Guid inventoryCertificateId);
+        Task<List<ReconcilationReportDto>> GetReconReportByCertificateId(Guid inventoryCertificateId);
     }
 }
